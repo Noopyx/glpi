@@ -1506,7 +1506,7 @@ class Html {
                $menu_class = "active";
             }
 
-            echo "<li id='menu$i' class='$menu_class' onmouseover=\"javascript:menuAff('menu$i','menu');\" >";
+            echo "<li id='menu$i' class='$menu_class' onmouseover=\"/*javascript:menuAff('menu$i','menu');*/\" >";
             $link = "#";
 
             if (isset($data['default']) && !empty($data['default'])) {
@@ -1516,6 +1516,14 @@ class Html {
             if (Toolbox::strlen($data['title']) > 14) {
                $data['title'] = Toolbox::substr($data['title'], 0, 14)."...";
             }
+            if(strcmp($part,"accueil") ==0)
+            	$link = "/front/central.php";
+            else if(strcmp($part,"creation") == 0)
+            	$link = "/front/helpdesk.public.php?create_ticket=1";
+            else if(strcmp($part,"FAQ") == 0)
+            	$link = "/front/helpdesk.faq.php";
+            else if(strcmp($part,"tickets") == 0)
+            	$link = "/front/ticket.php";
             echo "<a href='$link' class='itemP'>".$data['title']."</a>";
            /* echo "<ul class='ssmenu'>";
 
