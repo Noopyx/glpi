@@ -1508,7 +1508,7 @@ class Html {
                $menu_class = "active";
             }
 
-            echo "<li id='menu$i' class='$menu_class' onmouseover=\"/*javascript:menuAff('menu$i','menu');*/\" >";
+            echo "<li id='menu$i' class='$menu_class' onmouseover=\"javascript:menuAff('menu$i','menu');\" >";
             $link = "#";
 
             if (isset($data['default']) && !empty($data['default'])) {
@@ -1565,7 +1565,7 @@ class Html {
       echo "</ul>"; // #menu
 
       // Display MENU ALL
-      self::displayMenuAll($menu);
+      //self::displayMenuAll($menu);
 
       // End navigation bar
       // End headline
