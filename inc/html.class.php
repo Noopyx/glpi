@@ -1519,7 +1519,7 @@ class Html {
             if(strcmp($part,"accueil") ===0)
             	$link = "/glpi/front/central.php";
             else if(strcmp($part,"creation") === 0)
-            	$link = "/glpi/front/helpdesk.public.php?create_ticket=1";
+            	$link = "/glpi/front/helpdesk.php?create_ticket=1";
             else if(strcmp($part,"FAQ") === 0)
             	$link = "/glpi/front/helpdesk.faq.php";
             else if(strcmp($part,"tickets") === 0)
