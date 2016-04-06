@@ -2030,12 +2030,13 @@ class Html {
       }
       
       // Reservation
+      /*
       if (Session::haveRight("reservation", ReservationItem::RESERVEANITEM)) {
          $menu['reservation']['id']      = "menu4";
          $menu['reservation']['default'] = '/front/reservationitem.php';
          $menu['reservation']['title']   = _n('Reservation', 'Reservations', Session::getPluralNumber());
          $menu['reservation']['content'] = array(true);
-      }
+      }*/
       
       // FAQ
       if (Session::haveRight('knowbase', KnowbaseItem::READFAQ)) {
