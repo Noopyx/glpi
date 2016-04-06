@@ -1,0 +1,40 @@
+2016-04-06 14:05:09 [2@GLPI]
+[login] 3: glpi se connecte depuis l'IP 172.20.5.103
+2016-04-06 15:00:09 [@GLPI]
+[login] 1: Connexion échouée de admin depuis l'IP 172.20.5.103
+2016-04-06 15:00:18 [@GLPI]
+[login] 3: glpi se connecte depuis l'IP 172.20.5.103
+2016-04-06 15:02:48 [@GLPI]
+[login] 3: glpi se connecte depuis l'IP 172.20.5.103
+2016-04-06 15:03:23 [2@GLPI]
+[login] 1: Connexion échouée de glpi depuis l'IP 172.20.5.103
+2016-04-06 15:03:30 [@GLPI]
+[login] 3: glpi se connecte depuis l'IP 172.20.5.103
+2016-04-06 15:16:12 [2@GLPI]
+[login] 3: glpi se connecte depuis l'IP 172.20.5.103
+2016-04-06 15:16:29 [2@GLPI]
+[login] 3: glpi se connecte depuis l'IP 172.20.5.103
+2016-04-06 15:23:08 [2@GLPI]
+[login] 3: glpi se connecte depuis l'IP 172.20.5.103
+2016-04-06 15:39:46 [2@GLPI]
+[login] 3: glpi se connecte depuis l'IP 172.20.5.103
+2016-04-06 15:49:19 [2@GLPI]
+[login] 3: glpi se connecte depuis l'IP 172.20.5.103
+2016-04-06 15:50:19 [2@GLPI]
+[login] 3: glpi se connecte depuis l'IP 172.20.5.103
+2016-04-06 16:00:40 [5@GLPI]
+[login] 3: normal se connecte depuis l'IP 172.20.5.103
+2016-04-06 16:01:21 [5@GLPI]
+[login] 3: normal se connecte depuis l'IP 172.20.5.103
+2016-04-06 16:02:01 [@GLPI]
+[login] 3: glpi se connecte depuis l'IP 172.20.5.103
+2016-04-06 16:02:15 [2@GLPI]
+[login] 1: Connexion échouée de post-only depuis l'IP 172.20.5.103
+2016-04-06 16:02:25 [@GLPI]
+[login] 1: Connexion échouée de post-only depuis l'IP 172.20.5.103
+2016-04-06 16:02:36 [@GLPI]
+[login] 1: Connexion échouée de post-only depuis l'IP 172.20.5.103
+2016-04-06 16:02:46 [@GLPI]
+[login] 1: Connexion échouée de post-only depuis l'IP 172.20.5.103
+2016-04-06 16:04:33 [3@GLPI]
+[login] 3: post-only se connecte depuis l'IP 172.20.5.103
