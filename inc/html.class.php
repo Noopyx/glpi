@@ -1517,13 +1517,13 @@ class Html {
                $data['title'] = Toolbox::substr($data['title'], 0, 14)."...";
             }
             if(strcmp($part,"accueil") ===0)
-            	$link = "/front/central.php";
+            	$link = "/glpi/front/central.php";
             else if(strcmp($part,"creation") === 0)
-            	$link = "/front/helpdesk.public.php?create_ticket=1";
+            	$link = "/glpi/front/helpdesk.public.php?create_ticket=1";
             else if(strcmp($part,"FAQ") === 0)
-            	$link = "/front/helpdesk.faq.php";
+            	$link = "/glpi/front/helpdesk.faq.php";
             else if(strcmp($part,"tickets") === 0)
-            	$link = "/front/ticket.php";
+            	$link = "/glpi/front/ticket.php";
             echo "<a href='$link' class='itemP'>".$data['title']."</a>";
            /* echo "<ul class='ssmenu'>";
 
