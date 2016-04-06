@@ -1501,7 +1501,7 @@ class Html {
       // Get object-variables and build the navigation-elements
       $i = 1;
       foreach ($menu as $part => $data) {
-         if (isset($data['content']) && count($data['content'])) {
+         //if (isset($data['content']) && count($data['content'])) {
 	    //echo "<script>console.log(".$part.");</script>"; 
             $menu_class = "";
             if (isset($menu[$sector]) && $menu[$sector]['title'] == $data['title']) {
@@ -1559,7 +1559,7 @@ class Html {
 	    echo "</ul>";
             echo "</li>";
             $i++;
-         }
+         //}
       }
 
       echo "</ul>"; // #menu
