@@ -1193,19 +1193,23 @@ class Html {
    static function getMenuInfos() {
 
       $menu['accueil']['title']       = __('Accueil');
+      $menu['creation']['title']     = __('Créer un ticket');
+      $menu['tickets']['title']   = __('Tickets');
+      $menu['FAQ']['title']        = __('FAQ');
+      
 /*$menu['assets']['types']       = array('Computer', 'Monitor', 'Software',
                                              'NetworkEquipment', 'Peripheral', 'Printer',
                                              'CartridgeItem', 'ConsumableItem', 'Phone' );
 	*/
-      $menu['creation']['title']     = __('Créer un ticket');
+     
       /*$menu['helpdesk']['types']     = array('Ticket', 'Problem', 'Change',
                                              'Planning', 'Stat', 'TicketRecurrent');
 */
-      $menu['tickets']['title']   = __('Tickets');
+      
       /*$menu['management']['types']   = array('Budget', 'Supplier', 'Contact', 'Contract',
                                                 'Document');
 */
-      $menu['FAQ']['title']        = __('FAQ');
+     
       /*$menu['tools']['types']        = array('Project', 'Reminder', 'RSSFeed', 'KnowbaseItem',
                                              'ReservationItem', 'Report', 'MigrationCleaner');
 
