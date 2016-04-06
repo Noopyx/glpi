@@ -1193,9 +1193,11 @@ class Html {
    static function getMenuInfos() {
 
       $menu['accueil']['title']       = __('Accueil');
-      $menu['creation']['title']     = __('Créer un ticket');
+      $menu['list']['title']     = __('Liste de mes Tickets');
       $menu['tickets']['title']   = __('Tickets');
       $menu['FAQ']['title']        = __('FAQ');
+      $menu['creationCompte']['title'] = __('Création');
+      $menu['creationCompte']['types'] = array('Client','Support','Groupe');
       
 /*$menu['assets']['types']       = array('Computer', 'Monitor', 'Software',
                                              'NetworkEquipment', 'Peripheral', 'Printer',
@@ -1499,7 +1501,7 @@ class Html {
       // Get object-variables and build the navigation-elements
       $i = 1;
       foreach ($menu as $part => $data) {
-         //if (isset($data['content']) && count($data['content'])) {
+         if (isset($data['content']) && count($data['content'])) {
 	    //echo "<script>console.log(".$part.");</script>"; 
             $menu_class = "";
             if (isset($menu[$sector]) && $menu[$sector]['title'] == $data['title']) {
@@ -1525,7 +1527,7 @@ class Html {
             else if(strcmp($part,"tickets") === 0)
             	$link = "/glpi/front/ticket.php";
             echo "<a href='$link' class='itemP'>".$data['title']."</a>";
-           /* echo "<ul class='ssmenu'>";
+            echo "<ul class='ssmenu'>";
 
 
             // list menu item
@@ -1554,10 +1556,10 @@ class Html {
                   }
                }
             }
-	    echo "</ul>";*/
+	    echo "</ul>";
             echo "</li>";
             $i++;
-         //}
+         }
       }
 
       echo "</ul>"; // #menu
