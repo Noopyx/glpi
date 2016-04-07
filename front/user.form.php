@@ -54,7 +54,6 @@ if (empty($_GET["name"])) {
    $_GET["name"] = "";
 }
 
-echo "<script>console.log(\"HELLO WORLD\");</script>";
 if (isset($_GET['getvcard'])) {
    if (empty($_GET["id"])) {
       Html::redirect($CFG_GLPI["root_doc"]."/front/user.php");
@@ -63,14 +62,11 @@ if (isset($_GET['getvcard'])) {
    $user->generateVcard();
 
 } else if (isset($_POST["add"])) {
-	echo "<script>console.log(\"cc\");</script>";
    $user->check(-1, CREATE, $_POST);
 
    // Pas de nom pas d'ajout
-   if (!empty($_POST["name"])
-       && ($newID = $user->add($_POST))) {
-      Event::log($newID, "users", 4, "setup",
-                 sprintf(__('%1$s adds the item %2$s'), $_SESSION["glpiname"], $_POST["name"]));
+   if (!empty($_POST["name"]) && ($newID = $user->add($_POST))) {
+      Event::log($newID, "users", 4, "setup", sprintf(__('%1$s adds the item %2$s'), $_SESSION["glpiname"], $_POST["name"]));
       if ($_SESSION['glpibackcreated']) {
          Html::redirect($user->getFormURL()."?id=".$newID);
       }
