@@ -1899,7 +1899,8 @@ class User extends CommonDBTM {
                     autocomplete='off' onkeyup=\"return passwordCheck();\"></td>";
          echo "<td rowspan='2'>".__('Password security policy')."</td>";
          echo "<td rowspan='2'>";
-         Config::displayPasswordSecurityChecks();
+         //Config::displayPasswordSecurityChecks();
+		 echo "<input type=\"checkbox\" value=\"Avaya\">Avaya<br>"
          echo "</td></tr>";
 
          echo "<tr class='tab_bg_1'>";
