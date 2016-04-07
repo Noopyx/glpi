@@ -784,7 +784,7 @@ class Item_Ticket extends CommonDBRelation{
     *    - width        : specific width needed (default 80%)
     *
    **/
- static function dropdown($options = array()) {
+ /*static function dropdown($options = array()) {
       global $DB;
 
       // Default values
@@ -830,7 +830,7 @@ class Item_Ticket extends CommonDBRelation{
       }
 
       return Dropdown::showFromArray($p['name'], $output, $p);
-   }
+   }*/
 
    /**
     * Return used items for a ticket

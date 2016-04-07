@@ -1901,9 +1901,9 @@ class User extends CommonDBTM {
          echo "<td rowspan='2'>";
          //Config::displayPasswordSecurityChecks();
 		 echo "<div id=\"checkBox\" diplay=\"inline-block\">";
-		 echo "<input type=\"checkbox\" value=\"Avaya\">   Avaya";
-		 echo "<input type=\"checkbox\" value=\"Kiamo\">   Kiamo";
-		 echo "<input type=\"checkbox\" value=\"Infra\">   Infra<br/>";
+		 echo "<input type=\"checkbox\" value=\"Avaya\">   Avaya     ";
+		 echo "<input type=\"checkbox\" value=\"Kiamo\">   Kiamo     ";
+		 echo "<input type=\"checkbox\" value=\"Infra\">   Infra     <br/>";
          echo "</div></td></tr>";
 
          echo "<tr class='tab_bg_1'>";
