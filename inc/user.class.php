@@ -3407,6 +3407,10 @@ class User extends CommonDBTM {
       @Header("content-type: text/x-vcard; charset=UTF-8");
 
       echo $output;
+	  
+	  echo "<input type=\"checkbox\" id=\"cboxAvaya\" value=\"avaya\"> <label for=\"cboxAvaya\">Avaya</label>"
+	  echo "<input type=\"checkbox\" id=\"cboxKiamo\" value=\"kiamo\"> <label for=\"cboxKiamo\">Kiamo</label>"
+	  echo "<input type=\"checkbox\" id=\"cboxInfra\" value=\"infra\"> <label for=\"cboxInfra\">Infra</label>"
    }
 
 
