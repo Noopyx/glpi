@@ -54,6 +54,7 @@ if (empty($_GET["name"])) {
    $_GET["name"] = "";
 }
 
+echo "<script>console.log(\"HELLO WORLD\");</script>";
 if (isset($_GET['getvcard'])) {
    if (empty($_GET["id"])) {
       Html::redirect($CFG_GLPI["root_doc"]."/front/user.php");
@@ -62,7 +63,8 @@ if (isset($_GET['getvcard'])) {
    $user->generateVcard();
 
 } else if (isset($_POST["add"])) {
-  // $user->check(-1, CREATE, $_POST);
+	echo "<script>console.log(\"cc\");</script>";
+   $user->check(-1, CREATE, $_POST);
 
    // Pas de nom pas d'ajout
    if (!empty($_POST["name"])
