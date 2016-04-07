@@ -4974,7 +4974,7 @@ class Ticket extends CommonITILObject {
       echo "<tr class='noHover'><th colspan='2'>";
 
       if ($_SESSION["glpiactiveprofile"]["interface"] != "central") {
-         echo "<a href=\"".$CFG_GLPI["root_doc"]."/front/helpdesk.public.php?create_ticket=1\">".
+         echo "<a href=\"".$CFG_GLPI["root_doc"]."/front/ticket.form.php\">".
                 __('Create a ticket')."&nbsp;<img src='".$CFG_GLPI["root_doc"].
                 "/pics/menu_add.png' title=\"". __s('Add')."\" alt=\"".__s('Add')."\"></a>";
       } else {

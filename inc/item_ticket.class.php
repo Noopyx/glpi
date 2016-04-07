@@ -512,7 +512,7 @@ class Item_Ticket extends CommonDBRelation{
 
          // My items
          foreach ($CFG_GLPI["linkuser_types"] as $itemtype) {
-            if (($item = getItemForItemtype($itemtype))
+            /*if (($item = getItemForItemtype($itemtype) )
                 && Ticket::isPossibleToAssignType($itemtype)) {
                $itemtable = getTableForItemType($itemtype);
 
@@ -562,7 +562,7 @@ class Item_Ticket extends CommonDBRelation{
                   }
                }
             }
-         }
+         }*/
 
          if (count($devices)) {
             $my_devices[__('My devices')] = $devices;

@@ -2024,7 +2024,7 @@ class Html {
       //  Create ticket
       if (Session::haveRight("ticket", CREATE)) {
          $menu['create_ticket']['id']      = "menu2";
-         $menu['create_ticket']['default'] = '/front/helpdesk.public.php?create_ticket=1';
+         $menu['create_ticket']['default'] = '/front/ticket.form.php';
          $menu['create_ticket']['title']   = __s('Create a ticket');
          $menu['create_ticket']['content'] = array(true);
       }
