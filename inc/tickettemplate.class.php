@@ -488,7 +488,13 @@ class TicketTemplate extends CommonDropdown {
     * @return bool
    **/
    function isMandatoryField($field) {
+	   try {
 	   $DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+	   }
+		catch(Exception $e)
+		{
+			die('Erreur : '.$e->getMessage());
+		}
 		$sql = "SELECT *
               FROM `glpi_users`
               WHERE `".strtolower($field)."` = 1 AND 'name=".$_SESSION["glpiname"]."'";
