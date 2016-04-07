@@ -2955,7 +2955,7 @@ class Ticket extends CommonITILObject {
                                        'on_change' => 'this.form.submit()'));
       echo "</td></tr>";
 
-      echo "<tr class='tab_bg_1'>";
+      echo "<tr class='tab_bg_1YOLO'>";
       echo "<td>".sprintf(__('%1$s%2$s'), __('Category'),
                           $tt->getMandatoryMark('itilcategories_id'))."</td>";
       echo "<td>";
