@@ -784,7 +784,7 @@ class Item_Ticket extends CommonDBRelation{
     *    - width        : specific width needed (default 80%)
     *
    **/
- /*static function dropdown($options = array()) {
+ static function dropdown($options = array()) {
       global $DB;
 
       // Default values
@@ -805,7 +805,7 @@ class Item_Ticket extends CommonDBRelation{
          foreach ($options as $key => $val) {
             $p[$key] = $val;
          }
-      }*/
+      }
 
       $itemtypes = array('Computer', 'Monitor', 'NetworkEquipment', 'Peripheral', 'Phone', 'Printer');
 
