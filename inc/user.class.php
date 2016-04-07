@@ -635,7 +635,8 @@ class User extends CommonDBTM {
             if (isset($this->input["_is_recursive"])) {
                $affectation["is_recursive"] = $this->input["_is_recursive"];
             } else {
-               $affectation["is_recursive"] = 0;
+           
+		   $affectation["is_recursive"] = 0;
             }
 
             $affectation["profiles_id"]  = $profile;
