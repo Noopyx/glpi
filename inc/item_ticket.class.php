@@ -516,7 +516,7 @@ class Item_Ticket extends CommonDBRelation{
                 && Ticket::isPossibleToAssignType($itemtype)) {
                $itemtable = getTableForItemType($itemtype);
 
-               $query     = "SELECT *
+               /*$query     = "SELECT *
                              FROM `$itemtable`
                              WHERE `users_id` = '$userID'";
                if ($item->maybeDeleted()) {
@@ -533,8 +533,11 @@ class Item_Ticket extends CommonDBRelation{
                                                     $item->maybeRecursive())."
 
 
-                         ORDER BY `name` ";
-
+                         ORDER BY `name` ";*/
+						 
+			
+				$query     = "SELECT *
+                             FROM glpi_groups";
                $result  = $DB->query($query);
                $nb      = $DB->numrows($result);
                if ($DB->numrows($result) > 0) {
