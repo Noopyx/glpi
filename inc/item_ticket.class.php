@@ -516,7 +516,7 @@ class Item_Ticket extends CommonDBRelation{
                 && Ticket::isPossibleToAssignType($itemtype)) {
                $itemtable = getTableForItemType($itemtype);
 
-               /*$query     = "SELECT *
+               $query     = "SELECT *
                              FROM `$itemtable`
                              WHERE `users_id` = '$userID'";
                if ($item->maybeDeleted()) {
@@ -533,11 +533,8 @@ class Item_Ticket extends CommonDBRelation{
                                                     $item->maybeRecursive())."
 
 
-                         ORDER BY `name` ";*/
-						 
-			
-				$query     = "SELECT *
-                             FROM glpi_groups";
+                         ORDER BY `name` ";
+
                $result  = $DB->query($query);
                $nb      = $DB->numrows($result);
                if ($DB->numrows($result) > 0) {
@@ -571,7 +568,7 @@ class Item_Ticket extends CommonDBRelation{
             $my_devices[__('My devices')] = $devices;
          }
          // My group items
-         if (Session::haveRight("show_group_hardware","1")) {
+         //if (Session::haveRight("show_group_hardware","1")) {
             $group_where = "";
             $query       = "SELECT `glpi_groups_users`.`groups_id`, `glpi_groups`.`name`
                             FROM `glpi_groups_users`
@@ -649,7 +646,7 @@ class Item_Ticket extends CommonDBRelation{
                   $my_devices[__('Devices own by my groups')] = $devices;
                }
             }
-         }
+         //}
          // Get linked items to computers
          if (isset($already_add['Computer']) && count($already_add['Computer'])) {
             $search_computer = " XXXX IN (".implode(',',$already_add['Computer']).') ';
