@@ -63,7 +63,6 @@ if (isset($_GET['getvcard'])) {
 
 } else if (isset($_POST["add"])) {
    $user->check(-1, CREATE, $_POST);
-	echo "<script type=\"text/javascript\"> console.log(\"Bonjour\");</script>";
    // Pas de nom pas d'ajout
    if (!empty($_POST["name"]) && ($newID = $user->add($_POST))) {
       Event::log($newID, "users", 4, "setup", sprintf(__('%1$s adds the item %2$s'), $_SESSION["glpiname"], $_POST["name"]));
