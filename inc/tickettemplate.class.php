@@ -495,9 +495,7 @@ class TicketTemplate extends CommonDropdown {
 		{
 			die('Erreur : '.$e->getMessage());
 		}
-		$sql = "SELECT *
-              FROM `glpi_users`
-              WHERE `".strtolower($field)."` = 1 AND 'name=".$_SESSION["glpiname"]."'";
+		$sql = "SELECT * FROM glpi_users WHERE `".strtolower($field)."` = 1 AND `name`=`".$_SESSION["glpiname"]."`";
 		$result = $DB->query($sql);
 		$cpt = 0;
 	  while ($donnees = $result->fetch()) {
