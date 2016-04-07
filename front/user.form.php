@@ -62,7 +62,7 @@ if (isset($_GET['getvcard'])) {
    $user->generateVcard();
 
 } else if (isset($_POST["add"])) {
-   $user->check(-1, CREATE, $_POST);
+  // $user->check(-1, CREATE, $_POST);
 
    // Pas de nom pas d'ajout
    if (!empty($_POST["name"])

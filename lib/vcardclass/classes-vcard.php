@@ -141,8 +141,6 @@ class vCard {
     function getVCard() {
         $text = "BEGIN:VCARD\r\n";
         $text.= "VERSION:2.1\r\n";
-		
-		$this->poperties["Avaya"] = "Avaya";
         foreach($this->properties as $key => $value) {
             $text.= "$key:$value\r\n";
         }
