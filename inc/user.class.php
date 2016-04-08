@@ -1900,7 +1900,7 @@ class User extends CommonDBTM {
          //echo "<td rowspan='2'>".__('Password security policy')."</td>";
          echo "<td rowspan='2'>";
          //Config::displayPasswordSecurityChecks();
-		 echo "<div id=\"checkBox\" >";
+		 echo "<div id=\"checkBox\" display=\"inline-block\">";
 		 
 		 try {
 			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
@@ -1939,14 +1939,14 @@ class User extends CommonDBTM {
 		 echo "<input type=\"checkbox\" name=\"category[]\" value=2>   Operateur Voix     ";	
 	 
 		if($telecom == 1)
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=3 checked=\"checked\">   Telecom     <br/>";
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=3 checked=\"checked\">   Telecom     ";
 		else
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=3>   Telecom     <br/>";
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=3>   Telecom     ";
 	 
 		 if($visio == 1)
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=4 checked=\"checked\">   Visio-Conference     <br/>";
+			 echo "<input type=\"checkbox\" name=\"category[]\" value=4 checked=\"checked\">   Visio-Conference     ";
 			else
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=4>   Visio-Conference     <br/>";
+			 echo "<input type=\"checkbox\" name=\"category[]\" value=4>   Visio-Conference     ";
 	 
 		if($contact == 1)
 			 echo "<input type=\"checkbox\" name=\"category[]\" value=5 checked=\"checked\">   Centre de contact     <br/>";
