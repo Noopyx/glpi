@@ -1912,7 +1912,7 @@ abstract class CommonITILObject extends CommonDBTM {
 
       $values = array();
 
-      if (isset($CFG_GLPI[static::URGENCY_MASK_FIELD])) {
+      /*if (isset($CFG_GLPI[static::URGENCY_MASK_FIELD])) {
          if (($p['showtype'] == 'search')
              || ($CFG_GLPI[static::URGENCY_MASK_FIELD] & (1<<5))) {
             $values[5]  = "CENTRE DE CONTACT";
@@ -1934,7 +1934,11 @@ abstract class CommonITILObject extends CommonDBTM {
              || ($CFG_GLPI[static::URGENCY_MASK_FIELD] & (1<<1))) {
             $values[1]  = "OPERATEUR DATA";
          }
-      }
+      }*/
+	  
+	  $values[1] = "KIAMO";
+	  $values[2] = "AVAYA";
+	  $values[3] = "INFRA";
 
       return Dropdown::showFromArray($p['name'],$values, $p);
    }
