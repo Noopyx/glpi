@@ -1844,63 +1844,6 @@ class User extends CommonDBTM {
 
       echo "<tr class='tab_bg_1'>";
       echo "<td>" . __('Login') . "</td>";
-	  echo "<div id=\"checkBox\" >";
-		 
-		 try {
-			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
-	    }
-		catch(Exception $e)
-		{
-			die('Erreur : '.$e->getMessage());
-		}
-		$sql = "SELECT * FROM glpi_users WHERE id=".$ID;
-		$result = $DB->query($sql);
-		
-		$opData = 0;
-		$opVoice = 0;
-		$telecom = 0;
-		$visio = 0;
-		$contact = 0;
-		
-		if($result) {
-			while ($donnees = $result->fetch()) {
-				$opData = $donnees["opData"];
-				$opVoice = $donnees["opVoice"];
-				$telecom = $donnees["telecom"];
-				$visio = $donnees["visio"];
-				$contact = $donnees["contact"];
-			}
-		}
-
-		if($opData == 1)
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=1 checked=\"checked\">   Operateur DATA     ";
-		else
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=1>   Operateur DATA     ";	
-	 
-		if($opVoice == 1)
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=2 checked=\"checked\">   Operateur Voix     ";
-		else
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=2>   Operateur Voix     ";	
-	 
-		if($telecom == 1)
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=3 checked=\"checked\">   Telecom     <br/>";
-		else
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=3>   Telecom     <br/>";
-	 
-		 if($visio == 1)
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=4 checked=\"checked\">   Visio-Conference     <br/>";
-			else
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=4>   Visio-Conference     <br/>";
-	 
-		if($contact == 1)
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=5 checked=\"checked\">   Centre de contact     <br/>";
-			else
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=5>   Centre de contact     <br/>";
-	 
-	 
-	 
-	 
-         echo "</div>";
       // si on est dans le cas d'un ajout , cet input ne doit plus etre hidden
       if ($this->fields["name"] == "") {
          echo "<td><input name='name' value=\"" . $this->fields["name"] . "\"></td>";
@@ -1957,7 +1900,63 @@ class User extends CommonDBTM {
          //echo "<td rowspan='2'>".__('Password security policy')."</td>";
          echo "<td rowspan='2'>";
          //Config::displayPasswordSecurityChecks();
-		 echo "</td></tr>";
+		 echo "<div id=\"checkBox\" >";
+		 
+		 try {
+			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+	    }
+		catch(Exception $e)
+		{
+			die('Erreur : '.$e->getMessage());
+		}
+		$sql = "SELECT * FROM glpi_users WHERE id=".$ID;
+		$result = $DB->query($sql);
+		
+		$opData = 0;
+		$opVoice = 0;
+		$telecom = 0;
+		$visio = 0;
+		$contact = 0;
+		
+		if($result) {
+			while ($donnees = $result->fetch()) {
+				$opData = $donnees["opData"];
+				$opVoice = $donnees["opVoice"];
+				$telecom = $donnees["telecom"];
+				$visio = $donnees["visio"];
+				$contact = $donnees["contact"];
+			}
+		}
+
+		if($opData == 1)
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=1 checked=\"checked\">   Operateur DATA     ";
+		else
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=1>   Operateur DATA     ";	
+	 
+		if($opVoice == 1)
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=2 checked=\"checked\">   Operateur Voix     ";
+		else
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=2>   Operateur Voix     ";	
+	 
+		if($telecom == 1)
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=3 checked=\"checked\">   Telecom     <br/>";
+		else
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=3>   Telecom     <br/>";
+	 
+		 if($visio == 1)
+			 echo "<input type=\"checkbox\" name=\"category[]\" value=4 checked=\"checked\">   Visio-Conference     <br/>";
+			else
+			 echo "<input type=\"checkbox\" name=\"category[]\" value=4>   Visio-Conference     <br/>";
+	 
+		if($contact == 1)
+			 echo "<input type=\"checkbox\" name=\"category[]\" value=5 checked=\"checked\">   Centre de contact     <br/>";
+			else
+			 echo "<input type=\"checkbox\" name=\"category[]\" value=5>   Centre de contact     <br/>";
+	 
+	 
+	 
+	 
+         echo "</div></td></tr>";
          echo "<tr class='tab_bg_1'>";
          echo "<td>" . __('Password confirmation') . "</td>";
          echo "<td><input type='password' name='password2' value='' size='20' autocomplete='off'>";
