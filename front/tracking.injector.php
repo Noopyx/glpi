@@ -87,13 +87,13 @@ if (isset($_POST['add'])) {
 					die('Erreur : '.$e->getMessage());
 			}
 			  switch ($_POST['category']) {
-				  case 1: 
+				  case "AVAYA": 
 					$bdd->exec('UPDATE glpi_tickets SET  itilcategories_id=1 WHERE id=(select max(id) from glpi_tickets)');
 					break;
-				  case 2: 
+				  case "KIAMO": 
 					$bdd->exec('UPDATE glpi_tickets SET  itilcategories_id=2 WHERE id=(select max(id) from glpi_tickets)');
 					break;
-				  case 3: 
+				  case "INFRA": 
 					$bdd->exec('UPDATE glpi_tickets SET  itilcategories_id=3 WHERE id=(select max(id) from glpi_tickets)');
 					break;
 				  default:
