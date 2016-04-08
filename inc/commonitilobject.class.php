@@ -1942,7 +1942,7 @@ abstract class CommonITILObject extends CommonDBTM {
 		{
 			die('Erreur : '.$e->getMessage());
 		}
-		$sql = "SELECT * FROM glpi_users WHERE name=`".$_SESSION["glpiname"]."`";
+		$sql = "SELECT * FROM glpi_users WHERE name='".$_SESSION["glpiname"]."'";
 		$result = $DB->query($sql);
 		
 		if($result) {
