@@ -118,15 +118,15 @@ if (isset($_GET['getvcard'])) {
               sprintf(__('%s updates an item'), $_SESSION["glpiname"]));
 			  
 	foreach($_POST['category'] as $valeur) {
-	   if( $valeur === 1)
+	   if( $valeur == 1)
 		   $opData = 1;
-	   if( $valeur === 2)
+	   if( $valeur == 2)
 		   $opVoice = 1;
-	   if( $valeur === 3)
+	   if( $valeur == 3)
 		   $telecom = 1;
-	   if( $valeur === 4)
+	   if( $valeur == 4)
 		   $visio = 1;
-	   if( $valeur === 5)
+	   if( $valeur == 5)
 		   $contact = 1;
 	}
 	try {
