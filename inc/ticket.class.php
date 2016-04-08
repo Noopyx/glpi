@@ -2973,9 +2973,9 @@ class Ticket extends CommonITILObject {
                    'condition' => $condition,
                    'on_change' => 'this.form.submit()');
 
-      if ($values['itilcategories_id'] && $tt->isMandatoryField("itilcategories_id")) {
+     /* if ($values['itilcategories_id'] && $tt->isMandatoryField("itilcategories_id")) {
          $opt['display_emptychoice'] = false;
-      }
+      }*/
 	self::dropdownCategory(array('value' => $values["urgency"]));
       //ITILCategory::dropdown($opt);
       echo "</td></tr>";
