@@ -2955,12 +2955,12 @@ class Ticket extends CommonITILObject {
                                        'on_change' => 'this.form.submit()'));
       echo "</td></tr>";
 
-      echo "<tr class='tab_bg_1YOLO'>";
+      echo "<tr class='tab_bg_1'>";
       echo "<td>".sprintf(__('%1$s%2$s'), __('Category'),
                           $tt->getMandatoryMark('itilcategories_id'))."</td>";
       echo "<td>";
 
-      $condition = "`is_helpdeskvisible`='1'";
+      /*$condition = "`is_helpdeskvisible`='1'";
       switch ($values['type']) {
          case self::DEMAND_TYPE :
             $condition .= " AND `is_request`='1'";
@@ -2968,7 +2968,7 @@ class Ticket extends CommonITILObject {
 
          default: // self::INCIDENT_TYPE :
             $condition .= " AND `is_incident`='1'";
-      }
+      }*/
       $opt = array('value'     => $values['itilcategories_id'],
                    'condition' => $condition,
                    'on_change' => 'this.form.submit()');
@@ -6730,7 +6730,8 @@ class Ticket extends CommonITILObject {
       if ($item instanceof Document_Item) {
          $ticket = new self();
          $ticket->getFromDB($params['tickets_id']);
-         Document_Item::showAddFormForItem($ticket, '');
+     
+	 Document_Item::showAddFormForItem($ticket, '');
 
       } else if (method_exists($item, "showForm")) {
          $item->showForm($id, $params);

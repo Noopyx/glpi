@@ -1899,7 +1899,7 @@ abstract class CommonITILObject extends CommonDBTM {
    static function dropdownCategory(array $options = array()) {
       global $CFG_GLPI;
 
-      $p['name']     = 'urgency';
+      $p['name']     = 'category';
       $p['value']    = 0;
       $p['showtype'] = 'normal';
       $p['display']  = true;
@@ -1948,9 +1948,9 @@ abstract class CommonITILObject extends CommonDBTM {
 		if($result) {
 			while ($donnees = $result->fetch()) {
 				if ($donnees["kiamo"] == 1)
-					$values[1] = "KIAMO";
+					$values[2] = "KIAMO";
 				if ($donnees["avaya"] == 1)
-					$values[2] = "AVAYA";
+					$values[1] = "AVAYA";
 				if ($donnees["infra"] == 1)
 					$values[3] = "INFRA";
 			}
