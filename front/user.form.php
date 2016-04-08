@@ -105,12 +105,11 @@ if (isset($_GET['getvcard'])) {
    Html::back();
 
 } else if (isset($_POST["update"])) {
-	$avaya = 0;
-	$kiamo = 0;
-	$infra = 0;
-	
-	
-
+	$opData = 0;
+	$opVoice = 0;
+	$telecom = 0;
+	$visio = 0;
+	$contact = 0;
 	
    $user->check($_POST['id'], UPDATE);
    $user->update($_POST);
@@ -119,12 +118,16 @@ if (isset($_GET['getvcard'])) {
               sprintf(__('%s updates an item'), $_SESSION["glpiname"]));
 			  
 	foreach($_POST['category'] as $valeur) {
-	   if( strcmp($valeur,"avaya") === 0)
-		   $avaya = 1;
-	   if( strcmp($valeur,"kiamo") === 0)
-		   $kiamo = 1;
-	   if( strcmp($valeur,"infra") === 0)
-		   $infra = 1;
+	   if( $valeur === 1)
+		   $opData = 1;
+	   if( $valeur === 2)
+		   $opVoice = 1;
+	   if( $valeur === 3)
+		   $telecom = 1;
+	   if( $valeur === 4)
+		   $visio = 1;
+	   if( $valeur === 5)
+		   $contact = 1;
 	}
 	try {
 		$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
@@ -134,7 +137,7 @@ if (isset($_GET['getvcard'])) {
 		die('Erreur : '.$e->getMessage());
 	}
 	
-	$DB->exec('UPDATE glpi_users SET avaya ='.$avaya.' , kiamo ='.$kiamo.' , infra = '.$infra.' WHERE id='.$_POST["id"]);
+	$DB->exec('UPDATE glpi_users SET opData ='.$opData.' , opVoice ='.$opVoice.' , telecom = '.$telecom.' , visio = '.$visio.' , contact = '.$contact.' WHERE id='.$_POST["id"]);
 	
    Html::back();
 

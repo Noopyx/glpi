@@ -394,8 +394,27 @@ class CommonDBTM extends CommonGLPI {
 
          $i = 0;
 		
+		
 		if(isset($this->input['category'])) {
-			$this->fields['itilcategories_id'] = $this->input['category'];
+			try	{
+				$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+			}
+			catch(Exception $e) {
+					die('Erreur : '.$e->getMessage());
+			}
+			if($this->input['category'] === 1)
+				$mycategory = $bdd->query("select id from glpi_itilcategories where name='opData'");
+			if($this->input['category'] === 2)
+				$mycategory = $bdd->query("select id from glpi_itilcategories where name='opVoice'");
+			if($this->input['category'] === 3)
+				$mycategory = $bdd->query("select id from glpi_itilcategories where name='telecom'");
+			if($this->input['category'] === 4)
+				$mycategory = $bdd->query("select id from glpi_itilcategories where name='visio'");
+			if($this->input['category'] === 5)
+				$mycategory = $bdd->query("select id from glpi_itilcategories where name='contact'");
+			
+			if(is_int($mycategory))
+				$this->fields['itilcategories_id'] = $mycategory;
 		}
          foreach ($this->fields as $key => $val) {
             $fields[$i] = $key;
