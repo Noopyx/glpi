@@ -1956,7 +1956,7 @@ abstract class CommonITILObject extends CommonDBTM {
 			}
 		}
 		else {
-			$values[1] = "KIAMO";
+			$values[1] = "KIAMO  ".$_SESSION["glpiname"];
 			$values[2] = "AVAYA";
 			$values[3] = "INFRA";
 		}
