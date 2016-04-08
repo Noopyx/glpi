@@ -76,20 +76,17 @@ if (!isset($_POST["itemtype"])
 }
 
 if (isset($_POST['add'])) {
-	/*$bdd;
-	if(isset($_POST['category'])) {
+   if ($newID = $track->add($_POST)) {
+      if (isset($_POST["_type"]) && ($_POST["_type"] == "Helpdesk")) {
+		  
+		  /*if(isset($_POST['category'])) {
 			try	{
 				$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 			}
 			catch(Exception $e) {
 					die('Erreur : '.$e->getMessage());
 			}
-			  
-	}*/
-   if ($newID = $track->add($_POST)) {
-      if (isset($_POST["_type"]) && ($_POST["_type"] == "Helpdesk")) {
-		  
-		 /* switch ($_POST['category']) {
+			  switch ($_POST['category']) {
 				  case 1: 
 					$bdd->exec('UPDATE glpi_tickets SET  itilcategories_id=1 WHERE id=(select max(id) from glpi_tickets)');
 					break;
@@ -101,7 +98,8 @@ if (isset($_POST['add'])) {
 					break;
 				  default:
 					break;
-			  }*/
+			  }
+		  }*/
          echo "<div class='center spaced'>".
                 __('Your ticket has been registered, its treatment is in progress.');
          Html::displayBackLink();

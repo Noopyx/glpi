@@ -384,7 +384,6 @@ class CommonDBTM extends CommonGLPI {
    **/
    function addToDB() {
       global $DB;
-   //echo "<script type=\"text/javascript\">console.log(\"cc\");</script>";
       //unset($this->fields["id"]);
       $nb_fields = count($this->fields);
       if ($nb_fields > 0) {
@@ -393,9 +392,9 @@ class CommonDBTM extends CommonGLPI {
                    INTO `".$this->getTable()."` (";
 
          $i = 0;
-		
+		/*$nb_fields++;
 		if(isset($this->input['category']))
-			$this->fields['itilcategories_id'] = $this->input['category'];
+			$this->fields['itilcategories_id'] = $this->input['category'];*/
          foreach ($this->fields as $key => $val) {
             $fields[$i] = $key;
             $values[$i] = $val;
