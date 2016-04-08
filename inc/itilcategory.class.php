@@ -302,7 +302,7 @@ class ITILCategory extends CommonTreeDropdown {
                 WHERE (`tickettemplates_id_incident` = '$ID')
                        OR (`tickettemplates_id_demand` = '$ID')
                 ORDER BY `name`";
-
+	
       if ($result=$DB->query($query)) {
          echo "<table class='tab_cadre_fixe'>";
          echo "<tr><th colspan='3'>";

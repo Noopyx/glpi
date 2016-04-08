@@ -4653,7 +4653,6 @@ class Html {
             $options[$tag] = $val;
          }
       }
-	  $param['display_emptychoice'] = 0;
       $output = Html::hidden($name, $options);
 
       $js = "";
@@ -4674,6 +4673,7 @@ class Html {
          if (is_bool($val)) {
             $js .= "$key: ".($val?1:0).",\n";
          } else {
+			 
             $js .= "$key: ".json_encode($val).",\n";
          }
       }

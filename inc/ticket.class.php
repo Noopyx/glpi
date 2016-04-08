@@ -2976,8 +2976,8 @@ class Ticket extends CommonITILObject {
       if ($values['itilcategories_id'] && $tt->isMandatoryField("itilcategories_id")) {
          $opt['display_emptychoice'] = false;
       }
-
-      ITILCategory::dropdown($opt);
+	self::dropdownCategory(array('value' => $values["urgency"]));
+      //ITILCategory::dropdown($opt);
       echo "</td></tr>";
 
 

@@ -1869,10 +1869,10 @@ abstract class CommonITILObject extends CommonDBTM {
       }
 
       if (isset($CFG_GLPI[static::URGENCY_MASK_FIELD])) {
-         if (($p['showtype'] == 'search')
+         /*if (($p['showtype'] == 'search')
              || ($CFG_GLPI[static::URGENCY_MASK_FIELD] & (1<<5))) {
             $values[5]  = static::getUrgencyName(5);
-         }
+         }*/
 
          if (($p['showtype'] == 'search')
              || ($CFG_GLPI[static::URGENCY_MASK_FIELD] & (1<<4))) {
@@ -1896,6 +1896,48 @@ abstract class CommonITILObject extends CommonDBTM {
    }
 
 
+   static function dropdownCategory(array $options = array()) {
+      global $CFG_GLPI;
+
+      $p['name']     = 'urgency';
+      $p['value']    = 0;
+      $p['showtype'] = 'normal';
+      $p['display']  = true;
+
+      if (is_array($options) && count($options)) {
+         foreach ($options as $key => $val) {
+            $p[$key] = $val;
+         }
+      }
+
+      $values = array();
+
+      if (isset($CFG_GLPI[static::URGENCY_MASK_FIELD])) {
+         if (($p['showtype'] == 'search')
+             || ($CFG_GLPI[static::URGENCY_MASK_FIELD] & (1<<5))) {
+            $values[5]  = "CENTRE DE CONTACT";
+         }
+
+         if (($p['showtype'] == 'search')
+             || ($CFG_GLPI[static::URGENCY_MASK_FIELD] & (1<<4))) {
+            $values[4]  = "VISIO-CONFERENCE";
+         }
+
+         $values[3]  = "TELECOM";
+
+         if (($p['showtype'] == 'search')
+             || ($CFG_GLPI[static::URGENCY_MASK_FIELD] & (1<<2))) {
+            $values[2]  = "OPERATEUR VOIX";
+         }
+
+         if (($p['showtype'] == 'search')
+             || ($CFG_GLPI[static::URGENCY_MASK_FIELD] & (1<<1))) {
+            $values[1]  = "OPERATEUR DATA";
+         }
+      }
+
+      return Dropdown::showFromArray($p['name'],$values, $p);
+   }
    /**
     * Get ITIL object Urgency Name
     *

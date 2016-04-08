@@ -129,7 +129,6 @@ if (isset($_GET['condition']) && ($_GET['condition'] != '')) {
    $where .= " AND ".$_GET['condition']." ";
 }
 
-echo "<script type=\"text/javascript>console.log($table)</script>";
 $one_item = -1;
 if (isset($_GET['_one_id'])) {
    $one_item = $_GET['_one_id'];

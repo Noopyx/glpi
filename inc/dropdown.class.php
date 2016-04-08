@@ -205,7 +205,7 @@ class Dropdown {
              && $item->canCreate()
              && !isset($_REQUEST['_in_modal'])
              && $params['addicon']) {
-
+//
                $output .= "<img alt='' title=\"".__s('Add')."\" src='".$CFG_GLPI["root_doc"].
                             "/pics/add_dropdown.png' style='cursor:pointer; margin-left:2px;'
                             onClick=\"".Html::jsGetElementbyID('add_dropdown'.$params['rand']).".dialog('open');\">";
