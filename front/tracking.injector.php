@@ -79,7 +79,9 @@ if (isset($_POST['add'])) {
    if ($newID = $track->add($_POST)) {
       if (isset($_POST["_type"]) && ($_POST["_type"] == "Helpdesk")) {
 		  
+		  echo "<script type=\"text/javascript\">console.log(\"cc\");</script>";
 		  if(isset($_POST['category'])) {
+			  echo "<script type=\"text/javascript\">console.log(\"couc\");</script>";
 			try	{
 				$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 			}
@@ -97,6 +99,7 @@ if (isset($_POST['add'])) {
 					$bdd->exec('UPDATE glpi_tickets SET  itilcategories_id=3 WHERE id=(select max(id) from glpi_tickets)');
 					break;
 				  default:
+					echo "<script type=\"text/javascript\">console.log(\"".$_POST['category']."\");</script>";
 					break;
 			  }
 		  }
