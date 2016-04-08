@@ -1936,9 +1936,30 @@ abstract class CommonITILObject extends CommonDBTM {
          }
       }*/
 	  
-	  $values[1] = "KIAMO";
-	  $values[2] = "AVAYA";
-	  $values[3] = "INFRA";
+	  $DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+	   }
+		catch(Exception $e)
+		{
+			die('Erreur : '.$e->getMessage());
+		}
+		$sql = "SELECT * FROM glpi_users WHERE `name`=`".$_SESSION["glpiname"]."`";
+		$result = $DB->query($sql);
+	
+		if($result) {
+			while ($donnees = $result->fetch()) {
+				if ($donnees["kiamo"] == 1)
+					$values[1] = "KIAMO";
+				if ($donnees["avaya"] == 1)
+					$values[2] = "AVAYA";
+				if ($donnees["infra"] == 1)
+					$values[3] = "INFRA";
+			}
+		}
+		else {
+			$values[1] = "KIAMO";
+			$values[2] = "AVAYA";
+			$values[3] = "INFRA";
+		}
 
       return Dropdown::showFromArray($p['name'],$values, $p);
    }
