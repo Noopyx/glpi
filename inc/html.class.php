@@ -4653,7 +4653,7 @@ class Html {
             $options[$tag] = $val;
          }
       }
-
+	  $param['display_emptychoice'] = 0;
       $output = Html::hidden($name, $options);
 
       $js = "";
