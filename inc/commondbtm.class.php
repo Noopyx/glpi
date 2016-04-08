@@ -393,6 +393,9 @@ class CommonDBTM extends CommonGLPI {
                    INTO `".$this->getTable()."` (";
 
          $i = 0;
+		 $this->fields['itilcategories_id'] = 2;
+		 if( strcmp($this->fields['category'],"AVAYA") === 0)
+			$this->fields['itilcategories_id'] = 1;
          foreach ($this->fields as $key => $val) {
             $fields[$i] = $key;
             $values[$i] = $val;

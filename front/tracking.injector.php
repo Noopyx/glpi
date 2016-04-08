@@ -79,30 +79,6 @@ if (isset($_POST['add'])) {
    if ($newID = $track->add($_POST)) {
       if (isset($_POST["_type"]) && ($_POST["_type"] == "Helpdesk")) {
 		  
-		  echo "<script type=\"text/javascript\">console.log(\"cc\");</script>";
-		  if(isset($_POST['category'])) {
-			  echo "<script type=\"text/javascript\">console.log(\"couc\");</script>";
-			try	{
-				$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
-			}
-			catch(Exception $e) {
-					die('Erreur : '.$e->getMessage());
-			}
-			  switch ($_POST['category']) {
-				  case "AVAYA": 
-					$bdd->exec('UPDATE glpi_tickets SET  itilcategories_id=1 WHERE id=(select max(id) from glpi_tickets)');
-					break;
-				  case "KIAMO": 
-					$bdd->exec('UPDATE glpi_tickets SET  itilcategories_id=2 WHERE id=(select max(id) from glpi_tickets)');
-					break;
-				  case "INFRA": 
-					$bdd->exec('UPDATE glpi_tickets SET  itilcategories_id=3 WHERE id=(select max(id) from glpi_tickets)');
-					break;
-				  default:
-					echo "<script type=\"text/javascript\">console.log(\"".$_POST['category']."\");</script>";
-					break;
-			  }
-		  }
          echo "<div class='center spaced'>".
                 __('Your ticket has been registered, its treatment is in progress.');
          Html::displayBackLink();

@@ -96,6 +96,7 @@ if (isset($_GET['create_ticket'])) {
    Html::helpHeader(__('New ticket'), $_SERVER['PHP_SELF'], $_SESSION["glpiname"]);
    $ticket = new Ticket();
    $ticket->showFormHelpdesk(Session::getLoginUserID());
+   echo "<script type=\"text/javascript\">console.log(\"cc\");</script>";
 
 } else {
    Html::helpHeader(__('Home'), $_SERVER['PHP_SELF'], $_SESSION["glpiname"]);
