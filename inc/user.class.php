@@ -1939,9 +1939,9 @@ class User extends CommonDBTM {
 		 echo "<input type=\"checkbox\" name=\"category[]\" value=2>   Operateur Voix     ";	
 	 
 		if($telecom == 1)
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=3 checked=\"checked\">   Telecom     ";
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=3 checked=\"checked\">   Telecom     <br/>";
 		else
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=3>   Telecom     ";
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=3>   Telecom     <br/>";
 	 
 		 if($visio == 1)
 			 echo "<input type=\"checkbox\" name=\"category[]\" value=4 checked=\"checked\">   Visio-Conference     ";
