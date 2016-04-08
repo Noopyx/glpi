@@ -88,13 +88,13 @@ if (isset($_POST['add'])) {
 			}
 			  switch ($_POST['category']) {
 				  case 1: 
-					$bdd->exec('UPDATE glpi_tickets SET  itilcategories_id=1 WHERE id=(select max(id) from glpi_tickets');
+					$bdd->exec('UPDATE glpi_tickets SET  itilcategories_id=1 WHERE id=(select max(id) from glpi_tickets)');
 					break;
 				  case 2: 
-					$bdd->exec('UPDATE glpi_tickets SET  itilcategories_id=2 WHERE id=(select max(id) from glpi_tickets');
+					$bdd->exec('UPDATE glpi_tickets SET  itilcategories_id=2 WHERE id=(select max(id) from glpi_tickets)');
 					break;
 				  case 3: 
-					$bdd->exec('UPDATE glpi_tickets SET  itilcategories_id=3 WHERE id=(select max(id) from glpi_tickets');
+					$bdd->exec('UPDATE glpi_tickets SET  itilcategories_id=3 WHERE id=(select max(id) from glpi_tickets)');
 					break;
 				  default:
 					break;
