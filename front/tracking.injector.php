@@ -86,7 +86,7 @@ if (isset($_POST['add'])) {
 			catch(Exception $e) {
 					die('Erreur : '.$e->getMessage());
 			}
-			  switch ($_POST['category')) {
+			  switch ($_POST['category']) {
 				  case 1: 
 					$bdd->exec('UPDATE glpi_tickets SET  itilcategories_id=1 WHERE id=(select max(id) from glpi_tickets)';
 					break;
