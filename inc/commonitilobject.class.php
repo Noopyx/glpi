@@ -1935,8 +1935,8 @@ abstract class CommonITILObject extends CommonDBTM {
             $values[1]  = "OPERATEUR DATA";
          }
       }*/
-	  
-	  $DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+	  try {
+			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 	   }
 		catch(Exception $e)
 		{
