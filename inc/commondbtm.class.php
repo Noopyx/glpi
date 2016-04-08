@@ -384,7 +384,7 @@ class CommonDBTM extends CommonGLPI {
    **/
    function addToDB() {
       global $DB;
-   echo "<script type=\"text/javascript\">console.log(\"cc\");</script>";
+   //echo "<script type=\"text/javascript\">console.log(\"cc\");</script>";
       //unset($this->fields["id"]);
       $nb_fields = count($this->fields);
       if ($nb_fields > 0) {
