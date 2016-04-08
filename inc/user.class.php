@@ -1934,14 +1934,14 @@ class User extends CommonDBTM {
 		 echo "<input type=\"checkbox\" name=\"category[]\" value=1>   Operateur DATA     ";	
 	 
 		if($opVoice == 1)
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=2 checked=\"checked\">   Operateur Voix     ";
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=2 checked=\"checked\">   Operateur Voix     <br/>";
 		else
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=2>   Operateur Voix     ";	
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=2>   Operateur Voix     <br/>";	
 	 
 		if($telecom == 1)
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=3 checked=\"checked\">   Telecom     <br/>";
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=3 checked=\"checked\">   Telecom     ";
 		else
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=3>   Telecom     <br/>";
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=3>   Telecom     ";
 	 
 		 if($visio == 1)
 			 echo "<input type=\"checkbox\" name=\"category[]\" value=4 checked=\"checked\">   Visio-Conference     ";
