@@ -1924,20 +1924,20 @@ class User extends CommonDBTM {
 			}
 		}
 
-		if($kiamo == 1)
-		 echo "<input type=\"checkbox\" value=\"Avaya\" checked=\"checked\">   Avaya     ";
-		else
-		 echo "<input type=\"checkbox\" value=\"Avaya\">   Avaya     ";	
-	 
 		if($avaya == 1)
-		 echo "<input type=\"checkbox\" value=\"Kiamo\" checked=\"checked\">   Kiamo     ";
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=\"avaya\" checked=\"checked\">   Avaya     ";
 		else
-		 echo "<input type=\"checkbox\" value=\"Kiamo\">   Kiamo     ";	
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=\"avaya\">   Avaya     ";	
+	 
+		if($kiamo == 1)
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=\"kiamo\" checked=\"checked\">   Kiamo     ";
+		else
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=\"kiamo\">   Kiamo     ";	
 	 
 		if($infra == 1)
-		 echo "<input type=\"checkbox\" value=\"Infra\" checked=\"checked\">   Infra     <br/>";
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=\"infra\" checked=\"checked\">   Infra     <br/>";
 		else
-		 echo "<input type=\"checkbox\" value=\"Infra\">   Infra     <br/>";
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=\"infra\">   Infra     <br/>";
 	 
 	 
          echo "</div></td></tr>";

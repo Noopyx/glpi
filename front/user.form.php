@@ -105,11 +105,37 @@ if (isset($_GET['getvcard'])) {
    Html::back();
 
 } else if (isset($_POST["update"])) {
+	$avaya = 0;
+	$kiamo = 0;
+	$infra = 0;
+	
+	
+
+	
    $user->check($_POST['id'], UPDATE);
    $user->update($_POST);
    Event::log($_POST['id'], "users", 5, "setup",
               //TRANS: %s is the user login
               sprintf(__('%s updates an item'), $_SESSION["glpiname"]));
+			  
+	foreach($_POST['category'] as $valeur) {
+	   if( strcmp($valeur,"avaya") === 0)
+		   $avaya = 1;
+	   if( strcmp($valeur,"kiamo") === 0)
+		   $kiamo = 1;
+	   if( strcmp($valeur,"infra") === 0)
+		   $infra = 1;
+	}
+	try {
+		$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+	}
+	catch(Exception $e)
+	{
+		die('Erreur : '.$e->getMessage());
+	}
+	
+	$DB->exec('UPDATE glpi_users SET avaya = $avaya , kiamo = $kiamo , infra = $ infra WHERE id='.$_POST["id"]);
+	
    Html::back();
 
 } else if (isset($_POST["addgroup"])) {
