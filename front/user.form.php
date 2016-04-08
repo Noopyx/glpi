@@ -134,7 +134,7 @@ if (isset($_GET['getvcard'])) {
 		die('Erreur : '.$e->getMessage());
 	}
 	
-	$DB->exec('UPDATE glpi_users SET avaya = $avaya , kiamo = $kiamo , infra = $ infra WHERE id='.$_POST["id"]);
+	$DB->exec('UPDATE glpi_users SET avaya ='.$avaya.' , kiamo ='.$kiamo.' , infra = '.$infra.' WHERE id='.$_POST["id"]);
 	
    Html::back();
 
