@@ -393,10 +393,8 @@ class CommonDBTM extends CommonGLPI {
                    INTO `".$this->getTable()."` (";
 
          $i = 0;
-		 $this->fields['itilcategories_id'] = 2;
-		 echo "<script>console.log(".$this->fields['category'].");</script>";
-		 if( strcmp($this->fields['category'],"AVAYA") === 0)
-			$this->fields['itilcategories_id'] = 1;
+		
+		$this->fields['itilcategories_id'] = $this->input['category'];
          foreach ($this->fields as $key => $val) {
             $fields[$i] = $key;
             $values[$i] = $val;
@@ -777,6 +775,7 @@ class CommonDBTM extends CommonGLPI {
       global $DB, $CFG_GLPI;
 
       if ($DB->isSlave()) {
+         return false;
          return false;
       }
 

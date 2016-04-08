@@ -2805,7 +2805,6 @@ class Ticket extends CommonITILObject {
                $CFG_GLPI["root_doc"]."/front/tracking.injector.php' enctype='multipart/form-data'>";
       }
 
-
       $delegating = User::getDelegateGroupsForUser($values['entities_id']);
 
       if (count($delegating)) {
