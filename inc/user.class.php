@@ -1901,11 +1901,46 @@ class User extends CommonDBTM {
          echo "<td rowspan='2'>";
          //Config::displayPasswordSecurityChecks();
 		 echo "<div id=\"checkBox\" diplay=\"inline-block\">";
-		 echo "<input type=\"checkbox\" value=\"Avaya\">   Avaya     ";
-		 echo "<input type=\"checkbox\" value=\"Kiamo\">   Kiamo     ";
-		 echo "<input type=\"checkbox\" value=\"Infra\">   Infra     <br/>";
-         echo "</div></td></tr>";
+		 
+		 try {
+			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+	    }
+		catch(Exception $e)
+		{
+			die('Erreur : '.$e->getMessage());
+		}
+		$sql = "SELECT * FROM glpi_users WHERE id=".$ID;
+		$result = $DB->query($sql);
+		
+		$kiamo = 0;
+		$avaya = 0;
+		$infra = 0;
+		
+		if($result) {
+			while ($donnees = $result->fetch()) {
+				$kiamo = $donnees["kiamo"];
+				$avaya = $donnees["avaya"];
+				$infra = $donnees["infra"];
+			}
+		}
 
+		if($kiamo == 1)
+		 echo "<input type=\"checkbox\" value=\"Avaya\" checked=\"checked\">   Avaya     ";
+		else
+		 echo "<input type=\"checkbox\" value=\"Avaya\">   Avaya     ";	
+	 
+		if($avaya == 1)
+		 echo "<input type=\"checkbox\" value=\"Kiamo\" checked=\"checked\">   Kiamo     ";
+		else
+		 echo "<input type=\"checkbox\" value=\"Kiamo\">   Kiamo     ";	
+	 
+		if($infra == 1)
+		 echo "<input type=\"checkbox\" value=\"Infra\" checked=\"checked\">   Infra     <br/>";
+		else
+		 echo "<input type=\"checkbox\" value=\"Infra\">   Infra     <br/>";
+	 
+	 
+         echo "</div></td></tr>";
          echo "<tr class='tab_bg_1'>";
          echo "<td>" . __('Password confirmation') . "</td>";
          echo "<td><input type='password' name='password2' value='' size='20' autocomplete='off'>";
