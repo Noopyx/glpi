@@ -1967,6 +1967,15 @@ abstract class CommonITILObject extends CommonDBTM {
 			$values[5] = "Centre de contact";
 		}
 
+		/*$sql = "SELECT * FROM glpi_tickets WHERE id=".$options['id'];
+		$result = $DB->query($sql);
+			
+		if($result) {
+			while ($donnees = $result->fetch()) {
+				$num = $donnees['itilcategories_id'];
+			}
+		}
+		$used = $values*/
       return Dropdown::showFromArray($p['name'],$values, $p, $options['id']);
    }
    /**
