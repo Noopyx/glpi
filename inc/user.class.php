@@ -64,7 +64,7 @@ class User extends CommonDBTM {
 	   $this->komeo = $k;
 	   echo "<script type=\"text/javascript\">console.log(\"K : ".$this->komeo."\")</script>";
    }
-
+echo "<script type=\"text/javascript\">console.log(\"K2 : ".$this->komeo."\")</script>";
    static function getTypeName($nb=0) {
       return _n('User','Users',$nb);
    }
