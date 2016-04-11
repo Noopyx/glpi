@@ -1927,7 +1927,7 @@ class User extends CommonDBTM {
 				$contact = $donnees["contact"];
 			}
 		}
-
+		echo "<script type=\"text/javascript\">console.log(".$_GET['komeo'].")</script>";
 		if(!isset($_GET['komeo'])) {
 		if($opData == 1)
 		 echo "<input type=\"checkbox\" name=\"category[]\" value=1 checked=\"checked\">   Operateur DATA     ";
@@ -1954,7 +1954,7 @@ class User extends CommonDBTM {
 			else
 			 echo "<input type=\"checkbox\" name=\"category[]\" value=5>   Centre de contact     <br/>";
 		}
-		else {
+		else if($_GET['komeo'] == 1){
 			if($opData == 1)
 			 echo "<input type=\"radio\" name=\"category[]\" value=1 checked=\"checked\">   Operateur DATA     ";
 			else
