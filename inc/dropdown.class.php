@@ -1699,7 +1699,7 @@ class Dropdown {
             $param[$key] = $val;
          }
       }
-	echo "<script type=\"test/javascript\">console.log(YOLO : ".$elements[$num].")</script>";
+
       if ($param['other'] !== false) {
          $other_select_option = $name . '_other_value';
          $param['on_change'] .= "displayOtherSelectOptions(this, \"$other_select_option\");";
@@ -1787,9 +1787,11 @@ class Dropdown {
             } else {
                if (!isset($param['used'][$key])) {
                   $output .= "<option value='".$key."'";
-				  if($key == $num) {
+				  if( strcmp($name,"itilcategories_id") == 0) {
+					if($key == $num) {
 						 $output .= " selected";
 					 }
+				  }
                   // Do not use in_array : trouble with 0 and empty value
                   foreach ($param['values'] as $value) {
 					  
