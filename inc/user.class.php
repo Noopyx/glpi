@@ -46,7 +46,7 @@ class User extends CommonDBTM {
    public $dohistory         = true;
    public $history_blacklist = array('date_mod', 'date_sync', 'last_login',
                                      'publicbookmarkorder', 'privatebookmarkorder');
-   public $komeo = 0;
+   $komeo = 0;
 
    // NAME FIRSTNAME ORDER TYPE
    const REALNAME_BEFORE   = 0;
