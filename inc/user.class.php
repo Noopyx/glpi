@@ -45,6 +45,7 @@ class User extends CommonDBTM {
    // From CommonDBTM
    public $dohistory         = true;
    public $history_blacklist = array('date_mod', 'date_sync', 'last_login',
+   public $komeo = 0;
                                      'publicbookmarkorder', 'privatebookmarkorder');
 
    // NAME FIRSTNAME ORDER TYPE
@@ -58,6 +59,9 @@ class User extends CommonDBTM {
    static $rightname = 'user';
 
 
+   static function setKomeo(int $k) {
+	   $komeo = $k;
+   }
 
    static function getTypeName($nb=0) {
       return _n('User','Users',$nb);
@@ -1927,8 +1931,8 @@ class User extends CommonDBTM {
 				$contact = $donnees["contact"];
 			}
 		}
-		echo "<script type=\"text/javascript\">console.log(".$_GET['komeo'].")</script>";
-		if(!isset($_GET['komeo'])) {
+		echo "<script type=\"text/javascript\">console.log(".$komeo.")</script>";
+	  if($komeo == 0) {
 		if($opData == 1)
 		 echo "<input type=\"checkbox\" name=\"category[]\" value=1 checked=\"checked\">   Operateur DATA     ";
 		else
@@ -1954,7 +1958,7 @@ class User extends CommonDBTM {
 			else
 			 echo "<input type=\"checkbox\" name=\"category[]\" value=5>   Centre de contact     <br/>";
 		}
-		else if($_GET['komeo'] == 1){
+		else {
 			if($opData == 1)
 			 echo "<input type=\"radio\" name=\"category[]\" value=1 checked=\"checked\">   Operateur DATA     ";
 			else
@@ -1988,7 +1992,12 @@ class User extends CommonDBTM {
 		 echo "<script type=\"text/javascript\"> function handleClick(cb) {
 				window.location.href = \"/glpi/front/user.form.php/?komeo=1&id=".$ID."\";
 			}</script>";
+			
+		if($komeo == 0)
 		 echo "<input type=\"checkbox\" name=\"komeo\" value=1 onclick=\"handleClick(this)\" >   KOMEO     <br/></td>";
+		else 
+		 echo "<input type=\"checkbox\" name=\"komeo\" value=1 onclick=\"handleClick(this)\" checked=\"checked\">   KOMEO     <br/></td>";
+			
 		 
 		 
 		 
