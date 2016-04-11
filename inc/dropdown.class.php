@@ -1655,6 +1655,7 @@ class Dropdown {
     *                                'key4' => 'val4'))
    **/
    static function showFromArray($name, array $elements, $options=array() , $Id_ticket) {
+	  $num = 0;
 	  $param['value']               = '';
 	  $param['values']              = array('');
       $param['used']                = array();
@@ -1671,6 +1672,7 @@ class Dropdown {
 			
 			if($result) {
 				while ($donnees = $result->fetch()) {
+					$num = $donnees['itilcategories_id'];
 					$param['value'] = $options[$donnees['itilcategories_id']];
 				}
 			}
@@ -1697,7 +1699,7 @@ class Dropdown {
             $param[$key] = $val;
          }
       }
-	echo "<script type=\"test/javascript\">console.log(".$param['value'].");</script>";
+	echo "<script type=\"test/javascript\">console.log(YOLO : ".$param['value'].");</script>";
       if ($param['other'] !== false) {
          $other_select_option = $name . '_other_value';
          $param['on_change'] .= "displayOtherSelectOptions(this, \"$other_select_option\");";
@@ -1767,6 +1769,9 @@ class Dropdown {
                      $output .= "<option value='".$key2."'";
                      // Do not use in_array : trouble with 0 and empty value
 					 
+					 if(strcmp($key2,$options[$num]) === 0) {
+						 $output .= " selected";
+					 }
                      foreach ($param['values'] as $value) {
                        if (strcmp($key2,$value) === 0) {
                            $output .= " selected";
