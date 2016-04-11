@@ -46,7 +46,7 @@ class User extends CommonDBTM {
    public $dohistory         = true;
    public $history_blacklist = array('date_mod', 'date_sync', 'last_login',
                                      'publicbookmarkorder', 'privatebookmarkorder');
-   public $komeo = 0;
+   public $komeo = 2;
 
    // NAME FIRSTNAME ORDER TYPE
    const REALNAME_BEFORE   = 0;
@@ -61,7 +61,7 @@ class User extends CommonDBTM {
 
    function setKomeo($k) {
 	   	
-	   $this->komeo = $k;
+	   $this->komeo = (int) $k;
 	   echo "<script type=\"text/javascript\">console.log(\"K : ".$this->komeo."\")</script>";
    }
 
