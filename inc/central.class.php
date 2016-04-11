@@ -290,7 +290,7 @@ class Central extends CommonGLPI {
          Ticket::showCentralList(0, "waiting", true);
       }
       if ($showproblem) {
-         Problem::showCentralList(0, "process", true);
+         //Problem::showCentralList(0, "process", true);
       }
 
       echo "</td></tr>";

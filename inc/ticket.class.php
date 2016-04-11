@@ -4488,7 +4488,7 @@ class Ticket extends CommonITILObject {
       if (!Session::haveRightsOr(self::$rightname, array(CREATE, self::READALL, self::READASSIGN))
           && !Session::haveRightsOr('ticketvalidation', TicketValidation::getValidateRights())) {
 
-         return false;
+         //return false;
       }
 
       $search_users_id = " (`glpi_tickets_users`.`users_id` = '".Session::getLoginUserID()."'
