@@ -59,7 +59,7 @@ class User extends CommonDBTM {
    static $rightname = 'user';
 
 
-   function setKomeo(int $k) {
+   function setKomeo($k) {
 	   $komeo = $k;
    }
 
