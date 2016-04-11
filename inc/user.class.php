@@ -1985,7 +1985,7 @@ class User extends CommonDBTM {
 	 
          echo "</div></td>";
 		 echo "<td>";
-		 echo "<script type=\"text\javascript\"> function handleClick(cb) {
+		 echo "<script type=\"text/javascript\"> function handleClick(cb) {
 				window.location.href = \"/front/user.class.php/?komeo=1\";
 			}</script>";
 		 echo "<input type=\"checkbox\" name=\"komeo\" value=1 onclick=\"handleClick(this)\" >   KOMEO     <br/></td>";
