@@ -1899,7 +1899,7 @@ abstract class CommonITILObject extends CommonDBTM {
    static function dropdownCategory(array $options = array()) {
       global $CFG_GLPI;
 
-      $p['name']     = 'category';
+      $p['name']     = 'itilcategories_id';
       $p['value']    = 0;
       $p['showtype'] = 'normal';
       $p['display']  = true;
