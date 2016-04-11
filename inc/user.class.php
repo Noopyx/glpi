@@ -1932,7 +1932,7 @@ class User extends CommonDBTM {
 			}
 		}
 		echo "<script type=\"text/javascript\">console.log(".$this->komeo.")</script>";
-	  if($this->komeo == 0) {
+	  if($this->komeo === 0) {
 		if($opData == 1)
 		 echo "<input type=\"checkbox\" name=\"category[]\" value=1 checked=\"checked\">   Operateur DATA     ";
 		else
@@ -1993,7 +1993,7 @@ class User extends CommonDBTM {
 				window.location.href = \"/glpi/front/user.form.php/?komeo=1&id=".$ID."\";
 			}</script>";
 			
-		if($this->komeo == 0)
+		if($this->komeo === 0)
 		 echo "<input type=\"checkbox\" name=\"komeo\" value=1 onclick=\"handleClick(this)\" >   KOMEO     <br/></td>";
 		else 
 		 echo "<input type=\"checkbox\" name=\"komeo\" value=1 onclick=\"handleClick(this)\" checked=\"checked\">   KOMEO     <br/></td>";
