@@ -1656,6 +1656,8 @@ class Dropdown {
    **/
    static function showFromArray($name, array $elements, $options=array() , $ID) {
 	  $param['value']               = '';
+	  $param['values']              = array('');
+      $param['used']                = array();
 	  if( strcmp($name,"itilcategories_id") === 0 && isset($ID)) {
 		  try {
 			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
@@ -1669,13 +1671,12 @@ class Dropdown {
 			
 			if($result) {
 				while ($donnees = $result->fetch()) {
-					$param['value'] = $options[$donnees['itilcategories_id']];
+					$param['used'] = $options[$donnees['itilcategories_id']];
 				}
 			}
 	  }
       
-      $param['values']              = array('');
-      $param['used']                = array();
+     
       $param['readonly']            = false;
       $param['on_change']           = '';
       $param['width']               = '';
