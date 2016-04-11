@@ -57,14 +57,14 @@ class User extends CommonDBTM {
    static $rightname = 'user';
 
 
-   function setKomeo($k) {
+   function setKomeo($k, $id) {
 	   	try	{
 			$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 		}
 		catch(Exception $e) {
 			die('Erreur : '.$e->getMessage());
 		}
-		$result = $bdd->exec("update glpi_users set komeo=".$k." where name='".$_SESSION['glpiname']."'");
+		$result = $bdd->exec("update glpi_users set komeo=".$k." where id=".$id);
    }
 
    static function getTypeName($nb=0) {
@@ -1993,14 +1993,19 @@ class User extends CommonDBTM {
 	 
          echo "</div></td>";
 		 echo "<td>";
-		 echo "<script type=\"text/javascript\"> function handleClick(cb) {
+		 echo "<script type=\"text/javascript\"> 
+		    function handleClick(cb) {
 				window.location.href = \"/glpi/front/user.form.php/?komeo=1&id=".$ID."\";
-			}</script>";
+			}
+			function handleClick2(cb) {
+				window.location.href = \"/glpi/front/user.form.php/?id=".$ID."\";
+			}
+			</script>";
 			
 		if($komeo == 0)
 		 echo "<input type=\"checkbox\" name=\"komeo\" value=1 onclick=\"handleClick(this)\" >   KOMEO     <br/></td>";
 		else 
-		 echo "<input type=\"checkbox\" name=\"komeo\" value=1 onclick=\"handleClick(this)\" checked=\"checked\">   KOMEO     <br/></td>";
+		 echo "<input type=\"checkbox\" name=\"komeo\" value=1 onclick=\"handleClick2(this)\" checked=\"checked\">   KOMEO     <br/></td>";
 			
 		 
 		 
