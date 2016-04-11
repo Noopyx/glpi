@@ -1936,6 +1936,8 @@ class User extends CommonDBTM {
 				$komeo = $donnees['komeo'];
 			}
 		}
+		
+		echo "<script type=\"text/javascript\"> console.log(".$_SESSION['glpigroups'].")</script>";
 	  if($komeo == 0) {
 		if($opData == 1)
 		 echo "<input type=\"checkbox\" name=\"category[]\" value=1 checked=\"checked\">   Operateur DATA     ";

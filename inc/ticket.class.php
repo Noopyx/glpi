@@ -1,4 +1,4 @@
-<?php
+showCentralList<?php
 /*
  * @version $Id$
  -------------------------------------------------------------------------
@@ -4526,6 +4526,7 @@ class Ticket extends CommonITILObject {
                      ON (`glpi_tickets`.`id` = `glpi_tickets_users`.`tickets_id`)
                 LEFT JOIN `glpi_groups_tickets`
                      ON (`glpi_tickets`.`id` = `glpi_groups_tickets`.`tickets_id`)";
+					 
 
       switch ($status) {
          case "waiting" : // on affiche les tickets en attente
