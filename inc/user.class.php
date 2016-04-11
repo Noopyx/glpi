@@ -46,8 +46,6 @@ class User extends CommonDBTM {
    public $dohistory         = true;
    public $history_blacklist = array('date_mod', 'date_sync', 'last_login',
                                      'publicbookmarkorder', 'privatebookmarkorder');
-   var $komeo = 0;
-
    // NAME FIRSTNAME ORDER TYPE
    const REALNAME_BEFORE   = 0;
    const FIRSTNAME_BEFORE  = 1;
@@ -60,9 +58,13 @@ class User extends CommonDBTM {
 
 
    function setKomeo($k) {
-	   	
-	   $this->komeo = (int) $k;
-	   echo "<script type=\"text/javascript\">console.log(\"K : ".$this->komeo."\")</script>";
+	   	try	{
+			$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+		}
+		catch(Exception $e) {
+			die('Erreur : '.$e->getMessage());
+		}
+		$result = $bdd->exec("update glpi_users set komeo=".$k." where name='".$_SESSION['glpi_name']."'");
    }
 
    static function getTypeName($nb=0) {
@@ -1825,8 +1827,6 @@ class User extends CommonDBTM {
    **/
    public function showForm($ID, $options=array()) {
       global $CFG_GLPI;
-	  global $komeo;
-echo "<script type=\"text/javascript\">console.log(\"K2 : ".$komeo."\")</script>";
       // Affiche un formulaire User
       if (($ID != Session::getLoginUserID()) && !self::canView()) {
          return false;
@@ -1924,6 +1924,7 @@ echo "<script type=\"text/javascript\">console.log(\"K2 : ".$komeo."\")</script>
 		$telecom = 0;
 		$visio = 0;
 		$contact = 0;
+		$komeo = 0;
 		
 		if($result) {
 			while ($donnees = $result->fetch()) {
@@ -1932,10 +1933,10 @@ echo "<script type=\"text/javascript\">console.log(\"K2 : ".$komeo."\")</script>
 				$telecom = $donnees["telecom"];
 				$visio = $donnees["visio"];
 				$contact = $donnees["contact"];
+				$komeo = $donnees['komeo'];
 			}
 		}
-		echo "<script type=\"text/javascript\">console.log(".$this->komeo.")</script>";
-	  if($this->komeo == 0) {
+	  if($komeo == 0) {
 		if($opData == 1)
 		 echo "<input type=\"checkbox\" name=\"category[]\" value=1 checked=\"checked\">   Operateur DATA     ";
 		else
@@ -1996,7 +1997,7 @@ echo "<script type=\"text/javascript\">console.log(\"K2 : ".$komeo."\")</script>
 				window.location.href = \"/glpi/front/user.form.php/?komeo=1&id=".$ID."\";
 			}</script>";
 			
-		if($this->komeo == 0)
+		if($komeo == 0)
 		 echo "<input type=\"checkbox\" name=\"komeo\" value=1 onclick=\"handleClick(this)\" >   KOMEO     <br/></td>";
 		else 
 		 echo "<input type=\"checkbox\" name=\"komeo\" value=1 onclick=\"handleClick(this)\" checked=\"checked\">   KOMEO     <br/></td>";
