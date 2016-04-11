@@ -116,7 +116,7 @@ class Central extends CommonGLPI {
          Ticket::showCentralCount();
       }
       if ($showproblem) {
-         Problem::showCentralCount();
+         //Problem::showCentralCount();
       }
       if (Contract::canView()) {
          Contract::showCentral();

@@ -1654,12 +1654,12 @@ class Dropdown {
     *       'optgroupname2' => array('key3' => 'val3',
     *                                'key4' => 'val4'))
    **/
-   static function showFromArray($name, array $elements, $options=array() , $Id_ticket) {
+   static function showFromArray($name, array $elements, $options=array() , $Id_ticket = 0) {
 	  $num = 0;
 	  $param['value']               = '';
 	  $param['values']              = array('');
       $param['used']                = array();
-	  if( strcmp($name,"itilcategories_id") == 0 && isset($Id_ticket)) {
+	  if( strcmp($name,"itilcategories_id") == 0 && $Id_ticket != 0) {
 		  try {
 			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 		   }
