@@ -148,10 +148,10 @@ if (isset($_GET['getvcard'])) {
 		die('Erreur : '.$e->getMessage());
 	}
 	
-	if ( isset($_POST['komeo']) {
+	/*if ( isset($_POST['komeo'])) {
 		if (opData == 1)
 			$DB->exec('UPDATE glpi_users SET usercategories_id =  WHERE id='.$_POST["id"]);
-	}
+	}*/
 	$DB->exec('UPDATE glpi_users SET opData ='.$opData.' , opVoice ='.$opVoice.' , telecom = '.$telecom.' , visio = '.$visio.' , contact = '.$contact.' WHERE id='.$_POST["id"]);
 	
    Html::back();
