@@ -1655,8 +1655,25 @@ class Dropdown {
     *                                'key4' => 'val4'))
    **/
    static function showFromArray($name, array $elements, $options=array()) {
-
-      $param['value']               = '';
+	  $param['value']               = '';
+	  /*if( strcmp($name,"itilcategories_id") === 0) {
+		  try {
+			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+		   }
+			catch(Exception $e)
+			{
+				die('Erreur : '.$e->getMessage());
+			}
+			$sql = "SELECT id FROM glpi_itilcategories WHERE name='".$_SESSION["glpiname"]."'";
+			$result = $DB->query($sql);
+			
+			if($result) {
+				while ($donnees = $result->fetch()) {
+					$param['value'] = 
+				}
+			}
+	  }*/
+      
       $param['values']              = array('');
       $param['used']                = array();
       $param['readonly']            = false;

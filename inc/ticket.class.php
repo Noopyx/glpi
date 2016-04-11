@@ -3949,7 +3949,7 @@ class Ticket extends CommonITILObject {
                break;
          }
          echo "<span id='show_category_by_type'>";
-		 self::dropdownCategory(array('value' => $values["urgency"]));
+		 self::dropdownCategory(array('value' => 'lolol'));
          //ITILCategory::dropdown($opt);
          echo "</span>";
       } else {
