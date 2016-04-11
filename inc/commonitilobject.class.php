@@ -1967,7 +1967,7 @@ abstract class CommonITILObject extends CommonDBTM {
 			$values[5] = "Centre de contact";
 		}
 
-      return Dropdown::showFromArray($p['name'],$values, $p);
+      return Dropdown::showFromArray($p['name'],$values, $p, $options['id']);
    }
    /**
     * Get ITIL object Urgency Name

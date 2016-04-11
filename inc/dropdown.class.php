@@ -1654,9 +1654,9 @@ class Dropdown {
     *       'optgroupname2' => array('key3' => 'val3',
     *                                'key4' => 'val4'))
    **/
-   static function showFromArray($name, array $elements, $options=array()) {
+   static function showFromArray($name, array $elements, $options=array() , $ID) {
 	  $param['value']               = '';
-	  /*if( strcmp($name,"itilcategories_id") === 0) {
+	  if( strcmp($name,"itilcategories_id") === 0 && isset($ID) {
 		  try {
 			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 		   }
@@ -1664,15 +1664,15 @@ class Dropdown {
 			{
 				die('Erreur : '.$e->getMessage());
 			}
-			$sql = "SELECT id FROM glpi_itilcategories WHERE name='".$_SESSION["glpiname"]."'";
+			$sql = "SELECT * FROM glpi_tickets WHERE id=".$ID;
 			$result = $DB->query($sql);
 			
 			if($result) {
 				while ($donnees = $result->fetch()) {
-					$param['value'] = 
+					$param['value'] = $options[$donnees['itilcategories_id']];
 				}
 			}
-	  }*/
+	  }
       
       $param['values']              = array('');
       $param['used']                = array();
