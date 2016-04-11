@@ -1654,11 +1654,11 @@ class Dropdown {
     *       'optgroupname2' => array('key3' => 'val3',
     *                                'key4' => 'val4'))
    **/
-   static function showFromArray($name, array $elements, $options=array() , $ID) {
+   static function showFromArray($name, array $elements, $options=array() , $Id_ticket) {
 	  $param['value']               = '';
 	  $param['values']              = array('');
       $param['used']                = array();
-	  if( strcmp($name,"itilcategories_id") === 0 && isset($ID)) {
+	  if( strcmp($name,"itilcategories_id") == 0 && isset($Id_ticket)) {
 		  try {
 			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 		   }
@@ -1666,12 +1666,12 @@ class Dropdown {
 			{
 				die('Erreur : '.$e->getMessage());
 			}
-			$sql = "SELECT * FROM glpi_tickets WHERE id=".$ID;
+			$sql = "SELECT * FROM glpi_tickets WHERE id=".$Id_ticket;
 			$result = $DB->query($sql);
 			
 			if($result) {
 				while ($donnees = $result->fetch()) {
-					$param['used'] = $options[$donnees['itilcategories_id']];
+					$param['value'] = $options[$donnees['itilcategories_id']];
 				}
 			}
 	  }
@@ -1697,7 +1697,7 @@ class Dropdown {
             $param[$key] = $val;
          }
       }
-
+	echo "<script type=\"test/javascript\">console.log(".$param['value'].");</script>"
       if ($param['other'] !== false) {
          $other_select_option = $name . '_other_value';
          $param['on_change'] .= "displayOtherSelectOptions(this, \"$other_select_option\");";
@@ -1766,6 +1766,8 @@ class Dropdown {
                   if (!isset($param['used'][$key2])) {
                      $output .= "<option value='".$key2."'";
                      // Do not use in_array : trouble with 0 and empty value
+					 
+					 if ( strcmp($))
                      foreach ($param['values'] as $value) {
                        if (strcmp($key2,$value) === 0) {
                            $output .= " selected";
