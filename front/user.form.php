@@ -47,7 +47,7 @@ $groupuser = new Group_User();
 
 
 if(isset($_GET['komeo'])) {
-	$user->setKomeo($_GET['komeo']);
+	$user->setKomeo(intval($_GET['komeo']));
 }
 else {
 	$user->setKomeo(0);
