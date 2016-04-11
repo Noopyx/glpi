@@ -1825,7 +1825,8 @@ class User extends CommonDBTM {
    **/
    public function showForm($ID, $options=array()) {
       global $CFG_GLPI;
-echo "<script type=\"text/javascript\">console.log(\"K2 : ".$this->komeo."\")</script>";
+	  global $komeo;
+echo "<script type=\"text/javascript\">console.log(\"K2 : ".$komeo."\")</script>";
       // Affiche un formulaire User
       if (($ID != Session::getLoginUserID()) && !self::canView()) {
          return false;
