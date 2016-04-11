@@ -1928,7 +1928,7 @@ class User extends CommonDBTM {
 			}
 		}
 
-		if(isset($_GET['komeo']) && $_GET['komeo'] != 1) {
+		if(!isset($_GET['komeo'])) {
 		if($opData == 1)
 		 echo "<input type=\"checkbox\" name=\"category[]\" value=1 checked=\"checked\">   Operateur DATA     ";
 		else
@@ -1988,7 +1988,7 @@ class User extends CommonDBTM {
 		 echo "<script type=\"text\javascript\"> function handleClick(cb) {
 				window.location.href = \"/front/user.class.php/?komeo=1\";
 			}</script>";
-		 echo "<input type=\"checkbox\" name=\"komeo\" value=1 onclick=\"handleClick(this);\" >   KOMEO     <br/></td>";
+		 echo "<input type=\"checkbox\" name=\"komeo\" value=1 onclick=\"handleClick(this)\" >   KOMEO     <br/></td>";
 		 
 		 
 		 
