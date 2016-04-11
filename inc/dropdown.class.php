@@ -1656,7 +1656,7 @@ class Dropdown {
    **/
    static function showFromArray($name, array $elements, $options=array() , $ID) {
 	  $param['value']               = '';
-	  if( strcmp($name,"itilcategories_id") === 0 && isset($ID) {
+	  if( strcmp($name,"itilcategories_id") === 0 && isset($ID)) {
 		  try {
 			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 		   }
