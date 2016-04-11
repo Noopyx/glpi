@@ -44,10 +44,14 @@ if (empty($_GET["id"])) {
 
 $user      = new User();
 $groupuser = new Group_User();
-if(isset($_GET['komeo'])
+
+
+if(isset($_GET['komeo']) {
 	$user->setKomeo($_GET['komeo']);
-else 
+}
+else {
 	$user->setKomeo(0);
+}
 
 if (empty($_GET["id"]) && isset($_GET["name"])) {
 
