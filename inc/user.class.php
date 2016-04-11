@@ -60,7 +60,8 @@ class User extends CommonDBTM {
 
 
    function setKomeo($k) {
-	   $komeo = $k;
+	   	echo "<script type=\"text/javascript\">console.log(".$k.")</script>";
+	   $this->komeo = $k;
    }
 
    static function getTypeName($nb=0) {

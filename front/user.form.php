@@ -47,11 +47,9 @@ $groupuser = new Group_User();
 
 
 if(isset($_GET['komeo'])) {
-	echo "<script type=\"text/javascript\">console.log(\"YOLO : youpi\")</script>";
 	$user->setKomeo($_GET['komeo']);
 }
 else {
-	echo "<script type=\"text/javascript\">console.log(\"YOLO : \")</script>";
 	$user->setKomeo(0);
 }
 
