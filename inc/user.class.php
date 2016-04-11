@@ -64,7 +64,7 @@ class User extends CommonDBTM {
 		catch(Exception $e) {
 			die('Erreur : '.$e->getMessage());
 		}
-		$result = $bdd->exec("update glpi_users set komeo=".$k." where name='".$_SESSION['glpi_name']."'");
+		$result = $bdd->exec("update glpi_users set komeo=".$k." where name='".$_SESSION['glpiname']."'");
    }
 
    static function getTypeName($nb=0) {
