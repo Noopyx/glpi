@@ -1697,7 +1697,7 @@ class Dropdown {
             $param[$key] = $val;
          }
       }
-	echo "<script type=\"test/javascript\">console.log(".$param['value'].");</script>"
+	echo "<script type=\"test/javascript\">console.log(".$param['value'].");</script>";
       if ($param['other'] !== false) {
          $other_select_option = $name . '_other_value';
          $param['on_change'] .= "displayOtherSelectOptions(this, \"$other_select_option\");";
