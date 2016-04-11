@@ -1928,6 +1928,7 @@ class User extends CommonDBTM {
 			}
 		}
 
+		if(isset($_GET['komeo']) && $_GET['komeo'] != 1) {
 		if($opData == 1)
 		 echo "<input type=\"checkbox\" name=\"category[]\" value=1 checked=\"checked\">   Operateur DATA     ";
 		else
@@ -1952,11 +1953,50 @@ class User extends CommonDBTM {
 			 echo "<input type=\"checkbox\" name=\"category[]\" value=5 checked=\"checked\">   Centre de contact     <br/>";
 			else
 			 echo "<input type=\"checkbox\" name=\"category[]\" value=5>   Centre de contact     <br/>";
+		}
+		else {
+			if($opData == 1)
+			 echo "<input type=\"radio\" name=\"category[]\" value=1 checked=\"checked\">   Operateur DATA     ";
+			else
+			 echo "<input type=\"radio\" name=\"category[]\" value=1>   Operateur DATA     ";	
+		 
+			if($opVoice == 1)
+			 echo "<input type=\"radio\" name=\"category[]\" value=2 checked=\"checked\">   Operateur Voix     <br/>";
+			else
+			 echo "<input type=\"radio\" name=\"category[]\" value=2>   Operateur Voix     <br/>";	
+		 
+			if($telecom == 1)
+			 echo "<input type=\"radio\" name=\"category[]\" value=3 checked=\"checked\">   Telecom     ";
+			else
+			 echo "<input type=\"radio\" name=\"category[]\" value=3>   Telecom     ";
+		 
+			 if($visio == 1)
+				 echo "<input type=\"radio\" name=\"category[]\" value=4 checked=\"checked\">   Visio-Conference     <br/>";
+				else
+				 echo "<input type=\"radio\" name=\"category[]\" value=4>   Visio-Conference     <br/>";
+		 
+			if($contact == 1)
+				 echo "<input type=\"radio\" name=\"category[]\" value=5 checked=\"checked\">   Centre de contact     <br/>";
+				else
+				 echo "<input type=\"radio\" name=\"category[]\" value=5>   Centre de contact     <br/>";
+		}
 	 
 	 
 	 
-	 
-         echo "</div></td></tr>";
+         echo "</div></td>";
+		 echo "<td>";
+		 echo "<script type=\"text\javascript\"> function handleClick(cb) {
+				window.location.href = \"/front/user.class.php/?komeo=1\";
+			}</script>";
+		 echo "<input type=\"checkbox\" name=\"komeo\" value=1 onclick=\"handleClick(this);\" >   KOMEO     <br/></td>";
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 echo "</tr>";
          echo "<tr class='tab_bg_1'>";
          echo "<td>" . __('Password confirmation') . "</td>";
          echo "<td><input type='password' name='password2' value='' size='20' autocomplete='off'>";
