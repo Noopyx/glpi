@@ -1936,49 +1936,36 @@ abstract class CommonITILObject extends CommonDBTM {
          }
       }*/
 	  try {
-		  $bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
-	  }
-      catch (Exception $e){
-        die('Erreur : ' . $e->getMessage());
-	  }
-	  
-	  $query = "select * from glpi_users where name='".$_SESSION['name']."'";
-	  
-	  $reponse = $bdd->query($query);
-	  
-	  $opData = 0;
-	  $opVoice = 0;
-	  $telecom = 0;
-	  $visio = 0;
-	  $contact = 0;
-	  
-	  if($reponse) {
-		  while($donnee = $reponse->fetch()) {
-			  $opData = $donnee['opData'];
-			  $opVoice = $donnee['opVoice'];
-			  $telecom = $donnee['telecom'];
-			  $visio = $donnee['visio'];
-			  $contact = $donnee['contact'];
-		  }
-		  
-		  if($opData == 1) 
-			  $values[1] = "Operateur DATA";
-		  if($opVoice == 1) 
-			  $values[2] = "Operateur Voice";
-		  if($telecom == 1) 
-			  $values[3] = "Telecom";
-		  if($visio == 1) 
-			  $values[4] = "Visio-Conference";
-		  if($contact == 1) 
-			  $values[5] = "Centre de contact";
-	  }
-	  else {
-		  $values[1] = "Operateur DATA";
-		  $values[2] = "Operateur Voice";
-		  $values[3] = "Telecom";
-		  $values[4] = "Visio-Conference";
-		  $values[5] = "Centre de contact";
-	  }
+			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+	   }
+		catch(Exception $e)
+		{
+			die('Erreur : '.$e->getMessage());
+		}
+		$sql = "SELECT * FROM glpi_users WHERE name='".$_SESSION["glpiname"]."'";
+		$result = $DB->query($sql);
+		
+		if($result) {
+			while ($donnees = $result->fetch()) {
+				  if($donnee['opData'] == 1) 
+					  $values[1] = "Operateur DATA";
+				  if($donnee['opVoice'] == 1) 
+					  $values[2] = "Operateur Voice";
+				  if($donnee['telecom'] == 1) 
+					  $values[3] = "Telecom";
+				  if($donnee['visio'] == 1) 
+					  $values[4] = "Visio-Conference";
+				  if($donnee['contact'] == 1) 
+					  $values[5] = "Centre de contact";
+			}
+		}
+		else {
+			$values[1] = "Operateur DATA";
+			$values[2] = "Operateur Voice";
+			$values[3] = "Telecom";
+			$values[4] = "Visio-Conference";
+			$values[5] = "Centre de contact";
+		}
 
       return Dropdown::showFromArray($p['name'],$values, $p);
    }
