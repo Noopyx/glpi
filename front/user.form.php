@@ -41,8 +41,13 @@ if (empty($_GET["id"])) {
    $_GET["id"] = "";
 }
 
+
 $user      = new User();
 $groupuser = new Group_User();
+if(isset($_GET['komeo'])
+	$user->setKomeo($_GET['komeo']);
+else 
+	$user->setKomeo(0);
 
 if (empty($_GET["id"]) && isset($_GET["name"])) {
 
@@ -58,10 +63,7 @@ if (isset($_GET['getvcard'])) {
    if (empty($_GET["id"])) {
       Html::redirect($CFG_GLPI["root_doc"]."/front/user.php");
    }
-   if(isset($_GET['komeo'])
-	$user->setKomeo($_GET['komeo']);
-   else 
-	$user->setKomeo(0);
+   
    $user->check($_GET['id'], READ);
    $user->generateVcard();
 
