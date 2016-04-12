@@ -474,7 +474,7 @@ class Change extends CommonITILObject {
    **/
    static function getAllStatusArray($withmetaforsearch=false) {
 
-      $tab = array(self::INCOMING      => _x('status', 'New'),
+      $tab = array(self::INCOMING      => _x('status', 'nnnnnnnNew'),
                    self::EVALUATION    => __('Evaluation'),
                    self::APPROVAL      => __('Approval'),
                    self::ACCEPTED      => _x('status', 'Accepted'),
