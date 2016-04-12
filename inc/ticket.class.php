@@ -2604,7 +2604,7 @@ class Ticket extends CommonITILObject {
    static function getAllStatusArray($withmetaforsearch=false) {
 
       // To be overridden by class
-      $tab = array(self::INCOMING => _x('status', 'New'),
+      $tab = array(self::INCOMING => _x('status', 'cgfcghcghcgfh'),
                    self::ASSIGNED => _x('status', 'Processing (assigned)'),
                    self::PLANNED  => _x('status', 'Processing (planned)'),
                    self::WAITING  => __('Pending'),
