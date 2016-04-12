@@ -4881,7 +4881,8 @@ class Ticket extends CommonITILObject {
          if ($number) {
             echo "<tr><th></th>";
             echo "<th>".__('Requester')."</th>";
-            echo "<th>"._n('Associated element', 'Associated elements', Session::getPluralNumber())."</th>";
+            //echo "<th>"._n('Associated element', 'Associated elements', Session::getPluralNumber())."</th>";
+			echo "<th>Groupe</th>"
             echo "<th>".__('Description')."</th></tr>";
             for ($i = 0 ; $i < $number ; $i++) {
                $ID = $DB->result($result, $i, "id");
