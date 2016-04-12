@@ -58,11 +58,11 @@ ul.ssmenu li.active {
 }
 
 ul#menu > li:hover {
-   background-color: #808080;
+   background-color: #D5D5D5;
 }
 
 ul#menu ul li a:hover {
-   background: #808080;
+   background: #D5D5D5;
    color: #C7DBF5;
 }
 
