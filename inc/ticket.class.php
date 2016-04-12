@@ -4622,7 +4622,6 @@ class Ticket extends CommonITILObject {
          $number = 0;
       }
 
-	  echo "<script type=\"text/javascript\"> console.log(\"NumRow : \"".$numrows.")</script>";
       if ($numrows > 0) {
          echo "<table class='tab_cadrehov'>";
          echo "<tr class='noHover'><th colspan='4'>";

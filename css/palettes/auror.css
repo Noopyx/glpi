@@ -2,11 +2,11 @@
 /* ===== LOGIN ===== */
 
 #firstboxlogin  {
-   background-color: #1B2F62;
+   background-color: #00B0F1;
 }
 
 #logo_login {
-   background: url(../../pics/login_logo_glpi.png) center no-repeat, #3A5693; 
+   background: url(../../pics/fd_logo.png) center no-repeat, #00B0F1; 
 }
 
 #display-login {
@@ -14,7 +14,7 @@
 }
 
 #text-login {
-   background-color: #3A5693;
+   background-color: #FFFFFF;
    color: #FFF;
 }
 
