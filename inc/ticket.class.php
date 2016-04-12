@@ -5366,10 +5366,25 @@ class Ticket extends CommonITILObject {
 			die('Erreur : '.$e->getMessage());
 		}
 		
-		$result = $bdd->query("select * from glpi_itilcategories where id=(select itilcategories_id from glpi_tickets where id=".$job->fields['id'].")");
-		echo "<script type=\"text/javascript\"> console.log(".$job->fields['id'].")</script>";
+		$result = $bdd->query("select * from glpi_tickets where id=".$job->fields['id']);
 		while ($donnees = $result->fetch()) {
-			echo $donnees['completename'];
+			switch($donnees['itilcategories_id']) {
+				case 1:
+					echo "Operateur DATA";
+					break;
+				case 2:
+					echo "Operateur VOIX";
+					break;
+				case 3:
+					echo "Telecom";
+					break;
+				case 4:
+					echo "Visio-Conference";
+					break;
+				case 5:
+					echo "Centre de contact";
+					break;
+			}
 		}
 		
         echo "</td><td>";
