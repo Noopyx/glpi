@@ -255,7 +255,7 @@ class Central extends CommonGLPI {
     * @since version 0.84
    **/
    static function showRSSView() {
-
+/*
       echo "<table class='tab_cadre_central'>";
 
       echo "<tr class='noHover'><td class='top' width='50%'>";
@@ -267,7 +267,7 @@ class Central extends CommonGLPI {
          echo "&nbsp;";
       }
       echo "</td></tr>";
-      echo "</table>";
+      echo "</table>";*/
    }
 
 
