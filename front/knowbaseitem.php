@@ -74,7 +74,7 @@ if (isset($_GET['forcetab'])) {
 
 $kb = new Knowbase();
 $kb->display($_GET);
- echo "<a class=\"vsubmit\" href=\"knowbaseitem.form.php\" >Ajouter</a>";
+ echo "<center><a class=\"vsubmit\" href=\"knowbaseitem.form.php\" >Ajouter</a></center>";
 
 Html::footer();
 ?>
