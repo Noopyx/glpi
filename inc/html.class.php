@@ -1195,6 +1195,7 @@ class Html {
       $menu['accueil']['title']       = __('Accueil');
       //$menu['list']['title']     = __('Liste de mes Tickets');
       $menu['planning']['title']   = __('Planning');
+	  $menu['stat']['title']       = __('Stat');
       $menu['FAQ']['title']        = __('FAQ');
       $menu['creationCompte']['title'] = __('Administration');
       $menu['creationCompte']['types'] = array('User','Group','Profile','QueuedMail','Event');
@@ -1526,6 +1527,10 @@ class Html {
             	$link = "/glpi/front/helpdesk.faq.php";
             else if(strcmp($part,"tickets") === 0)
             	$link = "/glpi/front/ticket.php";
+			 else if(strcmp($part,"stat") === 0)
+            	$link = "/glpi/front/stat.php";
+			 else if(strcmp($part,"planning") === 0)
+            	$link = "/glpi/front/planning.php";
             echo "<a href='$link' class='itemP'>".$data['title']."</a>";
             echo "<ul class='ssmenu'>";
 
