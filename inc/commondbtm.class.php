@@ -466,11 +466,13 @@ class CommonDBTM extends CommonGLPI {
 				$result = $bdd->query("select * from glpi_groups where name=(select completename from glpi_itilcategories where id=".$this->fields['itilcategories_id'].")");
 				//$result->fetch();
 				echo "<script type=\"text/javascript\"> console.log(\"select * from glpi_groups where name=(select completename from glpi_itilcategories where id=".$this->fields['itilcategories_id'].")\")</script>";
-				echo "<script type=\"text/javascript\"> console.log(\" Result : ".$result['id']."\")</script>";
-				if (isset($result['id'])) {
-					$bdd->exec("insert into glpi_groups_tickets (tickets_id, groups_id, type) values (".$this->fields['id'].",".$result['id'].", 3)");
-					echo "<script type=\"text/javascript\"> console.log(\"2eme REQ : insert into glpi_groups_tickets (tickets_id, groups_id, type) values (".$this->fields['id'].",".$result['id'].", 3)\")</script>";
-					echo "<script type=\"text/javascript\"> console.log(\"".$bdd."\")</script>";
+				while ($donnees = $result->fetch()) {
+					echo "<script type=\"text/javascript\"> console.log(\" Result : ".$donnees['id']."\")</script>";
+					if (isset($donnees['id'])) {
+						$bdd->exec("insert into glpi_groups_tickets (tickets_id, groups_id, type) values (".$this->fields['id'].",".$donnees['id'].", 3)");
+						echo "<script type=\"text/javascript\"> console.log(\"2eme REQ : insert into glpi_groups_tickets (tickets_id, groups_id, type) values (".$this->fields['id'].",".$donnees['id'].", 3)\")</script>";
+						echo "<script type=\"text/javascript\"> console.log(\"".$bdd."\")</script>";
+					}
 				}
 			}
             return $this->fields['id'];
