@@ -1195,7 +1195,7 @@ class Html {
       $menu['accueil']['title']       = __('Accueil');
       //$menu['list']['title']     = __('Liste de mes Tickets');
       $menu['planning']['title']   = __('Planning');
-	  $menu['stat']['title']       = __('Stat');
+	  $menu['stat']['title']       = __('Statistiques');
       $menu['FAQ']['title']        = __('FAQ');
       $menu['creationCompte']['title'] = __('Administration');
       $menu['creationCompte']['types'] = array('User','Group','Profile','QueuedMail','Event');
@@ -1524,7 +1524,7 @@ class Html {
             else if(strcmp($part,"creation") === 0)
             	$link = "/glpi/front/helpdesk.php?create_ticket=1";
             else if(strcmp($part,"FAQ") === 0)
-            	$link = "/glpi/front/helpdesk.faq.php";
+            	$link = "/glpi/front/knowbaseitem.php";
             else if(strcmp($part,"tickets") === 0)
             	$link = "/glpi/front/ticket.php";
 			 else if(strcmp($part,"stat") === 0)
