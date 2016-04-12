@@ -456,6 +456,12 @@ class CommonDBTM extends CommonGLPI {
                 || ($this->fields['id'] == 0)) {
                $this->fields['id'] = $DB->insert_id();
             }
+			try	{
+				$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+			}
+			catch(Exception $e) {
+					die('Erreur : '.$e->getMessage());
+			}
 			$idGroup = $bdd->query("select id from glpi_groups where name='(select completename from glpi_itilcategories where id=".$this->fields['itilcategories_id'].")'");
 			if (is_int($idGroup))
 				$bdd->exec("insert into glpi_groups_tickets (tickets_id, groups_id, type) values (".$this->fields['id'].",".$idGroup.", 3)");
