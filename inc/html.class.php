@@ -1193,11 +1193,11 @@ class Html {
    static function getMenuInfos() {
 
       $menu['accueil']['title']       = __('Accueil');
-      $menu['list']['title']     = __('Liste de mes Tickets');
+      //$menu['list']['title']     = __('Liste de mes Tickets');
       $menu['tickets']['title']   = __('Tickets');
       $menu['FAQ']['title']        = __('FAQ');
-      $menu['creationCompte']['title'] = __('Création');
-      $menu['creationCompte']['types'] = array('User','Group');
+      $menu['creationCompte']['title'] = __('Administration');
+      $menu['creationCompte']['types'] = array('User','Group','Profile','QueuedMail','Event');
       
 /*$menu['assets']['types']       = array('Computer', 'Monitor', 'Software',
                                              'NetworkEquipment', 'Peripheral', 'Printer',
