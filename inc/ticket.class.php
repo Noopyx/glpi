@@ -5366,7 +5366,7 @@ class Ticket extends CommonITILObject {
 			die('Erreur : '.$e->getMessage());
 		}
 		
-		$result = $bdd->query("select * from glpi_itilcategories where id=(select itilcategories_id from glpi_tickets where id=".$job->fields["id"].")");
+		$result = $bdd->query("select * from glpi_itilcategories where id=(select itilcategories_id from glpi_tickets where id=".$job->fields['id'].")");
 		
 		foreach ($donnees = $result->fetch()) {
 			echo $donnees['completename'];
