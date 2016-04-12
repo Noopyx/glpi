@@ -67,7 +67,7 @@ class Central extends CommonGLPI {
          $tabs[1] = __('Personal View');
          $tabs[2] = __('Group View');
          $tabs[3] = __('Global View');
-         $tabs[4] = _n('RSS feed', 'RSS feeds', Session::getPluralNumber());
+         //$tabs[4] = _n('RSS feed', 'RSS feeds', Session::getPluralNumber());
 
          return $tabs;
       }
@@ -240,10 +240,10 @@ class Central extends CommonGLPI {
       echo "<td class='top'  width='50%'><table class='central'>";
       echo "<tr class='noHover'><td>";
       Planning::showCentral(Session::getLoginUserID());
-      Reminder::showListForCentral();
+      /*Reminder::showListForCentral();
       if (Session::haveRight("reminder_public", READ)) {
          Reminder::showListForCentral(false);
-      }
+      }*/
       echo "</td></tr>";
       echo "</table></td></tr></table>";
    }

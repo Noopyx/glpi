@@ -113,7 +113,7 @@ if (isset($_GET['create_ticket'])) {
 
    
    
-   if (Session::haveRight("reminder_public", READ)) {
+   /*if (Session::haveRight("reminder_public", READ)) {
       echo "<tr class='noHover'><td class='top'>";
       Reminder::showListForCentral(false);
       echo "</td></tr>";
@@ -123,7 +123,7 @@ if (isset($_GET['create_ticket'])) {
       echo "<tr class='noHover'><td class='top'>";
       RSSFeed::showListForCentral(false);
       echo "</td></tr>";
-   }
+   }*/
    echo "</table></td>";
 
    echo "<td class='top' width='50%'><br>";
