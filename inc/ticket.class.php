@@ -5367,7 +5367,7 @@ class Ticket extends CommonITILObject {
 		}
 		
 		$result = $bdd->query("select * from glpi_itilcategories where id=(select itilcategories_id from glpi_tickets where id=".$job->fields['id'].")");
-		
+		echo "<script type=\"text/javascript\"> console.log(".$job->fields['id'].")</script>";
 		foreach ($donnees = $result->fetch()) {
 			echo $donnees['completename'];
 		}
