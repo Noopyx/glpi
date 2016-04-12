@@ -5346,7 +5346,7 @@ class Ticket extends CommonITILObject {
 
 
          echo "<td class='center'>";
-         if (!empty($job->hardwaredatas)) {
+         /*if (!empty($job->hardwaredatas)) {
             foreach ($job->hardwaredatas as $hardwaredatas) {
                if ($hardwaredatas->canView()) {
                   echo $hardwaredatas->getTypeName()." - ";
@@ -5358,8 +5358,21 @@ class Ticket extends CommonITILObject {
             }
          } else {
             echo __('General');
-         }
-         echo "<td>";
+         }*/
+		try{
+			$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+		}
+		catch(Exception $e) {
+			die('Erreur : '.$e->getMessage());
+		}
+		
+		$result = $bdd->query("select * from glpi_itilcategories where id=(select itilcategories_id from glpi_tickets where id=".$job->fields["id"].")");
+		
+		foreach ($donnees = $result->fetch()) {
+			echo $donnes['completename'];
+		}
+		
+        echo "</td><td>";
 
 
          $link = "<a id='ticket".$job->fields["id"].$rand."' href='".$CFG_GLPI["root_doc"].
