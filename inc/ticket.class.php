@@ -1,4 +1,4 @@
-showCentralList<?php
+<?php
 /*
  * @version $Id$
  -------------------------------------------------------------------------
@@ -4521,11 +4521,11 @@ class Ticket extends CommonITILObject {
       }
 
       $query = "SELECT DISTINCT `glpi_tickets`.`id`
-                FROM `glpi_tickets`
-                LEFT JOIN `glpi_tickets_users`
+                FROM `glpi_tickets`";
+                /*LEFT JOIN `glpi_tickets_users`
                      ON (`glpi_tickets`.`id` = `glpi_tickets_users`.`tickets_id`)
                 LEFT JOIN `glpi_groups_tickets`
-                     ON (`glpi_tickets`.`id` = `glpi_groups_tickets`.`tickets_id`)";
+                     ON (`glpi_tickets`.`id` = `glpi_groups_tickets`.`tickets_id`)";*/
 					 
 
       switch ($status) {
