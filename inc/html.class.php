@@ -1194,7 +1194,7 @@ class Html {
 
       $menu['accueil']['title']       = __('Accueil');
       //$menu['list']['title']     = __('Liste de mes Tickets');
-      $menu['tickets']['title']   = __('Tickets');
+      $menu['planning']['title']   = __('Planning');
       $menu['FAQ']['title']        = __('FAQ');
       $menu['creationCompte']['title'] = __('Administration');
       $menu['creationCompte']['types'] = array('User','Group','Profile','QueuedMail','Event');
