@@ -137,6 +137,8 @@ class Knowbase extends CommonGLPI {
       } else {
          KnowbaseItem::showList($_GET, 'search');
       }
+	   echo "<center><a class=\"vsubmit\" href=\"knowbaseitem.form.php\" style=\"margin-top:5px;\" >Ajouter</a></center>";
+
    }
 
 
@@ -158,6 +160,8 @@ class Knowbase extends CommonGLPI {
          KnowbaseItemCategory::showFirstLevel($_GET);
       }
       KnowbaseItem::showList($_GET, 'browse');
+	   echo "<center><a class=\"vsubmit\" href=\"knowbaseitem.form.php\" style=\"margin-top:5px;\" >Ajouter</a></center>";
+
    }
 
 
@@ -177,6 +181,8 @@ class Knowbase extends CommonGLPI {
       $ki = new KnowbaseItem();
       $ki->showManageForm($_GET);
       KnowbaseItem::showList($_GET, $_GET["unpublished"]);
+	   echo "<center><a class=\"vsubmit\" href=\"knowbaseitem.form.php\" style=\"margin-top:5px;\" >Ajouter</a></center>";
+
    }
 
 
