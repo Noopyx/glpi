@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: GLPI Project\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-25 10:48+0100\n"
-"PO-Revision-Date: 2016-04-12 16:03+0200\n"
+"PO-Revision-Date: 2016-04-12 16:09+0200\n"
 "Last-Translator: Alexandre DELAUNAY <delaunay.alexandre@gmail.com>\n"
 "Language-Team: French (France) (http://www.transifex.com/glpi/GLPI/language/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -3523,7 +3523,7 @@ msgstr "Accepté"
 
 #: inc/change.class.php:481 inc/commonitilobject.class.php:4430 inc/problem.class.php:519 inc/ticket.class.php:2605
 msgid "Pending"
-msgstr "En attente"
+msgstr "En attente retour client"
 
 #: inc/change.class.php:482
 msgctxt "change"
@@ -3545,7 +3545,7 @@ msgstr "Revue"
 #: inc/change.class.php:486 inc/problem.class.php:522 inc/ticket.class.php:2607
 msgctxt "status"
 msgid "Closed"
-msgstr "Clos"
+msgstr "Cloturé avec Validation client"
 
 #: inc/change.class.php:490 inc/problem.class.php:525 inc/ticket.class.php:2610
 msgctxt "status"
@@ -10165,17 +10165,17 @@ msgstr "Wifi"
 #: inc/problem.class.php:517 inc/ticket.class.php:2603
 msgctxt "status"
 msgid "Processing (assigned)"
-msgstr "En cours (Attribué)"
+msgstr "En cours KOMEO"
 
 #: inc/problem.class.php:518 inc/ticket.class.php:2604
 msgctxt "status"
 msgid "Processing (planned)"
-msgstr "En cours (Planifié)"
+msgstr "En cours Partenaire"
 
 #: inc/problem.class.php:520 inc/ticket.class.php:2606
 msgctxt "status"
 msgid "Solved"
-msgstr "Résolu"
+msgstr "Cloturé sans validation client"
 
 #: inc/problem.class.php:521
 msgid "Under observation"
