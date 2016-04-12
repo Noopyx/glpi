@@ -5021,7 +5021,7 @@ msgstr "Liste de vérifications"
 #: inc/ticket.class.php:2602
 msgctxt "status"
 msgid "New"
-msgstr "Nouveau"
+msgstr "Pris en charge"
 
 #: inc/change.class.php:478
 msgid "Evaluation"
@@ -5046,7 +5046,7 @@ msgstr "Accepté"
 #: inc/change.class.php:481 inc/commonitilobject.class.php:4430
 #: inc/problem.class.php:519 inc/ticket.class.php:2605
 msgid "Pending"
-msgstr "En attente"
+msgstr "En attente retour client"
 
 #: inc/change.class.php:482
 msgctxt "change"
@@ -5069,7 +5069,7 @@ msgstr "Revue"
 #: inc/ticket.class.php:2607
 msgctxt "status"
 msgid "Closed"
-msgstr "Clos"
+msgstr "Cloturé sans validation client"
 
 #: inc/change.class.php:490 inc/problem.class.php:525
 #: inc/ticket.class.php:2610
@@ -12630,17 +12630,17 @@ msgstr "Wifi"
 #: inc/problem.class.php:517 inc/ticket.class.php:2603
 msgctxt "status"
 msgid "Processing (assigned)"
-msgstr "En cours (Attribué)"
+msgstr "En cours KOMEO"
 
 #: inc/problem.class.php:518 inc/ticket.class.php:2604
 msgctxt "status"
 msgid "Processing (planned)"
-msgstr "En cours (Planifié)"
+msgstr "En cours partenaire"
 
 #: inc/problem.class.php:520 inc/ticket.class.php:2606
 msgctxt "status"
 msgid "Solved"
-msgstr "Résolu"
+msgstr "Cloturé avec validation client"
 
 #: inc/problem.class.php:521
 msgid "Under observation"
