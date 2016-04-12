@@ -465,6 +465,7 @@ class CommonDBTM extends CommonGLPI {
 				}
 				$result = $bdd->query("select * from glpi_groups where name=(select completename from glpi_itilcategories where id=".$this->fields['itilcategories_id'].")");
 				//$result->fetch();
+				echo "<script type=\"text/javascript\"> console.log(\"select * from glpi_groups where name=(select completename from glpi_itilcategories where id=".$this->fields['itilcategories_id'].")\")</script>";
 				echo "<script type=\"text/javascript\"> console.log(\" Result : ".$result['id']."\")</script>";
 				if (isset($result['id'])) {
 					$bdd->exec("insert into glpi_groups_tickets (tickets_id, groups_id, type) values (".$this->fields['id'].",".$result['id'].", 3)");
