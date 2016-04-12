@@ -5021,7 +5021,7 @@ msgstr "Liste de vérifications"
 #: inc/ticket.class.php:2602
 msgctxt "status"
 msgid "New"
-msgstr "Pris en charge"
+msgstr "Nouveau"
 
 #: inc/change.class.php:478
 msgid "Evaluation"
@@ -5046,7 +5046,7 @@ msgstr "Accepté"
 #: inc/change.class.php:481 inc/commonitilobject.class.php:4430
 #: inc/problem.class.php:519 inc/ticket.class.php:2605
 msgid "Pending"
-msgstr "En attente retour client"
+msgstr "En attente"
 
 #: inc/change.class.php:482
 msgctxt "change"
@@ -5069,7 +5069,7 @@ msgstr "Revue"
 #: inc/ticket.class.php:2607
 msgctxt "status"
 msgid "Closed"
-msgstr "Cloturé sans validation client"
+msgstr "Clos"
 
 #: inc/change.class.php:490 inc/problem.class.php:525
 #: inc/ticket.class.php:2610
@@ -12630,17 +12630,17 @@ msgstr "Wifi"
 #: inc/problem.class.php:517 inc/ticket.class.php:2603
 msgctxt "status"
 msgid "Processing (assigned)"
-msgstr "En cours KOMEO"
+msgstr "En cours (Attribué)"
 
 #: inc/problem.class.php:518 inc/ticket.class.php:2604
 msgctxt "status"
 msgid "Processing (planned)"
-msgstr "En cours partenaire"
+msgstr "En cours (Planifié)"
 
 #: inc/problem.class.php:520 inc/ticket.class.php:2606
 msgctxt "status"
 msgid "Solved"
-msgstr "Cloturé avec validation client"
+msgstr "Résolu"
 
 #: inc/problem.class.php:521
 msgid "Under observation"
@@ -15812,7 +15812,7 @@ msgstr "Entité racine"
 #: install/update_084_085.php:2067
 msgctxt "ticket"
 msgid "New"
-msgstr "Nouveau"
+msgstr "Pris en charge"
 
 #: install/update.php:191
 msgid "Update successful, your database is up to date"
