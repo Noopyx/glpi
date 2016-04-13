@@ -463,6 +463,22 @@ class CommonDBTM extends CommonGLPI {
 				catch(Exception $e) {
 						die('Erreur : '.$e->getMessage());
 				}
+				
+				if($this->input['itilcategories_id'] == 1)
+					$mycategory = $bdd->query("select * from glpi_itilcategories where name='Operateur DATA'");
+				if($this->input['itilcategories_id'] == 2)
+					$mycategory = $bdd->query("select * from glpi_itilcategories where name='Operateur Voix'");
+				if($this->input['itilcategories_id'] == 3)
+					$mycategory = $bdd->query("select * from glpi_itilcategories where name='Telecom'");
+				if($this->input['itilcategories_id'] == 4)
+					$mycategory = $bdd->query("select * from glpi_itilcategories where name='Visio-Conference'");
+				if($this->input['itilcategories_id'] == 5)
+					$mycategory = $bdd->query("select * from glpi_itilcategories where name='Centre de contact'");
+				
+				while ($donnees = $mycategory->fetch()) {
+					$this->fields['itilcategories_id'] = $donnees['id'];
+				}
+				
 				$result = $bdd->query("select * from glpi_groups where name=(select completename from glpi_itilcategories where id=".$this->fields['itilcategories_id'].")");
 				while ($donnees = $result->fetch()) {
 					if (isset($donnees['id'])) {
