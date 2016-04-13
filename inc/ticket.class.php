@@ -2976,7 +2976,7 @@ class Ticket extends CommonITILObject {
      /* if ($values['itilcategories_id'] && $tt->isMandatoryField("itilcategories_id")) {
          $opt['display_emptychoice'] = false;
       }*/
-	self::dropdownCategory(array('value' => $values["urgency"]));
+	self::dropdownCategory(array('action' => 'add'));
       //ITILCategory::dropdown($opt);
       echo "</td></tr>";
 
@@ -3950,7 +3950,7 @@ class Ticket extends CommonITILObject {
                break;
          }
          echo "<span id='show_category_by_type'>";
-		 self::dropdownCategory(array('id' => $ID));
+		 self::dropdownCategory(array('action' => 'update' , 'id' => $ID));
          //ITILCategory::dropdown($opt);
          echo "</span>";
       } else {
