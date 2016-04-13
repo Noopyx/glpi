@@ -1994,7 +1994,7 @@ abstract class CommonITILObject extends CommonDBTM {
 				$values[5] = "Centre de contact";
 			}
 		}
-		$used = $values*/
+		/*$used = $values*/
       return Dropdown::showFromArray($p['name'],$values, $p, $options['id']);
    }
    /**
