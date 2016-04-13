@@ -395,22 +395,22 @@ class CommonDBTM extends CommonGLPI {
          $i = 0;
 		
 		
-		if(isset($this->input['category'])) {
+		if(isset($this->input['itilcategories_id'])) {
 			try	{
 				$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 			}
 			catch(Exception $e) {
 					die('Erreur : '.$e->getMessage());
 			}
-			if($this->input['category'] == 1)
+			if($this->input['itilcategories_id'] == 1)
 				$mycategory = $bdd->query("select id from glpi_itilcategories where name='Operateur DATA'");
-			if($this->input['category'] == 2)
+			if($this->input['itilcategories_id'] == 2)
 				$mycategory = $bdd->query("select id from glpi_itilcategories where name='Operateur Voix'");
-			if($this->input['category'] == 3)
+			if($this->input['itilcategories_id'] == 3)
 				$mycategory = $bdd->query("select id from glpi_itilcategories where name='Telecom'");
-			if($this->input['category'] == 4)
+			if($this->input['itilcategories_id'] == 4)
 				$mycategory = $bdd->query("select id from glpi_itilcategories where name='Visio-Conference'");
-			if($this->input['category'] == 5)
+			if($this->input['itilcategories_id'] == 5)
 				$mycategory = $bdd->query("select id from glpi_itilcategories where name='Centre de contact'");
 			
 			if(is_int($mycategory)) {
