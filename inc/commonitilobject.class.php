@@ -1951,7 +1951,7 @@ abstract class CommonITILObject extends CommonDBTM {
 					  if($donnees['opData'] == 1) 
 						  $values[1] = "Operateur DATA";
 					  if($donnees['opVoice'] == 1) 
-						  $values[2] = "Operateur Voice";
+						  $values[2] = "Operateur Voix";
 					  if($donnees['telecom'] == 1) 
 						  $values[3] = "Telecom";
 					  if($donnees['visio'] == 1) 
