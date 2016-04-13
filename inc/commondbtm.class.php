@@ -403,22 +403,19 @@ class CommonDBTM extends CommonGLPI {
 					die('Erreur : '.$e->getMessage());
 			}
 			if($this->input['itilcategories_id'] == 1)
-				$mycategory = $bdd->query("select id from glpi_itilcategories where name='Operateur DATA'");
+				$mycategory = $bdd->query("select * from glpi_itilcategories where name='Operateur DATA'");
 			if($this->input['itilcategories_id'] == 2)
-				$mycategory = $bdd->query("select id from glpi_itilcategories where name='Operateur Voix'");
+				$mycategory = $bdd->query("select * from glpi_itilcategories where name='Operateur Voix'");
 			if($this->input['itilcategories_id'] == 3)
-				$mycategory = $bdd->query("select id from glpi_itilcategories where name='Telecom'");
+				$mycategory = $bdd->query("select * from glpi_itilcategories where name='Telecom'");
 			if($this->input['itilcategories_id'] == 4)
-				$mycategory = $bdd->query("select id from glpi_itilcategories where name='Visio-Conference'");
+				$mycategory = $bdd->query("select * from glpi_itilcategories where name='Visio-Conference'");
 			if($this->input['itilcategories_id'] == 5)
-				$mycategory = $bdd->query("select id from glpi_itilcategories where name='Centre de contact'");
+				$mycategory = $bdd->query("select * from glpi_itilcategories where name='Centre de contact'");
 			while ($donnees = $mycategory->fetch()) {
+					echo "<script type=\"text/javascript\"> console.log(\"ID : \"".$donnees['id'].")</script>";
 					$this->fields['itilcategories_id'] = $donnees['id'];
 				}
-			if(is_int($mycategory)) {
-				$this->fields['itilcategories_id'] = $mycategory;
-				
-			}
 			
 			
 		}
