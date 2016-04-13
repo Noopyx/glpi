@@ -412,7 +412,9 @@ class CommonDBTM extends CommonGLPI {
 				$mycategory = $bdd->query("select id from glpi_itilcategories where name='Visio-Conference'");
 			if($this->input['itilcategories_id'] == 5)
 				$mycategory = $bdd->query("select id from glpi_itilcategories where name='Centre de contact'");
-			
+			while ($donnees = $mycategory->fetch()) {
+					$this->fields['itilcategories_id'] = $donnees['id'];
+				}
 			if(is_int($mycategory)) {
 				$this->fields['itilcategories_id'] = $mycategory;
 				
