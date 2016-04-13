@@ -1912,29 +1912,6 @@ abstract class CommonITILObject extends CommonDBTM {
 
       $values = array();
 
-      /*if (isset($CFG_GLPI[static::URGENCY_MASK_FIELD])) {
-         if (($p['showtype'] == 'search')
-             || ($CFG_GLPI[static::URGENCY_MASK_FIELD] & (1<<5))) {
-            $values[5]  = "CENTRE DE CONTACT";
-         }
-
-         if (($p['showtype'] == 'search')
-             || ($CFG_GLPI[static::URGENCY_MASK_FIELD] & (1<<4))) {
-            $values[4]  = "VISIO-CONFERENCE";
-         }
-
-         $values[3]  = "TELECOM";
-
-         if (($p['showtype'] == 'search')
-             || ($CFG_GLPI[static::URGENCY_MASK_FIELD] & (1<<2))) {
-            $values[2]  = "OPERATEUR VOIX";
-         }
-
-         if (($p['showtype'] == 'search')
-             || ($CFG_GLPI[static::URGENCY_MASK_FIELD] & (1<<1))) {
-            $values[1]  = "OPERATEUR DATA";
-         }
-      }*/
 	  try {
 			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 	   }
