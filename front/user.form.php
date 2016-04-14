@@ -46,13 +46,6 @@ $user      = new User();
 $groupuser = new Group_User();
 
 
-if(isset($_GET['komeo'])) {
-	$user->setKomeo(1, $_GET['id']);
-}
-else {
-	$user->setKomeo(0, $_GET['id']);
-}
-
 if (empty($_GET["id"]) && isset($_GET["name"])) {
 
    $user->getFromDBbyName($_GET["name"]);
