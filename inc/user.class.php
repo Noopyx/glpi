@@ -57,16 +57,6 @@ class User extends CommonDBTM {
    static $rightname = 'user';
 
 
-   function setKomeo($k, $id) {
-	   	try	{
-			$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
-		}
-		catch(Exception $e) {
-			die('Erreur : '.$e->getMessage());
-		}
-		$result = $bdd->exec("update glpi_users set komeo=".$k." where id=".$id);
-   }
-
    static function getTypeName($nb=0) {
       return _n('User','Users',$nb);
    }
@@ -1924,7 +1914,6 @@ class User extends CommonDBTM {
 		$telecom = 0;
 		$visio = 0;
 		$contact = 0;
-		$komeo = 0;
 		
 		if($result) {
 			while ($donnees = $result->fetch()) {
@@ -1933,13 +1922,12 @@ class User extends CommonDBTM {
 				$telecom = $donnees["telecom"];
 				$visio = $donnees["visio"];
 				$contact = $donnees["contact"];
-				$komeo = $donnees['komeo'];
 			}
 		}
 		
 		foreach ($_SESSION['glpigroups'] as $g => $v)
 		echo "<script type=\"text/javascript\"> console.log(".$v.")</script>";
-	  if($komeo == 0) {
+		
 		if($opData == 1)
 		 echo "<input type=\"checkbox\" name=\"category[]\" value=1 checked=\"checked\">   Operateur DATA     ";
 		else
@@ -1964,51 +1952,10 @@ class User extends CommonDBTM {
 			 echo "<input type=\"checkbox\" name=\"category[]\" value=5 checked=\"checked\">   Centre de contact     <br/>";
 			else
 			 echo "<input type=\"checkbox\" name=\"category[]\" value=5>   Centre de contact     <br/>";
-		}
-		else {
-			if($opData == 1)
-			 echo "<input type=\"radio\" name=\"category[]\" value=1 checked=\"checked\">   Operateur DATA     ";
-			else
-			 echo "<input type=\"radio\" name=\"category[]\" value=1>   Operateur DATA     ";	
-		 
-			if($opVoice == 1)
-			 echo "<input type=\"radio\" name=\"category[]\" value=2 checked=\"checked\">   Operateur Voix     <br/>";
-			else
-			 echo "<input type=\"radio\" name=\"category[]\" value=2>   Operateur Voix     <br/>";	
-		 
-			if($telecom == 1)
-			 echo "<input type=\"radio\" name=\"category[]\" value=3 checked=\"checked\">   Telecom     ";
-			else
-			 echo "<input type=\"radio\" name=\"category[]\" value=3>   Telecom     ";
-		 
-			 if($visio == 1)
-				 echo "<input type=\"radio\" name=\"category[]\" value=4 checked=\"checked\">   Visio-Conference     <br/>";
-				else
-				 echo "<input type=\"radio\" name=\"category[]\" value=4>   Visio-Conference     <br/>";
-		 
-			if($contact == 1)
-				 echo "<input type=\"radio\" name=\"category[]\" value=5 checked=\"checked\">   Centre de contact     <br/>";
-				else
-				 echo "<input type=\"radio\" name=\"category[]\" value=5>   Centre de contact     <br/>";
-		}
 	 
 	 
 	 
          echo "</div></td>";
-		 echo "<td>";
-		 echo "<script type=\"text/javascript\"> 
-		    function handleClick(cb) {
-				window.location.href = \"/glpi/front/user.form.php/?komeo=1&id=".$ID."\";
-			}
-			function handleClick2(cb) {
-				window.location.href = \"/glpi/front/user.form.php/?id=".$ID."\";
-			}
-			</script>";
-			
-		if($komeo == 0)
-		 echo "<input type=\"checkbox\" name=\"komeo\" value=1 onclick=\"handleClick(this)\" >   KOMEO     <br/></td>";
-		else 
-		 echo "<input type=\"checkbox\" name=\"komeo\" value=1 onclick=\"handleClick2(this)\" checked=\"checked\">   KOMEO     <br/></td>";
 			
 		 
 		 

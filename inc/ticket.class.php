@@ -2960,7 +2960,7 @@ class Ticket extends CommonITILObject {
                           $tt->getMandatoryMark('itilcategories_id'))."</td>";
       echo "<td>";
 
-      /*$condition = "`is_helpdeskvisible`='1'";
+      $condition = "`is_helpdeskvisible`='1'";
       switch ($values['type']) {
          case self::DEMAND_TYPE :
             $condition .= " AND `is_request`='1'";
@@ -2968,16 +2968,16 @@ class Ticket extends CommonITILObject {
 
          default: // self::INCIDENT_TYPE :
             $condition .= " AND `is_incident`='1'";
-      }*/
+      }
       $opt = array('value'     => $values['itilcategories_id'],
                    'condition' => $condition,
                    'on_change' => 'this.form.submit()');
 
-     /* if ($values['itilcategories_id'] && $tt->isMandatoryField("itilcategories_id")) {
+      if ($values['itilcategories_id'] && $tt->isMandatoryField("itilcategories_id")) {
          $opt['display_emptychoice'] = false;
-      }*/
+      }
 	
-      //ITILCategory::dropdown($opt);
+      //ITILCategory::dropdown($opt); 							QPO: Appel à une nouvelle fonction pour faire le dropdown
 	  self::dropdownCategory(array('action' => 'add'));
       echo "</td></tr>";
 
@@ -4886,6 +4886,7 @@ class Ticket extends CommonITILObject {
             //echo "<th>"._n('Associated element', 'Associated elements', Session::getPluralNumber())."</th>";
 			echo "<th>Groupe</th>";
             echo "<th>".__('Description')."</th></tr>";
+			
             for ($i = 0 ; $i < $number ; $i++) {
                $ID = $DB->result($result, $i, "id");
                self::showVeryShort($ID, $forcetab);
@@ -5369,11 +5370,12 @@ class Ticket extends CommonITILObject {
 			die('Erreur : '.$e->getMessage());
 		}
 		
-		$result = $bdd->query("select * from glpi_itilcategories where id = select itilcategories_id from glpi_tickets where id=".$job->fields['id']);
+		$result = $bdd->query("select * from glpi_itilcategories where id = (select itilcategories_id from glpi_tickets where id=".$job->fields['id'].")");
 
-		while ($donnees = $result->fetch()) {
-			echo $donnees['completename'];
-		}
+		if($result)
+			while ($donnees = $result->fetch()) {
+				echo $donnees['completename'];
+			}
 		
         echo "</td><td>";
 

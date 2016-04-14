@@ -1192,7 +1192,7 @@ class Html {
    **/
    static function getMenuInfos() {
 
-      $menu['accueil']['title']       = __('Accueil');
+      $menu['accueil']['title']       = __('Home');
       //$menu['list']['title']     = __('Liste de mes Tickets');
       $menu['planning']['title']   = __('Planning');
 	  $menu['stat']['title']       = __('Statistiques');
@@ -1530,6 +1530,7 @@ class Html {
             	$link = "/glpi/front/stat.php";
 			 else if(strcmp($part,"planning") === 0)
             	$link = "/glpi/front/planning.php";
+			
             echo "<a href='$link' class='itemP'>".$data['title']."</a>";
             echo "<ul class='ssmenu'>";
 
