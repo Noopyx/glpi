@@ -341,11 +341,11 @@ class CommonDBTM extends CommonGLPI {
       global $DB, $CFG_GLPI;
 
       foreach ($updates as $field) {
-         if (isset($this->fields[$field])) {
+         if (isset($this->update[$field])) {
             $query  = "UPDATE `".$this->getTable()."`
                        SET `".$field."`";
 
-			if(isset($this->input['itilcategories_id'])) {
+			if(isset($this->fields['itilcategories_id'])) {
 				try	{
 					$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 				}
@@ -353,15 +353,15 @@ class CommonDBTM extends CommonGLPI {
 						die('Erreur : '.$e->getMessage());
 				}
 				echo "<script type=\"text/javascript\" > console.log(\"En cours update\")</script>"; 
-				if($this->input['itilcategories_id'] == 1)
+				if($this->fields['itilcategories_id'] == 1)
 					$mycategory = $bdd->query("select * from glpi_itilcategories where name='Operateur DATA'");
-				if($this->input['itilcategories_id'] == 2)
+				if($this->fields['itilcategories_id'] == 2)
 					$mycategory = $bdd->query("select * from glpi_itilcategories where name='Operateur Voix'");
-				if($this->input['itilcategories_id'] == 3)
+				if($this->fields['itilcategories_id'] == 3)
 					$mycategory = $bdd->query("select * from glpi_itilcategories where name='Telecom'");
-				if($this->input['itilcategories_id'] == 4)
+				if($this->fields['itilcategories_id'] == 4)
 					$mycategory = $bdd->query("select * from glpi_itilcategories where name='Visio-Conference'");
-				if($this->input['itilcategories_id'] == 5)
+				if($this->fields['itilcategories_id'] == 5)
 					$mycategory = $bdd->query("select * from glpi_itilcategories where name='Centre de contact'");
 				
 				while ($donnees = $mycategory->fetch()) {
