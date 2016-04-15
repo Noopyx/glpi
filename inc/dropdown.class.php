@@ -1767,6 +1767,7 @@ class Dropdown {
             } else {
                if (!isset($param['used'][$key])) {
                   $output .= "<option value='".$key."'";
+				  if(isset($options['action'])) {
 					if (strcmp($options['action'],"update")==0) {
 						try	{
 							$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
@@ -1786,8 +1787,10 @@ class Dropdown {
                       
                      }
 				  }
+				 }
                   // Do not use in_array : trouble with 0 and empty value
                   foreach ($param['values'] as $value) {
+					   if(isset($options['action'])) {
                      if (strcmp($options['action'],"update")==0) {
 						try	{
 							$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
@@ -1807,7 +1810,7 @@ class Dropdown {
 								}
 							}
 						}
-                        
+					 }
                         
                      }
                   }
