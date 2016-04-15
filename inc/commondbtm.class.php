@@ -402,6 +402,7 @@ class CommonDBTM extends CommonGLPI {
 			catch(Exception $e) {
 					die('Erreur : '.$e->getMessage());
 			}
+			echo "<script type=\"text/javascript\" > console.log(\"ID =".$this->input['itilcategories_id']."\") </script>";
 			if($this->input['itilcategories_id'] == 1)
 				$mycategory = $bdd->query("select * from glpi_itilcategories where name='Operateur DATA'");
 			if($this->input['itilcategories_id'] == 2)
