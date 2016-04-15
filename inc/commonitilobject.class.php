@@ -1943,16 +1943,7 @@ abstract class CommonITILObject extends CommonDBTM {
 			}
 		
 		/*$used = $values*/
-		$output = "<select name=".$p['name']." size=1 >";
-		
-		foreach ($values as $key => $val) {
-			$output .= "<option value=".$key.">".$val."</option>";
-		}
-		
-		$output .= "</select>";
-		
-		return $output;
-      //return Dropdown::showFromArray($p['name'],$values, $p, $options['id']);
+      return Dropdown::showFromArray($p['name'],$values, $p, $options['id']);
    }
    /**
     * Get ITIL object Urgency Name

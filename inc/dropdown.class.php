@@ -1779,7 +1779,7 @@ class Dropdown {
 						
 						if($result) {
 							while($donnees = $result->fetch()) {
-								if(strcmp($donnees['name'],$value) == 0) {
+								if(strcmp($donnees['name'],$val) == 0) {
 									$output .= " selected";
 								}
 							}
@@ -1801,9 +1801,8 @@ class Dropdown {
 						
 						if($result) {
 							while($donnees = $result->fetch()) {
-								if(strcmp($donnees['name'],$value) == 0) {
+								if(strcmp($donnees['name'],$val) == 0) {
 									$output .= " selected";
-									echo "<script type=\"text/javascript\" > console.log(\"selected2\")</script>"; 
 									break;
 								}
 							}
