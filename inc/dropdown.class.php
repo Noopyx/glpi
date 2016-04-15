@@ -1836,7 +1836,6 @@ class Dropdown {
                      $max_option_size = strlen($val);
                   }
                }
-            }
          }
 
          if ($param['other'] !== false) {
