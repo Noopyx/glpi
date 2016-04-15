@@ -3647,7 +3647,7 @@ class Ticket extends CommonITILObject {
                              && ($this->numberOfTasks() == 0));
 
       if (!$options['template_preview']) {
-         echo "<form method='post' name='form_ticket' enctype='multipart/form-data' action='".
+         echo "<form method='get' name='form_ticket' enctype='multipart/form-data' action='".
                 $CFG_GLPI["root_doc"]."/front/ticket.form.php'>";
          if (isset($options['_projecttasks_id'])) {
             echo "<input type='hidden' name='_projecttasks_id' value='".$options['_projecttasks_id']."'>";
