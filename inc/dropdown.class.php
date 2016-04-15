@@ -1767,7 +1767,6 @@ class Dropdown {
             } else {
                if (!isset($param['used'][$key])) {
                   $output .= "<option value='".$key."'";
-				  echo "<script type=\"text/javascript\" > console.log(\"selected : \"".$value.")</script>";
 					if (strcmp($p['action'],"update")===0) {
 						try	{
 							$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
@@ -1782,7 +1781,6 @@ class Dropdown {
 							while($donnees = $result->fetch()) {
 								if(strcmp($donnees['name'],$value) == 0) {
 									$output .= " selected";
-									echo "<script type=\"text/javascript\" > console.log(\"selected\")</script>"; 
 								}
 							}
 						}

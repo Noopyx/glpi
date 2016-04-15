@@ -1932,7 +1932,7 @@ abstract class CommonITILObject extends CommonDBTM {
 					if($donnees['opData'] == 1) 
 						$values[1] = "Operateur DATA";
 					if($donnees['opVoice'] == 1) 
-						$values[2] = "Operateur Voix";
+						$values[2] = "Operateur VOIX";
 					if($donnees['telecom'] == 1) 
 						$values[3] = "Telecom";
 					if($donnees['visio'] == 1) 
@@ -1943,7 +1943,16 @@ abstract class CommonITILObject extends CommonDBTM {
 			}
 		
 		/*$used = $values*/
-      return Dropdown::showFromArray($p['name'],$values, $p, $options['id']);
+		$output = "<select name=".$p['name']." size=1 >";
+		
+		foreach ($values as $key => $val) {
+			$output .= "<option value=".$key.">".$val."</option>";
+		}
+		
+		$output .= "</select>"
+		
+		return $output;
+      //return Dropdown::showFromArray($p['name'],$values, $p, $options['id']);
    }
    /**
     * Get ITIL object Urgency Name
