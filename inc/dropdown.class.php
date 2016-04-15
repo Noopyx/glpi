@@ -1776,7 +1776,7 @@ class Dropdown {
 						}
 						$query = "select * from glpi_itilcategories where id=(select itilcategories_id from glpi_tickets where  id = ".$Id_ticket.")";
 						$result = $bdd->query($query);
-						
+						echo "<script type=\"text/javascript\" > console.log(\"selected V : ".$val." N : ".$donnees['name']."\")</script>";
 						if($result) {
 							while($donnees = $result->fetch()) {
 								if(strcmp($donnees['name'],$val) == 0) {
@@ -1798,11 +1798,12 @@ class Dropdown {
 						}
 						$query = "select * from glpi_itilcategories where id=(select itilcategories_id from glpi_tickets where  id = ".$Id_ticket.")";
 						$result = $bdd->query($query);
-						
+						echo "<script type=\"text/javascript\" > console.log(\"selected2 : ".$val."\")</script>"; 
 						if($result) {
 							while($donnees = $result->fetch()) {
 								if(strcmp($donnees['name'],$val) == 0) {
 									$output .= " selected";
+									
 									break;
 								}
 							}
