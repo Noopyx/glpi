@@ -4620,7 +4620,7 @@ class Ticket extends CommonITILObject {
                              getEntitiesRestrictRequest("AND","glpi_tickets");
       }
 
-      $query  .= " ORDER BY date_mod DESC";
+      $query  .= " ORDER BY date_mod , priority DESC";
       $result  = $DB->query($query);
       $numrows = $DB->numrows($result);
 
