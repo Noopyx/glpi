@@ -394,7 +394,7 @@ class CommonDBTM extends CommonGLPI {
 
          $i = 0;
 		
-		
+		echo "<script type=\"text/javascript\" > console.log(\"Avant update\")</script>"; 
 		if(isset($this->input['itilcategories_id'])) {
 			try	{
 				$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
@@ -402,7 +402,7 @@ class CommonDBTM extends CommonGLPI {
 			catch(Exception $e) {
 					die('Erreur : '.$e->getMessage());
 			}
-			
+			echo "<script type=\"text/javascript\" > console.log(\"En cours update\")</script>"; 
 			if($this->input['itilcategories_id'] == 1)
 				$mycategory = $bdd->query("select * from glpi_itilcategories where name='Operateur DATA'");
 			if($this->input['itilcategories_id'] == 2)
@@ -420,6 +420,7 @@ class CommonDBTM extends CommonGLPI {
 			
 			
 		}
+		echo "<script type=\"text/javascript\" > console.log(\"Après update : \"".$this->fields['itilcategories_id'].")</script>"; 
          foreach ($this->fields as $key => $val) {
             $fields[$i] = $key;
             $values[$i] = $val;
