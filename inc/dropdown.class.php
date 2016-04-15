@@ -1767,7 +1767,7 @@ class Dropdown {
             } else {
                if (!isset($param['used'][$key])) {
                   $output .= "<option value='".$key."'";
-				  	echo "<script type=\"text/javascript\" > console.log(\"1selected V : ".$val." N : ".$donnees['name']."\")</script>";
+				  	echo "<script type=\"text/javascript\" > console.log(\"1selected V : ".$val." N : ".$options['action']."\")</script>";
 					if (strcmp($options['action'],"update")==0) {
 						try	{
 							$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
