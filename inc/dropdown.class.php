@@ -1787,17 +1787,48 @@ class Dropdown {
             } else {
                if (!isset($param['used'][$key])) {
                   $output .= "<option value='".$key."'";
-				  if( strcmp($name,"itilcategories_id") == 0) {
-					if($key == $num) {
-						 $output .= " selected";
-					 }
+					if (strcmp($p['action'],"update")===0) {
+						try	{
+							$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+						}
+						catch(Exception $e) {
+							die('Erreur : '.$e->getMessage());
+						}
+						$query = "select * from glpi_itilcategories where id=(select itilcategories_id from glpi_tickets where  id = ".$Id_ticket.")";
+						$result = $bdd->query($query);
+						
+						if($result) {
+							while($donnees = $result->fetch()) {
+								if(strcmp($donnees['name'],$value) == 0)
+									$output .= " selected";
+							}
+						}
+                      
+                     }
 				  }
                   // Do not use in_array : trouble with 0 and empty value
                   foreach ($param['values'] as $value) {
 					  
-                     if (strcmp($key,$value)===0) {
-                        $output .= " selected";
-                        break;
+                     if (strcmp($p['action'],"update")===0) {
+						try	{
+							$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+						}
+						catch(Exception $e) {
+							die('Erreur : '.$e->getMessage());
+						}
+						$query = "select * from glpi_itilcategories where id=(select itilcategories_id from glpi_tickets where  id = ".$Id_ticket.")";
+						$result = $bdd->query($query);
+						
+						if($result) {
+							while($donnees = $result->fetch()) {
+								if(strcmp($donnees['name'],$value) == 0) {
+									$output .= " selected";
+									break;
+								}
+							}
+						}
+                        
+                        
                      }
                   }
                   $output .= ">" .$val . "</option>";

@@ -1921,6 +1921,10 @@ abstract class CommonITILObject extends CommonDBTM {
 		}
 		if(isset($p['action']) && strcmp($p['action'],"add") === 0) {
 			$sql = "SELECT * FROM glpi_users WHERE name='".$_SESSION["glpiname"]."'";
+		}
+		else if (strcmp($p['action'],"update") === 0) {
+			$sql = "select * from glpi_users where id=(SELECT users_id_recipient FROM glpi_tickets WHERE id=".$options['id'].")";					
+		}
 			$result = $DB->query($sql);
 			
 			if($result) {
@@ -1937,67 +1941,7 @@ abstract class CommonITILObject extends CommonDBTM {
 						$values[5] = "Centre de contact";
 				}
 			}
-		}
-		else if (strcmp($p['action'],"update") === 0) {
-			$sql = "select * from glpi_users where id=(SELECT users_id_recipient FROM glpi_tickets WHERE id=".$options['id'].")";
-			$sql2 = "select * from glpi_itilcategories where id=(select itilcategories_id from glpi_tickets where id=".$options['id'].")";
-			$result = $DB->query($sql);
-			$result2 = $DB->query($sql2);
-			$opData = 1;
-			$opVoice = 1;
-			$telecom = 1;
-			$visio = 1;
-			$contact = 1;
-			$cpt = 1;
-			if($result && $result2) {
-				while ($donnees = $result->fetch()) {
-					while ($donnees2 = $result2->fetch()) {
-						if( strcmp($donnees2['id'], "Operateur DATA") ) {
-							$values[$cpt] = "Operateur DATA";
-							$opData = 0;
-						}
-						else if( strcmp($donnees2['name'], "Operateur Voix") ) {
-							$values[$cpt] = "Operateur Voix";
-							$opVoice = 0;
-						}
-						else if( strcmp($donnees2['name'], "Telecom") ) {
-							$values[$cpt] = "Telecom";
-							$telecom = 0;
-						}
-						else if( strcmp($donnees2['name'], "Visio-Conference") ) {
-							$values[$cpt] = "Visio-Conference";
-							$visio = 0;
-						}
-						else if( strcmp($donnees2['name'], "Centre de contact") ) {
-							$values[$cpt] = "Centre de contact";
-							$contact = 0;
-						}
-					}
-					$cpt++;
-					if($donnees['opData'] == 1 && $opData == 1) {
-						$values[$cpt] = "Operateur DATA";
-						$cpt++;
-					}
-					if($donnees['opVoice'] == 1 && $opVoice == 1){
-						$values[$cpt] = "Operateur Voix";
-						$cpt++;
-					}
-					if($donnees['telecom'] == 1 && $telecom == 1)  {
-						$values[$cpt] = "Telecom";
-						$cpt++;
-					}
-					if($donnees['visio'] == 1 && $visio == 1) {
-						$values[$cpt] = "Visio-Conference";
-						$cpt++;
-					}
-					if($donnees['contact'] == 1 && $contact == 1) {
-						$values[$cpt] = "Centre de contact";
-						$cpt++;
-					}
-				}
-			}
-					
-		}
+		
 		/*$used = $values*/
       return Dropdown::showFromArray($p['name'],$values, $p, $options['id']);
    }
