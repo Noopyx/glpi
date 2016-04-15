@@ -1767,7 +1767,6 @@ class Dropdown {
             } else {
                if (!isset($param['used'][$key])) {
                   $output .= "<option value='".$key."'";
-				  	echo "<script type=\"text/javascript\" > console.log(\"1selected V : ".$val." N : ".$options['action']."\")</script>";
 					if (strcmp($options['action'],"update")==0) {
 						try	{
 							$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
@@ -1777,7 +1776,6 @@ class Dropdown {
 						}
 						$query = "select * from glpi_itilcategories where id=(select itilcategories_id from glpi_tickets where  id = ".$Id_ticket.")";
 						$result = $bdd->query($query);
-						echo "<script type=\"text/javascript\" > console.log(\"selected V : ".$val." N : ".$donnees['name']."\")</script>";
 						if($result) {
 							while($donnees = $result->fetch()) {
 								if(strcmp($donnees['name'],$val) == 0) {
