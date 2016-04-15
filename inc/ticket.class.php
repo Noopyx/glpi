@@ -4539,6 +4539,13 @@ class Ticket extends CommonITILObject {
                              getEntitiesRestrictRequest("AND", "glpi_tickets");
             break;
 
+		case "new" : // on affiche les tickets en attente
+            $query .= "WHERE $is_deleted
+                             AND ($search_assign)
+                             AND `status` = '".self::INCOMING."' ".
+                             getEntitiesRestrictRequest("AND", "glpi_tickets");
+            break;
+			
          case "process" : // on affiche les tickets planifiés ou assignés au user
             $query .= "WHERE $is_deleted
                              AND ( $search_assign )

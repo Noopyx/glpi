@@ -298,6 +298,7 @@ class Central extends CommonGLPI {
       echo "<td class='top' width='50%'><table class='central'>";
       echo "<tr class='noHover'><td>";
       if (Session::haveRight('ticket', Ticket::READGROUP)) {
+		 Ticket::showCentralList(0, "new", false);
          Ticket::showCentralList(0, "observed", true);
          Ticket::showCentralList(0, "toapprove", true);
          Ticket::showCentralList(0, "requestbyself", true);
