@@ -4720,7 +4720,7 @@ class Ticket extends CommonITILObject {
 
                   echo "<a href=\"".$CFG_GLPI["root_doc"]."/front/ticket.php?".
                          Toolbox::append_params($options,'&amp;')."\">".
-                         Html::makeTitle(__('Your tickets in progress'), $number, $numrows)."</a>";
+                         Html::makeTitle('Nouveaux Tickets', $number, $numrows)."</a>";
             }
 
          } else {
