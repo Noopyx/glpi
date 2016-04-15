@@ -4620,7 +4620,7 @@ class Ticket extends CommonITILObject {
                              getEntitiesRestrictRequest("AND","glpi_tickets");
       }
 
-      $query  .= " ORDER BY date_mod , priority DESC";
+      $query  .= " ORDER BY priority , date_mod  DESC";
       $result  = $DB->query($query);
       $numrows = $DB->numrows($result);
 
@@ -5028,7 +5028,7 @@ class Ticket extends CommonITILObject {
                 WHERE `status` = '".self::INCOMING."' ".
                       getEntitiesRestrictRequest("AND","glpi_tickets")."
                       AND NOT `is_deleted`
-                ORDER BY `glpi_tickets`.`date_mod`, `glpi_tickets`.`priority` DESC
+                ORDER BY `glpi_tickets`.`priority` , `glpi_tickets`.`date_mod` DESC
                 LIMIT ".intval($_SESSION['glpilist_limit']);
 
       $result = $DB->query($query);
@@ -5168,7 +5168,7 @@ class Ticket extends CommonITILObject {
                                        AND `glpi_tickets_users`.`users_id`
                                             = '".Session::getLoginUserID()."'))";
             }
-            $order    = '`glpi_tickets`.`date_mod` , `glpi_tickets`.`priority` DESC';
+            $order    = '`glpi_tickets`.`priority` , `glpi_tickets`.`date_mod` DESC';
 
             $options['criteria'][0]['field']      = 12;
             $options['criteria'][0]['searchtype'] = 'equals';
@@ -5275,7 +5275,7 @@ class Ticket extends CommonITILObject {
                    FROM `glpi_tickets` ".self::getCommonLeftJoin()."
                    WHERE ".implode(' OR ', $restrict).
                          getEntitiesRestrictRequest(' AND ', 'glpi_tickets') . "
-                   ORDER BY `glpi_tickets`.`date_mod` , `glpi_tickets`.`priority` DESC
+                   ORDER BY `glpi_tickets`.`priority` , `glpi_tickets`.`date_mod` DESC
                    LIMIT ".intval($_SESSION['glpilist_limit']);
          $result = $DB->query($query);
          $number = $DB->numrows($result);
