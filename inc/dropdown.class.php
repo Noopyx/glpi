@@ -1769,7 +1769,6 @@ class Dropdown {
                   $output .= "<option value='".$key."'";
 				  if (strcmp($key,$value)===0) {
  -                        $output .= " selected";
- -                        break;
 				  }
 				  if(isset($options['action'])) {
 					if (strcmp($options['action'],"update")==0) {
