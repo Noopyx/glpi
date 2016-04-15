@@ -5168,7 +5168,7 @@ class Ticket extends CommonITILObject {
                                        AND `glpi_tickets_users`.`users_id`
                                             = '".Session::getLoginUserID()."'))";
             }
-            $order    = '`glpi_tickets`.`date_mod` DESC';
+            $order    = '`glpi_tickets`.`date_mod` , `glpi_tickets`.`priority` DESC';
 
             $options['criteria'][0]['field']      = 12;
             $options['criteria'][0]['searchtype'] = 'equals';
@@ -5275,7 +5275,7 @@ class Ticket extends CommonITILObject {
                    FROM `glpi_tickets` ".self::getCommonLeftJoin()."
                    WHERE ".implode(' OR ', $restrict).
                          getEntitiesRestrictRequest(' AND ', 'glpi_tickets') . "
-                   ORDER BY `glpi_tickets`.`date_mod` DESC
+                   ORDER BY `glpi_tickets`.`date_mod` , `glpi_tickets`.`priority` DESC
                    LIMIT ".intval($_SESSION['glpilist_limit']);
          $result = $DB->query($query);
          $number = $DB->numrows($result);
