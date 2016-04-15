@@ -1658,27 +1658,7 @@ class Dropdown {
 	  $num = 0;
 	  $param['value']               = '';
 	  $param['values']              = array('');
-      $param['used']                = array();
-	  if( strcmp($name,"itilcategories_id") == 0 && $Id_ticket != 0) {
-		  try {
-			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
-		   }
-			catch(Exception $e)
-			{
-				die('Erreur : '.$e->getMessage());
-			}
-			$sql = "SELECT * FROM glpi_tickets WHERE id=".$Id_ticket;
-			$result = $DB->query($sql);
-			
-			if($result) {
-				while ($donnees = $result->fetch()) {
-					$num = $donnees['itilcategories_id'];
-					$param['value'] = $elements[$donnees['itilcategories_id']];
-				}
-			}
-	  }
-      
-     
+      $param['used']                = array();     
       $param['readonly']            = false;
       $param['on_change']           = '';
       $param['width']               = '';
@@ -1787,6 +1767,7 @@ class Dropdown {
             } else {
                if (!isset($param['used'][$key])) {
                   $output .= "<option value='".$key."'";
+				  echo "<script type=\"text/javascript\" > console.log(\"selected : \"".$value.")</script>";
 					if (strcmp($p['action'],"update")===0) {
 						try	{
 							$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
@@ -1799,8 +1780,10 @@ class Dropdown {
 						
 						if($result) {
 							while($donnees = $result->fetch()) {
-								if(strcmp($donnees['name'],$value) == 0)
+								if(strcmp($donnees['name'],$value) == 0) {
 									$output .= " selected";
+									echo "<script type=\"text/javascript\" > console.log(\"selected\")</script>"; 
+								}
 							}
 						}
                       
@@ -1808,7 +1791,7 @@ class Dropdown {
 				  }
                   // Do not use in_array : trouble with 0 and empty value
                   foreach ($param['values'] as $value) {
-					  
+					  echo "<script type=\"text/javascript\" > console.log(\"selected2 : \"".$value.")</script>"; 
                      if (strcmp($p['action'],"update")===0) {
 						try	{
 							$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
@@ -1823,6 +1806,7 @@ class Dropdown {
 							while($donnees = $result->fetch()) {
 								if(strcmp($donnees['name'],$value) == 0) {
 									$output .= " selected";
+									echo "<script type=\"text/javascript\" > console.log(\"selected2\")</script>"; 
 									break;
 								}
 							}
