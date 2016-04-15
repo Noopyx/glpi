@@ -1789,7 +1789,6 @@ class Dropdown {
 				  }
                   // Do not use in_array : trouble with 0 and empty value
                   foreach ($param['values'] as $value) {
-					  echo "<script type=\"text/javascript\" > console.log(\"selected2 : \"".$value.")</script>"; 
                      if (strcmp($p['action'],"update")===0) {
 						try	{
 							$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
