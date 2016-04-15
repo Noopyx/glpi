@@ -1921,9 +1921,8 @@ abstract class CommonITILObject extends CommonDBTM {
 		}
 		if(isset($p['action']) && strcmp($p['action'],"add") === 0) {
 			$sql = "SELECT * FROM glpi_users WHERE name='".$_SESSION["glpiname"]."'";
-		$result = $DB->query($sql);
-		
-		if (strcmp($p['action'],"add") === 0) {		
+			$result = $DB->query($sql);
+			
 			if($result) {
 				while ($donnees = $result->fetch()) {
 					if($donnees['opData'] == 1) 
