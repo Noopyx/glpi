@@ -3639,7 +3639,7 @@ class Ticket extends CommonITILObject {
       $colsize2 = '29';
       $colsize3 = '13';
       $colsize4 = '45';
-
+//http://100.66.4.6/glpi/front/ticket.form.php?_date=2016-04-14+17%3A38&date=2016-04-14+17%3A38%3A01&_due_date=&due_date=&slas_id=0&users_id_recipient=15&type=1&itilcategories_id=3&status=1&requesttypes_id=1&urgency=4&global_validation=2&priority=6&locations_id=0&_itil_requester%5B_type%5D=&_itil_observer%5B_type%5D=&_itil_assign%5B_type%5D=&name=test&content=test&_link%5Blink%5D=1&_link%5Btickets_id_1%5D=39&_link%5Btickets_id_2%5D=0&update=Sauvegarder&_read_date_mod=2016-04-15+10%3A42%3A12&filename%5B%5D=&id=39&_glpi_csrf_token=3d7fee65a7480d25e7f5f4a2bc838fd3
       $canupdate_descr = $canupdate
                          || (($this->fields['status'] == self::INCOMING)
                              && $this->isUser(CommonITILActor::REQUESTER, Session::getLoginUserID())
@@ -3647,7 +3647,7 @@ class Ticket extends CommonITILObject {
                              && ($this->numberOfTasks() == 0));
 
       if (!$options['template_preview']) {
-         echo "<form method='get' name='form_ticket' enctype='multipart/form-data' action='".
+         echo "<form method='post' name='form_ticket' enctype='multipart/form-data' action='".
                 $CFG_GLPI["root_doc"]."/front/ticket.form.php'>";
          if (isset($options['_projecttasks_id'])) {
             echo "<input type='hidden' name='_projecttasks_id' value='".$options['_projecttasks_id']."'>";
