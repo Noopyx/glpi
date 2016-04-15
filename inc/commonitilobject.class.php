@@ -1949,7 +1949,7 @@ abstract class CommonITILObject extends CommonDBTM {
 			$output .= "<option value=".$key.">".$val."</option>";
 		}
 		
-		$output .= "</select>"
+		$output .= "</select>";
 		
 		return $output;
       //return Dropdown::showFromArray($p['name'],$values, $p, $options['id']);
