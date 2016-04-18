@@ -1903,6 +1903,7 @@ class User extends CommonDBTM {
 				function reloadGroup () {
 					document.getElementById(\"form\").submit();
 				}
+				console.log(\" ID : \"".$ID.");
 				</script>";
 		 echo "<select name=\"group\" size=1 onChange=\"reloadGroup()\">";
 		 try {
@@ -1924,7 +1925,6 @@ class User extends CommonDBTM {
 				 }
 			 
 			$result = $bdd->query("select * from glpi_groups");
-			$result2 = $bdd->query("select * from glpi_users where id=".$ID);
 
 				while ($donnees = $result->fetch()) {
 					if($donnees['groups_id'] != 0 && isset($dropdown[$donnees['groups_id']]))
