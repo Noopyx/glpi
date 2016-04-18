@@ -257,14 +257,58 @@ class Group extends CommonTreeDropdown {
                            'used'   => (($ID > 0) ? getSonsOf($this->getTable(), $ID) : array())));
       echo "</td>";
 	  echo "<td>";
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  echo "</tr>";
+	  echo "<div id=\"checkBox\" display=\"inline-block\">";
+		 
+		 try {
+			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+	    }
+		catch(Exception $e)
+		{
+			die('Erreur : '.$e->getMessage());
+		}
+		$sql = "SELECT * FROM glpi_users WHERE id=".$ID;
+		$result = $DB->query($sql);
+		
+		$op = 0;
+		$telecom = 0;
+		$visio = 0;
+		$contact = 0;
+		
+		if($result) {
+			while ($donnees = $result->fetch()) {
+				$op = $donnees["op"];
+				$telecom = $donnees["telecom"];
+				$visio = $donnees["visio"];
+				$contact = $donnees["contact"];
+			}
+		}
+		
+		foreach ($_SESSION['glpigroups'] as $g => $v)
+		echo "<script type=\"text/javascript\"> console.log(".$v.")</script>";
+		
+		if($op == 1)
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=1 checked=\"checked\">   Operateur    ";
+		else
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=1>   Operateur    ";	
+	 	 
+		if($telecom == 1)
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=2 checked=\"checked\">   Telecom     <br/>";
+		else
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=2>   Telecom     <br/>";
+	 
+		 if($visio == 1)
+			 echo "<input type=\"checkbox\" name=\"category[]\" value=3 checked=\"checked\">   Visio-Conference     <br/>";
+			else
+			 echo "<input type=\"checkbox\" name=\"category[]\" value=3>   Visio-Conference     <br/>";
+	 
+		if($contact == 1)
+			 echo "<input type=\"checkbox\" name=\"category[]\" value=4 checked=\"checked\">   Centre de contact     <br/>";
+			else
+			 echo "<input type=\"checkbox\" name=\"category[]\" value=4>   Centre de contact     <br/>";
+	 
+	 
+	 
+         echo "</div></td>";
 
       echo "<tr class='tab_bg_1'>";
       echo "<td class='subheader' colspan='2'>".__('Visible in a ticket');

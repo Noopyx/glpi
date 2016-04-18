@@ -74,8 +74,36 @@ if (isset($_POST["add"])) {
    }
 
 } else if (isset($_POST["update"])) {
+	$op = 0;
+	$telecom = 0;
+	$visio = 0;
+	$contact = 0;
    $group->check($_POST["id"], UPDATE);
    $group->update($_POST);
+   foreach($_POST['category'] as $valeur) {
+	   if( $valeur == 1)
+		   $op = 1;
+	   if( $valeur == 2)
+		   $telecom = 1;
+	   if( $valeur == 3)
+		   $visio = 1;
+	   if( $valeur == 4)
+		   $contact = 1;
+	}
+	
+	try {
+		$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+	}
+	catch(Exception $e)
+	{
+		die('Erreur : '.$e->getMessage());
+	}
+	
+	/*if ( isset($_POST['komeo'])) {
+		if (opData == 1)
+			$DB->exec('UPDATE glpi_users SET usercategories_id =  WHERE id='.$_POST["id"]);
+	}*/
+	$DB->exec('UPDATE glpi_groups SET op ='.$op.' , telecom = '.$telecom.' , visio = '.$visio.' , contact = '.$contact.' WHERE id='.$_POST["id"]);
    Event::log($_POST["id"], "groups", 4, "setup",
               //TRANS: %s is the user login
               sprintf(__('%s updates an item'), $_SESSION["glpiname"]));
