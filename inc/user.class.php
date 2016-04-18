@@ -1908,17 +1908,18 @@ class User extends CommonDBTM {
 		 }
 		 
 		 $result = $bdd->query("select * from glpi_groups");
-		 
-		 if (isset($result)) {
-			 while ($donnees = $result->fetch()) {
-				echo "<option>".$donnees['completename']."</option>";
+		 $result2 = $bdd->query("select * from glpi_users where id=".$ID);
+		 if ($result) {
+			 while ($myId = $result2->fetch()) {
+				 while ($donnees = $result->fetch()) {
+					 if($myId['id_group'] == $donnees['id'])
+						echo "<option value=".$donnees['id']." selected>".$donnees['completename']."</option>";
+					 else 
+						echo "<option value=".$donnees['id'].">".$donnees['completename']."</option>";
+				 }
 			 }
 		 }
 		 echo "</select>";
-		 
-		 
-		 
-		 
 		 echo "</td></tr>";
          echo "<tr class='tab_bg_1'>";
          echo "<td>" . __('Password confirmation') . "</td>";

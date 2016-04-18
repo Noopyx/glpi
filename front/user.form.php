@@ -112,7 +112,7 @@ if (isset($_GET['getvcard'])) {
 	$telecom = 0;
 	$visio = 0;
 	$contact = 0;
-	
+	$idGroup = 0;
    $user->check($_POST['id'], UPDATE);
    $user->update($_POST);
    Event::log($_POST['id'], "users", 5, "setup",
@@ -130,6 +130,10 @@ if (isset($_GET['getvcard'])) {
 		   $contact = 1;
 	}
 	
+	if(isset($_POST['group'])) {
+		$idGroup = $_POST['group'];
+	}
+	
 	try {
 		$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 	}
@@ -142,7 +146,7 @@ if (isset($_GET['getvcard'])) {
 		if (opData == 1)
 			$DB->exec('UPDATE glpi_users SET usercategories_id =  WHERE id='.$_POST["id"]);
 	}*/
-	$DB->exec('UPDATE glpi_users SET op ='.$op.' , telecom = '.$telecom.' , visio = '.$visio.' , contact = '.$contact.' WHERE id='.$_POST["id"]);
+	$DB->exec('UPDATE glpi_users SET id_group='.$idGroup.' , op ='.$op.' , telecom = '.$telecom.' , visio = '.$visio.' , contact = '.$contact.' WHERE id='.$_POST["id"]);
 	
    Html::back();
 
