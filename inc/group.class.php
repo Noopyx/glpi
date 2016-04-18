@@ -259,7 +259,7 @@ class Group extends CommonTreeDropdown {
 	  echo "<td>";
 	  echo "<div id=\"checkBox\" display=\"inline-block\">";
 		 
-		/* try {
+		try {
 			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 	    }
 		catch(Exception $e)
@@ -306,7 +306,7 @@ class Group extends CommonTreeDropdown {
 			else
 			 echo "<input type=\"checkbox\" name=\"category[]\" value=4>   Centre de contact     <br/>";
 	 
-	 */
+	 
 	 
          echo "</div></td>";
 
