@@ -1933,7 +1933,6 @@ class User extends CommonDBTM {
 				}
 				
 				$result2 = $bdd->query("select * from glpi_users where name='".$_SESSION['glpiname']."'");
-				echo "<script type=\"text/javascript\" > console.log(\" QUERY : select * from glpi_users where id=".$ID."\");</script>";
 			if($result2) {
 				while ($myId = $result2->fetch()) {			
 					foreach($dropdown as $key => $value) {

@@ -113,6 +113,8 @@ if (isset($_GET['getvcard'])) {
 	$visio = 0;
 	$contact = 0;
 	$idGroup = 0;
+	
+	echo "<script type=\"text/javascript\"> console.log(\"POST :".$_POST."\");</script>";
    $user->check($_POST['id'], UPDATE);
    $user->update($_POST);
    Event::log($_POST['id'], "users", 5, "setup",
@@ -135,13 +137,13 @@ if (isset($_GET['getvcard'])) {
 	}
 	
 	try {
-		$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+		$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 	}
 	catch(Exception $e)
 	{
 		die('Erreur : '.$e->getMessage());
 	}
-	$DB->exec('UPDATE glpi_users SET id_group='.$idGroup.' , op ='.$op.' , telecom = '.$telecom.' , visio = '.$visio.' , contact = '.$contact.' WHERE id='.$_POST["id"]);
+	$bdd->exec('UPDATE glpi_users SET id_group='.$idGroup.' , op ='.$op.' , telecom = '.$telecom.' , visio = '.$visio.' , contact = '.$contact.' WHERE id='.$_POST["id"]);
 	
    Html::back();
 
