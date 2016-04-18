@@ -266,7 +266,7 @@ class Group extends CommonTreeDropdown {
 		{
 			die('Erreur : '.$e->getMessage());
 		}
-		$sql = "SELECT * FROM glpi_users WHERE id=".$ID;
+		$sql = "SELECT * FROM glpi_users WHERE name='".$_SESSION['glpiname']."'";
 		$result = $DB->query($sql);
 		
 		$op = 0;
