@@ -1897,6 +1897,35 @@ class User extends CommonDBTM {
          //echo "<td rowspan='2'>".__('Password security policy')."</td>";
          echo "<td rowspan='2'>";
          //Config::displayPasswordSecurityChecks();
+		 echo "</td><td rowspan='2'>";
+		 echo "Groupe";
+		 echo "</td><td>";
+		 echo "<select name="group" size=1>"
+		 try {
+			 $bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+		 }
+		 catch(Exception $e) {
+			die('Erreur : '.$e->getMessage());
+		 }
+		 
+		 $result = $bdd->query("select * from glpi_groups");
+		 
+		 if (isset($result)) {
+			 while ($donnees = $result->fetch()) {
+				echo "<option>".$donnees['completename']."</option>";
+			 }
+		 }
+		 echo "</select>";
+		 
+		 
+		 
+		 
+		 echo "</tr>";
+         echo "<tr class='tab_bg_1'>";
+         echo "<td>" . __('Password confirmation') . "</td>";
+         echo "<td><input type='password' name='password2' value='' size='20' autocomplete='off'>";
+         echo "</td>";
+		 
 		 echo "<div id=\"checkBox\" display=\"inline-block\">";
 		 
 		 try {
@@ -1948,20 +1977,7 @@ class User extends CommonDBTM {
 	 
 	 
 	 
-         echo "</div></td>";
-			
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 echo "</tr>";
-         echo "<tr class='tab_bg_1'>";
-         echo "<td>" . __('Password confirmation') . "</td>";
-         echo "<td><input type='password' name='password2' value='' size='20' autocomplete='off'>";
-         echo "</td></tr>";
+         echo "</div></tr>";
       }
 
       echo "<tr class='tab_bg_1'>";
