@@ -1917,9 +1917,6 @@ class User extends CommonDBTM {
 		 
 		 $dropdown = array();
 		 
-		 $dropdown[0] = array();
-		 $dropdown[0][]
-		 
 		 if ($result) {
 			 while ($myId = $result2->fetch()) {
 				 while ($donnees = $result->fetch()) {
