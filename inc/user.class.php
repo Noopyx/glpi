@@ -1918,12 +1918,11 @@ class User extends CommonDBTM {
 		 $dropdown = array();
 		 
 		 if ($result) {
-			 while ($myId = $result2->fetch()) {
 				 while ($donnees = $result->fetch()) {
 					 if($donnees['groups_id'] == 0)
 						 $dropdown[$donnees['id']] = array();
 				 }
-			 }
+			 
 			$result = $bdd->query("select * from glpi_groups");
 			$result2 = $bdd->query("select * from glpi_users where id=".$ID);
 
