@@ -1920,7 +1920,7 @@ class User extends CommonDBTM {
 		 
 		 
 		 
-		 echo "</tr>";
+		 echo "</td></tr>";
          echo "<tr class='tab_bg_1'>";
          echo "<td>" . __('Password confirmation') . "</td>";
          echo "<td><input type='password' name='password2' value='' size='20' autocomplete='off'>";
