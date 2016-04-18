@@ -1895,7 +1895,8 @@ class User extends CommonDBTM {
          echo "<td><input id='password' type='password' name='password' value='' size='20'
                     autocomplete='off' onkeyup=\"return passwordCheck();\"></td>";
          //echo "<td rowspan='2'>".__('Password security policy')."</td>";
-         //Config::displayPasswordSecurityChecks();<td rowspan='2'>";
+         //Config::displayPasswordSecurityChecks();
+		 echo "<td rowspan='2'>";
 		 echo "Groupe";
 		 echo "</td><td>";
 		 echo "<select name=\"group\" size=1>";
