@@ -1899,7 +1899,12 @@ class User extends CommonDBTM {
 		 echo "<td>";
 		 echo "Groupe";
 		 echo "</td><td>";
-		 echo "<select name=\"group\" size=1>";
+		 echo "<script type=\"text/javascript\"> 
+				function reloadGroup () {
+					document.getElementById(\"form\").submit();
+				}
+				</script>";
+		 echo "<select name=\"group\" size=1 onChange=\"reloadGroup()\">";
 		 try {
 			 $bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 		 }
@@ -1950,6 +1955,18 @@ class User extends CommonDBTM {
 				$visio = $donnees["visio"];
 				$contact = $donnees["contact"];
 			}
+		}
+		
+		if($op == 0 && $telecom == 0 && $visio == 0 && $contact == 0) {
+			$result = $DB->query("select * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id=".$ID.")");
+			if($result) {
+			while ($donnees = $result->fetch()) {
+				$op = $donnees["op"];
+				$telecom = $donnees["telecom"];
+				$visio = $donnees["visio"];
+				$contact = $donnees["contact"];
+			}
+		}
 		}
 		
 		foreach ($_SESSION['glpigroups'] as $g => $v)
