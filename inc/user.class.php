@@ -1900,7 +1900,9 @@ class User extends CommonDBTM {
 		 echo "Groupe";
 		 echo "</td><td>";
 		 echo "<script type=\"text/javascript\"> 
-				window.location.replace(document.location.href);
+				function reloadGroup () {
+					document.getElementById(\"form\").submit();
+				}
 				</script>";
 		 echo "<select name=\"group\" size=1 onChange=\"reloadGroup()\">";
 		 try {
@@ -1913,7 +1915,7 @@ class User extends CommonDBTM {
 		 $result = $bdd->query("select * from glpi_groups");
 		 
 		 
-		 $dropdown = array();
+		$dropdown = array();
 		 
 		 if ($result) {
 				 while ($donnees = $result->fetch()) {
@@ -1977,21 +1979,16 @@ class User extends CommonDBTM {
 			}
 		 }
 		 
-		 /*$result2 = $bdd->query("select * from glpi_users where id=".$ID);
+		 /*$result = $bdd->query("select * from glpi_groups");
+		 $result2 = $bdd->query("select * from glpi_users where id=".$ID);
 		 if ($result) {
 			 
-			 if($result2) {
-				while ($myId = $result2->fetch()) {
+			 if()
+			 while ($myId = $result2->fetch()) {
 				 while ($donnees = $result->fetch()) {
 					 if($myId['id_group'] == $donnees['id'])
 						echo "<option value=".$donnees['id']." selected>".$donnees['completename']."</option>";
 					 else 
-						echo "<option value=".$donnees['id'].">".$donnees['completename']."</option>";
-				 }
-			 }
-			 }
-			 else {
-				 while ($donnees = $result->fetch()) {
 						echo "<option value=".$donnees['id'].">".$donnees['completename']."</option>";
 				 }
 			 }
