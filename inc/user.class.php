@@ -1929,17 +1929,17 @@ class User extends CommonDBTM {
 
 				while ($donnees = $result->fetch()) {
 					if($donnees['groups_id'] != 0 && isset($dropdown[$donnees['groups_id']]))
-						$dropdown[$donnees['groups_id']][$donnees['id']] = $donnees['completename'];
+						$dropdown[$donnees['groups_id']][$donnees['id']] = $donnees['name'];
 					else if ($donnees['groups_id'] != 0)
-						$dropdown[$donnees['id']] = $donnees['completename'];
+						$dropdown[$donnees['id']] = $donnees['name'];
 				}
 				
 			while ($myId = $result2->fetch()) {			
 				foreach($dropdown as $key => $value) {
 					if(is_array($value)) {
-						$result = $bdd->query("select completename from glpi_groups where id=".$key);
+						$result = $bdd->query("select name from glpi_groups where id=".$key);
 						while($donnees = $result->fetch())
-							echo "<optgroup label=\"".$donnees['completename']."\">";
+							echo "<optgroup label=\"".$donnees['name']."\">";
 						
 						foreach ($dropdown[$key] as $key2 => $val2) {
 							if ($myId['id_group'] == $key2)
