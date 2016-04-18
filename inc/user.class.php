@@ -1944,18 +1944,18 @@ class User extends CommonDBTM {
 							
 								foreach ($dropdown[$key] as $key2 => $val2) {
 									if ($myId['id_group'] == $key2)
-										echo "<option value=".$donnees['id']." selected>".$val2."</option>";
+										echo "<option value=".$key2." selected>".$val2."</option>";
 									else
-										echo "<option value=".$donnees['id']." >".$val2."</option>";
+										echo "<option value=".$key2." >".$val2."</option>";
 								}
 								echo "</optgroup>";
 							}
 						}
 						else {
 							if ($myId['id_group'] == $key)
-								echo "<option selected>".$val."</option>";
+								echo "<option value=".$key." selected>".$val."</option>";
 							else
-								echo "<option>".$val."</option>";
+								echo "<option value=".$key." >".$val."</option>";
 						}
 					}
 				}
