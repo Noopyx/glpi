@@ -108,8 +108,7 @@ if (isset($_GET['getvcard'])) {
    Html::back();
 
 } else if (isset($_POST["update"])) {
-	$opData = 0;
-	$opVoice = 0;
+	$op = 0;
 	$telecom = 0;
 	$visio = 0;
 	$contact = 0;
@@ -122,14 +121,12 @@ if (isset($_GET['getvcard'])) {
 			  
 	foreach($_POST['category'] as $valeur) {
 	   if( $valeur == 1)
-		   $opData = 1;
+		   $op = 1;
 	   if( $valeur == 2)
-		   $opVoice = 1;
-	   if( $valeur == 3)
 		   $telecom = 1;
-	   if( $valeur == 4)
+	   if( $valeur == 3)
 		   $visio = 1;
-	   if( $valeur == 5)
+	   if( $valeur == 4)
 		   $contact = 1;
 	}
 	
@@ -145,7 +142,7 @@ if (isset($_GET['getvcard'])) {
 		if (opData == 1)
 			$DB->exec('UPDATE glpi_users SET usercategories_id =  WHERE id='.$_POST["id"]);
 	}*/
-	$DB->exec('UPDATE glpi_users SET opData ='.$opData.' , opVoice ='.$opVoice.' , telecom = '.$telecom.' , visio = '.$visio.' , contact = '.$contact.' WHERE id='.$_POST["id"]);
+	$DB->exec('UPDATE glpi_users SET op ='.$op.' , telecom = '.$telecom.' , visio = '.$visio.' , contact = '.$contact.' WHERE id='.$_POST["id"]);
 	
    Html::back();
 

@@ -1929,7 +1929,7 @@ abstract class CommonITILObject extends CommonDBTM {
 			
 			if($result) {
 				while ($donnees = $result->fetch()) {
-					if($donnees['opData'] == 1) 
+					if($donnees['op'] == 1) 
 						$values[1] = "Operateur";
 					if($donnees['telecom'] == 1) 
 						$values[2] = "Telecom";
