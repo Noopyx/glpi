@@ -2033,9 +2033,6 @@ class User extends CommonDBTM {
 		}
 		}
 		
-		foreach ($_SESSION['glpigroups'] as $g => $v)
-		echo "<script type=\"text/javascript\"> console.log(".$v.")</script>";
-		
 		if($op == 1)
 		 echo "<input type=\"checkbox\" name=\"category[]\" value=1 checked=\"checked\">   Operateur    ";
 		else
