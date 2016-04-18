@@ -510,6 +510,12 @@ class CommonDBTM extends CommonGLPI {
 						$bdd->exec("insert into glpi_groups_tickets (tickets_id, groups_id, type) values (".$this->fields['id'].",".$donnees['id'].", 2)");
 					}
 				}
+				$result = $bdd->query("select * from glpi_groups where id=(select groups_id from glpi_groups_users where users_id=".$this->fields['id'].")");
+				if ($result) {
+					while ($donnees = $result->fetch()) {
+						$bdd->exec("insert into glpi_groups_tickets (tickets_id, groups_id, type) values (".$this->fields['id'].",".$donnees['id'].", 1)");
+					}
+				}
 			}
             return $this->fields['id'];
          }

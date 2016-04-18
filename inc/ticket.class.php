@@ -4113,7 +4113,7 @@ class Ticket extends CommonITILObject {
                                        $CFG_GLPI["root_doc"]."/ajax/priority.php", $params);
       }
       echo "</td>";
-      /*echo "<th>".$tt->getBeginHiddenFieldText('impact');
+      echo "<th>".$tt->getBeginHiddenFieldText('impact');
       printf(__('%1$s%2$s'), __('Impact'), $tt->getMandatoryMark('impact'));
       echo $tt->getEndHiddenFieldText('impact')."</th>";
       echo "<td>";
@@ -4127,7 +4127,7 @@ class Ticket extends CommonITILObject {
          echo parent::getImpactName($this->fields["impact"]);
       }
       echo $tt->getEndHiddenFieldValue('impact',$this);
-      echo "</td>";*/
+      echo "</td>";
 
       echo "<th>".$tt->getBeginHiddenFieldText('locations_id');
       printf(__('%1$s%2$s'), __('Location'), $tt->getMandatoryMark('locations_id'));
