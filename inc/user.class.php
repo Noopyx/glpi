@@ -1979,7 +1979,6 @@ class User extends CommonDBTM {
 			}
 		 }*/
 		 
-		 $result = $bdd->query("select * from glpi_groups");
 		 $result2 = $bdd->query("select * from glpi_users where id=".$ID);
 		 if ($result) {
 			 
