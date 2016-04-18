@@ -255,7 +255,16 @@ class Group extends CommonTreeDropdown {
                            'name'   => 'groups_id',
                            'entity' => $this->fields['entities_id'],
                            'used'   => (($ID > 0) ? getSonsOf($this->getTable(), $ID) : array())));
-      echo "</td></tr>";
+      echo "</td>";
+	  echo "<td>";
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  echo "</tr>";
 
       echo "<tr class='tab_bg_1'>";
       echo "<td class='subheader' colspan='2'>".__('Visible in a ticket');

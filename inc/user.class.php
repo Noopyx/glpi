@@ -1909,16 +1909,14 @@ class User extends CommonDBTM {
 		$sql = "SELECT * FROM glpi_users WHERE id=".$ID;
 		$result = $DB->query($sql);
 		
-		$opData = 0;
-		$opVoice = 0;
+		$op = 0;
 		$telecom = 0;
 		$visio = 0;
 		$contact = 0;
 		
 		if($result) {
 			while ($donnees = $result->fetch()) {
-				$opData = $donnees["opData"];
-				$opVoice = $donnees["opVoice"];
+				$op = $donnees["op"];
 				$telecom = $donnees["telecom"];
 				$visio = $donnees["visio"];
 				$contact = $donnees["contact"];
@@ -1928,30 +1926,25 @@ class User extends CommonDBTM {
 		foreach ($_SESSION['glpigroups'] as $g => $v)
 		echo "<script type=\"text/javascript\"> console.log(".$v.")</script>";
 		
-		if($opData == 1)
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=1 checked=\"checked\">   Operateur DATA     ";
+		if($op == 1)
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=1 checked=\"checked\">   Operateur    ";
 		else
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=1>   Operateur DATA     ";	
-	 
-		if($opVoice == 1)
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=2 checked=\"checked\">   Operateur Voix     <br/>";
-		else
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=2>   Operateur Voix     <br/>";	
-	 
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=1>   Operateur    ";	
+	 	 
 		if($telecom == 1)
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=3 checked=\"checked\">   Telecom     ";
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=2 checked=\"checked\">   Telecom     ";
 		else
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=3>   Telecom     ";
+		 echo "<input type=\"checkbox\" name=\"category[]\" value=2>   Telecom     ";
 	 
 		 if($visio == 1)
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=4 checked=\"checked\">   Visio-Conference     <br/>";
+			 echo "<input type=\"checkbox\" name=\"category[]\" value=3 checked=\"checked\">   Visio-Conference     <br/>";
 			else
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=4>   Visio-Conference     <br/>";
+			 echo "<input type=\"checkbox\" name=\"category[]\" value=3>   Visio-Conference     <br/>";
 	 
 		if($contact == 1)
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=5 checked=\"checked\">   Centre de contact     <br/>";
+			 echo "<input type=\"checkbox\" name=\"category[]\" value=4 checked=\"checked\">   Centre de contact     <br/>";
 			else
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=5>   Centre de contact     <br/>";
+			 echo "<input type=\"checkbox\" name=\"category[]\" value=4>   Centre de contact     <br/>";
 	 
 	 
 	 

@@ -1930,15 +1930,13 @@ abstract class CommonITILObject extends CommonDBTM {
 			if($result) {
 				while ($donnees = $result->fetch()) {
 					if($donnees['opData'] == 1) 
-						$values[1] = "Operateur DATA";
-					if($donnees['opVoice'] == 1) 
-						$values[2] = "Operateur VOIX";
+						$values[1] = "Operateur";
 					if($donnees['telecom'] == 1) 
-						$values[3] = "Telecom";
+						$values[2] = "Telecom";
 					if($donnees['visio'] == 1) 
-						$values[4] = "Visio-Conference";
+						$values[3] = "Visio-Conference";
 					if($donnees['contact'] == 1) 
-						$values[5] = "Centre de contact";
+						$values[4] = "Centre de contact";
 				}
 			}
 		
