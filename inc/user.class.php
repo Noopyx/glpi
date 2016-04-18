@@ -1938,15 +1938,15 @@ class User extends CommonDBTM {
 				while ($myId = $result2->fetch()) {			
 					foreach($dropdown as $key => $value) {
 						if(is_array($value)) {
-							$result = $bdd->query("select name from glpi_groups where id=".$key);
+							$result = $bdd->query("select * from glpi_groups where id=".$key);
 							while($donnees = $result->fetch()) {
 								echo "<optgroup label=\"".$donnees['name']."\">";
 							
 								foreach ($dropdown[$key] as $key2 => $val2) {
 									if ($myId['id_group'] == $key2)
-										echo "<option value='".$donnees['id']."' selected>".$val2."</option>";
+										echo "<option value=".$donnees['id']." selected>".$val2."</option>";
 									else
-										echo "<option value='".$donnees['id']."' >".$val2."</option>";
+										echo "<option value=".$donnees['id']." >".$val2."</option>";
 								}
 								echo "</optgroup>";
 							}
