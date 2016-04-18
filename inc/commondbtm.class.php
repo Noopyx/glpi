@@ -365,10 +365,11 @@ class CommonDBTM extends CommonGLPI {
 				if($this->fields['itilcategories_id'] == 5)
 					$mycategory = $bdd->query("select * from glpi_itilcategories where name='Centre de contact'");
 				
-				while ($donnees = $mycategory->fetch()) {
+				if(isset($mycategory)) {
+					while ($donnees = $mycategory->fetch()) {
 						$this->fields['itilcategories_id'] = $donnees['id'];
 					}
-			
+				}
 			
 			}
 		
@@ -510,7 +511,6 @@ class CommonDBTM extends CommonGLPI {
 						$bdd->exec("insert into glpi_groups_tickets (tickets_id, groups_id, type) values (".$this->fields['id'].",".$donnees['id'].", 2)");
 					}
 				}
-				echo "<script type=\"text/javascript\">console.log(\"ID : ".$this->fields['users_id_recipient']."\");</script>";
 				$result = $bdd->query("select * from glpi_groups where id=(select groups_id from glpi_groups_users where users_id=".$this->fields['users_id_recipient'].")");
 				while ($donnees = $result->fetch()) {
 					if (isset($donnees['id'])) {
