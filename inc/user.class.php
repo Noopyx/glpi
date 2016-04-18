@@ -1900,9 +1900,7 @@ class User extends CommonDBTM {
 		 echo "Groupe";
 		 echo "</td><td>";
 		 echo "<script type=\"text/javascript\"> 
-				function reloadGroup () {
-					document.getElementById(\"form\").submit();
-				}
+				window.location.replace(document.location.href);
 				</script>";
 		 echo "<select name=\"group\" size=1 onChange=\"reloadGroup()\">";
 		 try {
@@ -1915,7 +1913,7 @@ class User extends CommonDBTM {
 		 $result = $bdd->query("select * from glpi_groups");
 		 
 		 
-		/* $dropdown = array();
+		 $dropdown = array();
 		 
 		 if ($result) {
 				 while ($donnees = $result->fetch()) {
@@ -1977,9 +1975,9 @@ class User extends CommonDBTM {
 						}
 					}
 			}
-		 }*/
+		 }
 		 
-		 $result2 = $bdd->query("select * from glpi_users where id=".$ID);
+		 /*$result2 = $bdd->query("select * from glpi_users where id=".$ID);
 		 if ($result) {
 			 
 			 if($result2) {
@@ -1997,7 +1995,7 @@ class User extends CommonDBTM {
 						echo "<option value=".$donnees['id'].">".$donnees['completename']."</option>";
 				 }
 			 }
-		 }
+		 }*/
 		 echo "</select>";
 		 echo "</td>";
 		 echo "</tr>";
