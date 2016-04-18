@@ -1896,7 +1896,7 @@ class User extends CommonDBTM {
                     autocomplete='off' onkeyup=\"return passwordCheck();\"></td>";
          //echo "<td rowspan='2'>".__('Password security policy')."</td>";
          //Config::displayPasswordSecurityChecks();
-		 echo "<td rowspan='2'>";
+		 echo "<td rowspan='3'>";
 		 echo "Groupe";
 		 echo "</td><td>";
 		 echo "<select name=\"group\" size=1>";
@@ -1925,7 +1925,7 @@ class User extends CommonDBTM {
          echo "<td><input type='password' name='password2' value='' size='20' autocomplete='off'>";
          echo "</td>";
 		 
-		 echo "<div id=\"checkBox\" display=\"inline-block\">";
+		 echo "<td><div id=\"checkBox\" display=\"inline-block\">";
 		 
 		 try {
 			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
@@ -1976,7 +1976,7 @@ class User extends CommonDBTM {
 	 
 	 
 	 
-         echo "</div></tr>";
+         echo "</div></td></tr>";
       }
 
       echo "<tr class='tab_bg_1'>";
