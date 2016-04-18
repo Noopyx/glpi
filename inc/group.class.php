@@ -256,7 +256,7 @@ class Group extends CommonTreeDropdown {
                            'entity' => $this->fields['entities_id'],
                            'used'   => (($ID > 0) ? getSonsOf($this->getTable(), $ID) : array())));
       echo "</td>";
-	  echo "<td>";
+	  echo "<td rowspan='9' class='middle'>";
 	  echo "<div id=\"checkBox\" display=\"inline-block\">";
 		 
 		try {
