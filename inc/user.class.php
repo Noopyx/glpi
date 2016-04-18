@@ -1900,7 +1900,7 @@ class User extends CommonDBTM {
 		 echo "</td><td rowspan='2'>";
 		 echo "Groupe";
 		 echo "</td><td>";
-		 echo "<select name=\"group\" size=1>"
+		 echo "<select name=\"group\" size=1>";
 		 try {
 			 $bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 		 }
