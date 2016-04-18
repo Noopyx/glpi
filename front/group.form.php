@@ -98,11 +98,6 @@ if (isset($_POST["add"])) {
 	{
 		die('Erreur : '.$e->getMessage());
 	}
-	
-	/*if ( isset($_POST['komeo'])) {
-		if (opData == 1)
-			$DB->exec('UPDATE glpi_users SET usercategories_id =  WHERE id='.$_POST["id"]);
-	}*/
 	$DB->exec('UPDATE glpi_groups SET op ='.$op.' , telecom = '.$telecom.' , visio = '.$visio.' , contact = '.$contact.' WHERE id='.$_POST["id"]);
    Event::log($_POST["id"], "groups", 4, "setup",
               //TRANS: %s is the user login
