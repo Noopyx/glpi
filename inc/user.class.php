@@ -1914,7 +1914,55 @@ class User extends CommonDBTM {
 		 
 		 $result = $bdd->query("select * from glpi_groups");
 		 $result2 = $bdd->query("select * from glpi_users where id=".$ID);
+		 
+		 $dropdown = array();
+		 
+		 $dropdown[0] = array();
+		 $dropdown[0][]
+		 
 		 if ($result) {
+			 while ($myId = $result2->fetch()) {
+				 while ($donnees = $result->fetch()) {
+					 if($donnees['groups_id'] == 0)
+						 $dropdown[$donnees['id']] = array();
+				 }
+			 }
+			$result = $bdd->query("select * from glpi_groups");
+			$result2 = $bdd->query("select * from glpi_users where id=".$ID);
+
+				while ($donnees = $result->fetch()) {
+					if($donnees['groups_id'] != 0 && isset($dropdown[$donnees['groups_id']]))
+						$dropdown[$donnees['groups_id']][$donnees['id']] = $donnees['completename'];
+					else if ($donnees['groups_id'] != 0)
+						$dropdown[$donnees['id']] = $donnees['completename'];
+				}
+				
+			while ($myId = $result2->fetch()) {			
+				foreach($dropdown as $key => $value) {
+					if(is_array($value)) {
+						$result = $bdd->query("select completename from glpi_groups where id=".$key);
+						while($donnees = $result->fetch())
+							echo "<optgroup label=\"".$donnees['completename']."\">";
+						
+						foreach ($dropdown[$key] as $key2 => $val2) {
+							if ($myId['id_group'] == $key2)
+								echo "<option selected>".$val2."</option>";
+							else
+								echo "<option>".$val2."</option>";
+						}
+						
+						echo "</optgroup>";
+					}
+					else {
+						if ($myId['id_group'] == $key)
+							echo "<option selected>".$val."</option>";
+						else
+							echo "<option>".$val."</option>";
+					}
+				}
+			}
+		 }
+		 /*if ($result) {
 			 while ($myId = $result2->fetch()) {
 				 while ($donnees = $result->fetch()) {
 					 if($myId['id_group'] == $donnees['id'])
@@ -1923,7 +1971,7 @@ class User extends CommonDBTM {
 						echo "<option value=".$donnees['id'].">".$donnees['completename']."</option>";
 				 }
 			 }
-		 }
+		 }*/
 		 echo "</select>";
 		 echo "</td></tr>";
          echo "<tr class='tab_bg_1'>";
