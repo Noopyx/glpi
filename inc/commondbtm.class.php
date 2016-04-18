@@ -2262,7 +2262,7 @@ class CommonDBTM extends CommonGLPI {
       }
 
       if ($this->canEdit($ID)) {
-         echo "<form id='form' name='form' method='post' action='".$params['target']."' ".
+         echo "<form id='form' name='form' method='get' action='".$params['target']."' ".
                 $params['formoptions']." enctype=\"multipart/form-data\">";
 
          //Should add an hidden entities_id field ?
