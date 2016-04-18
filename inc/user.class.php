@@ -1913,7 +1913,7 @@ class User extends CommonDBTM {
 		 }
 		 
 		 $result = $bdd->query("select * from glpi_groups");
-		 $result2 = $bdd->query("select * from glpi_users where id=".$ID);
+		 
 		 
 		 $dropdown = array();
 		 
@@ -1932,6 +1932,7 @@ class User extends CommonDBTM {
 						$dropdown[$donnees['id']] = $donnees['name'];
 				}
 				
+				$result2 = $bdd->query("select * from glpi_users where id=".$ID);
 			while ($myId = $result2->fetch()) {			
 				foreach($dropdown as $key => $value) {
 					if(is_array($value)) {
