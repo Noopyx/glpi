@@ -114,7 +114,6 @@ if (isset($_GET['getvcard'])) {
 	$contact = 0;
 	$idGroup = 0;
 	
-	echo "<script type=\"text/javascript\"> console.log(\"POST :".$_POST."\");</script>";
    $user->check($_POST['id'], UPDATE);
    $user->update($_POST);
    Event::log($_POST['id'], "users", 5, "setup",

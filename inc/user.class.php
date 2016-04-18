@@ -1896,7 +1896,7 @@ class User extends CommonDBTM {
                     autocomplete='off' onkeyup=\"return passwordCheck();\"></td>";
          //echo "<td rowspan='2'>".__('Password security policy')."</td>";
          //Config::displayPasswordSecurityChecks();
-		 echo "<td>";
+		/* echo "<td>";
 		 echo "Groupe";
 		 echo "</td><td>";
 		 echo "<script type=\"text/javascript\"> 
@@ -1932,7 +1932,7 @@ class User extends CommonDBTM {
 						$dropdown[$donnees['id']] = $donnees['name'];
 				}
 				
-				$result2 = $bdd->query("select * from glpi_users where name='".$_SESSION['glpiname']."'");
+				$result2 = $bdd->query("select * from glpi_users where id=".$ID);
 			if($result2) {
 				while ($myId = $result2->fetch()) {			
 					foreach($dropdown as $key => $value) {
@@ -1978,7 +1978,7 @@ class User extends CommonDBTM {
 					}
 			}
 		 }
-		 /*if ($result) {
+		 if ($result) {
 			 while ($myId = $result2->fetch()) {
 				 while ($donnees = $result->fetch()) {
 					 if($myId['id_group'] == $donnees['id'])
@@ -1987,9 +1987,10 @@ class User extends CommonDBTM {
 						echo "<option value=".$donnees['id'].">".$donnees['completename']."</option>";
 				 }
 			 }
-		 }*/
+		 }
 		 echo "</select>";
-		 echo "</td></tr>";
+		 echo "</td>";*/
+		 echo "</tr>";
          echo "<tr class='tab_bg_1'>";
          echo "<td>" . __('Password confirmation') . "</td>";
          echo "<td><input type='password' name='password2' value='' size='20' autocomplete='off'>";
