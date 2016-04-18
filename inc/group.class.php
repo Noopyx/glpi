@@ -260,14 +260,14 @@ class Group extends CommonTreeDropdown {
 	  echo "<div id=\"checkBox\" display=\"inline-block\">";
 		 
 		try {
-			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+			$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 	    }
 		catch(Exception $e)
 		{
 			die('Erreur : '.$e->getMessage());
 		}
-		$sql = "SELECT * FROM glpi_users WHERE name='".$_SESSION['glpiname']."'";
-		$result = $DB->query($sql);
+		$sql = "SELECT * FROM glpi_groups WHERE id=".$ID;
+		$result = $bdd->query($sql);
 		
 		$op = 0;
 		$telecom = 0;
