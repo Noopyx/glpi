@@ -1933,29 +1933,49 @@ class User extends CommonDBTM {
 				}
 				
 				$result2 = $bdd->query("select * from glpi_users where id=".$ID);
-			while ($myId = $result2->fetch()) {			
-				foreach($dropdown as $key => $value) {
-					if(is_array($value)) {
-						$result = $bdd->query("select name from glpi_groups where id=".$key);
-						while($donnees = $result->fetch())
-							echo "<optgroup label=\"".$donnees['name']."\">";
-						
-						foreach ($dropdown[$key] as $key2 => $val2) {
-							if ($myId['id_group'] == $key2)
-								echo "<option value=".$donnees['id']." selected>".$val2."</option>";
-							else
-								echo "<option value=".$donnees['id']." >".$val2."</option>";
+			if($result2) {
+				while ($myId = $result2->fetch()) {			
+					foreach($dropdown as $key => $value) {
+						if(is_array($value)) {
+							$result = $bdd->query("select name from glpi_groups where id=".$key);
+							while($donnees = $result->fetch())
+								echo "<optgroup label=\"".$donnees['name']."\">";
+							
+							foreach ($dropdown[$key] as $key2 => $val2) {
+								if ($myId['id_group'] == $key2)
+									echo "<option value=".$donnees['id']." selected>".$val2."</option>";
+								else
+									echo "<option value=".$donnees['id']." >".$val2."</option>";
+							}
+							
+							echo "</optgroup>";
 						}
-						
-						echo "</optgroup>";
-					}
-					else {
-						if ($myId['id_group'] == $key)
-							echo "<option selected>".$val."</option>";
-						else
-							echo "<option>".$val."</option>";
+						else {
+							if ($myId['id_group'] == $key)
+								echo "<option selected>".$val."</option>";
+							else
+								echo "<option>".$val."</option>";
+						}
 					}
 				}
+			}
+			else {
+				foreach($dropdown as $key => $value) {
+						if(is_array($value)) {
+							$result = $bdd->query("select name from glpi_groups where id=".$key);
+							while($donnees = $result->fetch())
+								echo "<optgroup label=\"".$donnees['name']."\">";
+							
+							foreach ($dropdown[$key] as $key2 => $val2) {
+								echo "<option value=".$donnees['id']." >".$val2."</option>";
+							}
+							
+							echo "</optgroup>";
+						}
+						else {
+							echo "<option>".$val."</option>";
+						}
+					}
 			}
 		 }
 		 /*if ($result) {
