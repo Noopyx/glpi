@@ -1903,7 +1903,6 @@ class User extends CommonDBTM {
 				function reloadGroup () {
 					document.getElementById(\"form\").submit();
 				}
-				console.log(\" ID : \"".$ID.");
 				</script>";
 		 echo "<select name=\"group\" size=1 onChange=\"reloadGroup()\">";
 		 try {
