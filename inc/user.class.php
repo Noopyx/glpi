@@ -1900,36 +1900,44 @@ class User extends CommonDBTM {
 		 echo "Groupe";
 		 echo "</td><td>";
 		 
-		 if (isset($ID) && $ID > 0) {
-			 echo "<input type='hidden' name='update'>";
-			 echo "<script type=\"text/javascript\"> 
-					function reloadGroup () {
-						document.getElementById(\"form\").submit();
-					}
-					</script>";
-			 echo "<select name=\"group\" size=1 onChange=\"reloadGroup()\">";
-		 }
-		 else {
-			 echo "<script type=\"text/javascript\"> 
-					function reloadGroup () {
-						i = document.form.group.selectedIndex;
-						if (i == 0) return;
-						window.location.replace(\"/glpi/front/user.form.php?group=\"+document.form.group.options[i].value);
-					}
-					</script>";
-			 echo "<select name=\"group\" size=1 onChange=\"reloadGroup()\">";
-		 }
+		 
 		 try {
 			 $bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 		 }
 		 catch(Exception $e) {
 			die('Erreur : '.$e->getMessage());
 		 }
+
+		$output = "<script type=\"text/javascript\">
+					var tab = {};";
+			 
+		$result = $bdd->query("select * from glpi_groups");
+		if ($result) {
+			while ($donnees = $result->fetch()) {
+				$output .= "var tab[".$donnees['id']."] = [".$donnees['op']." , ".$donnees['telecom']." , ".$donnees['visio']." , ".$donnees['contact']."];";
+			}
+		}					
+		$output .= "function reloadGroup () {
+						i = document.form.group.selectedIndex;
+						if (i == 0) return;
+						
+						for (var id in tab) {
+							if (id == document.form.group.options[i].value) {
+								document.getElementsByName('category[]')[0].checked = tab[id][0];
+								document.getElementsByName('category[]')[1].checked = tab[id][1];
+								document.getElementsByName('category[]')[2].checked = tab[id][2];
+								document.getElementsByName('category[]')[3].checked = tab[id][3];
+							}
+						}
+					}
+					</script>";
+					
+					
+		echo $output;
+		echo "<select name=\"group\" size=1 onChange=\"reloadGroup()\"><option></option>";
 		 
-		 $result = $bdd->query("select * from glpi_groups");
-		 
-		 
-		$dropdown = array();
+		 $result = $bdd->query("select * from glpi_groups");		 
+		 $dropdown = array();
 		 
 		 if ($result) {
 				 while ($donnees = $result->fetch()) {
