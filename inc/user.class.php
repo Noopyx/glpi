@@ -2042,7 +2042,7 @@ class User extends CommonDBTM {
 				}
 			}
 			else if (isset($this->fields['group'])) {
-				$result = $DB->query("select * from glpi_groups where id=".$this->fields['group'];
+				$result = $DB->query("select * from glpi_groups where id=".$this->fields['group']);
 				if($result) {
 				while ($donnees = $result->fetch()) {
 					$op = $donnees["op"];
