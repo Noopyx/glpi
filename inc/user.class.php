@@ -1971,13 +1971,13 @@ class User extends CommonDBTM {
 								echo "<optgroup label=\"".$donnees['name']."\">";
 							
 							foreach ($dropdown[$key] as $key2 => $val2) {
-								echo "<option value=".$donnees['id']." >".$val2."</option>";
+								echo "<option value=".$key2." >".$val2."</option>";
 							}
 							
 							echo "</optgroup>";
 						}
 						else {
-							echo "<option>".$val."</option>";
+							echo "<option value =".$key." >".$val."</option>";
 						}
 					}
 			}
