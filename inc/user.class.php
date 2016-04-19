@@ -2034,13 +2034,24 @@ class User extends CommonDBTM {
 		if($op == 0 && $telecom == 0 && $visio == 0 && $contact == 0) {
 			$result = $DB->query("select * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id=".$ID.")");
 			if($result) {
-			while ($donnees = $result->fetch()) {
-				$op = $donnees["op"];
-				$telecom = $donnees["telecom"];
-				$visio = $donnees["visio"];
-				$contact = $donnees["contact"];
+				while ($donnees = $result->fetch()) {
+					$op = $donnees["op"];
+					$telecom = $donnees["telecom"];
+					$visio = $donnees["visio"];
+					$contact = $donnees["contact"];
+				}
 			}
-		}
+			else if (isset($this->fields['group'])) {
+				$result = $DB->query("select * from glpi_groups where id=".$this->fields['group'];
+				if($result) {
+				while ($donnees = $result->fetch()) {
+					$op = $donnees["op"];
+					$telecom = $donnees["telecom"];
+					$visio = $donnees["visio"];
+					$contact = $donnees["contact"];
+				}
+			}
+			}
 		}
 		
 		if($op == 1)
