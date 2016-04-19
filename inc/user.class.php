@@ -1902,13 +1902,23 @@ class User extends CommonDBTM {
 		 
 		 if (isset($ID) && $ID > 0) {
 			 echo "<input type='hidden' name='update'>";
+			 echo "<script type=\"text/javascript\"> 
+					function reloadGroup () {
+						document.getElementById(\"form\").submit();
+					}
+					</script>";
+			 echo "<select name=\"group\" size=1 onChange=\"reloadGroup()\">";
 		 }
-		 echo "<script type=\"text/javascript\"> 
-				function reloadGroup () {
-					document.getElementById(\"form\").submit();
-				}
-				</script>";
-		 echo "<select name=\"group\" size=1 onChange=\"reloadGroup()\">";
+		 else {
+			 echo "<script type=\"text/javascript\"> 
+					function reloadGroup () {
+						i = document.form.group.selectedIndex;
+						if (i == 0) return;
+						window.location.replace(\"/glpi/front/user.form.php?group=\"+document.form.group.options[i].value);
+					}
+					</script>";
+			 echo "<select name=\"group\" size=1 onChange=\"reloadGroup()\">";
+		 }
 		 try {
 			 $bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 		 }
