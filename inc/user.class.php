@@ -1899,6 +1899,10 @@ class User extends CommonDBTM {
 		 echo "<td>";
 		 echo "Groupe";
 		 echo "</td><td>";
+		 
+		 if (isset($ID) && $ID > 0) {
+			 echo "<input type='hidden' name='update'>";
+		 }
 		 echo "<script type=\"text/javascript\"> 
 				function reloadGroup () {
 					document.getElementById(\"form\").submit();
