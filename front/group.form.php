@@ -48,6 +48,31 @@ $group = new Group();
 if (isset($_POST["add"])) {
    $group->check(-1, CREATE, $_POST);
    if ($newID=$group->add($_POST)) {
+	   
+	   $op = 0;
+		$telecom = 0;
+		$visio = 0;
+		$contact = 0;
+		
+		foreach($_POST['category'] as $valeur) {
+		   if( $valeur == 1)
+			   $op = 1;
+		   if( $valeur == 2)
+			   $telecom = 1;
+		   if( $valeur == 3)
+			   $visio = 1;
+		   if( $valeur == 4)
+			   $contact = 1;
+		}
+	
+	try {
+		$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+	}
+	catch(Exception $e)
+	{
+		die('Erreur : '.$e->getMessage());
+	}
+	$bdd->exec('UPDATE glpi_groups SET op ='.$op.' , telecom = '.$telecom.' , visio = '.$visio.' , contact = '.$contact.' WHERE name='.$_POST["name"]);	
       Event::log($newID, "groups", 4, "setup",
                  sprintf(__('%1$s adds the item %2$s'), $_SESSION["glpiname"], $_POST["name"]));
       if ($_SESSION['glpibackcreated']) {
