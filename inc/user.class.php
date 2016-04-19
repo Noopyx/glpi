@@ -1967,8 +1967,8 @@ class User extends CommonDBTM {
 				$result2 = $bdd->query("select * from glpi_users where id=".$ID);
 			if($result2) {
 				while ($myId = $result2->fetch()) {			
-					foreach($dropdown as $key => $value) {
-						if(is_array($value)) {
+					foreach($dropdown as $key => $val) {
+						if(is_array($val)) {
 							$result = $bdd->query("select * from glpi_groups where id=".$key);
 							while($donnees = $result->fetch()) {
 								echo "<optgroup label=\"".$donnees['name']."\">";
