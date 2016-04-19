@@ -3107,7 +3107,7 @@ class Ticket extends CommonITILObject {
          $cols       = 90;
          $rows       = 6;
          $content_id = "content$rand";
-
+		 $values["content"] = "";
          if ($CFG_GLPI["use_rich_text"]) {
             $values["content"] = $this->setRichTextContent($content_id, $values["content"], $rand);
             $cols              = 100;
