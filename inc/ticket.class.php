@@ -3114,6 +3114,12 @@ class Ticket extends CommonITILObject {
             $rows              = 10;
          } else {
             $values["content"] = $this->setSimpleTextContent($values["content"]);
+			if ($values["type"] == self::DEMAND_TYPE) {
+				$values["content"] .= "Description de votre demande ici";
+			}
+			else {
+				$values["content"] .= "Description de votre incident ici";
+			}
          }
 
          echo "<div id='content$rand_text'>";
@@ -4108,7 +4114,7 @@ class Ticket extends CommonITILObject {
          echo Dropdown::getDropdownName('glpi_locations', $this->fields["locations_id"]);
       }
       echo $tt->getEndHiddenFieldValue('locations_id', $this);
-      echo "</td>";*/
+      echo "</td>";*/ 
       echo "</tr>";
 
 
