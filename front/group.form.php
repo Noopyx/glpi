@@ -72,7 +72,7 @@ if (isset($_POST["add"])) {
 	{
 		die('Erreur : '.$e->getMessage());
 	}
-	$bdd->exec('UPDATE glpi_groups SET op ='.$op.' , telecom = '.$telecom.' , visio = '.$visio.' , contact = '.$contact.' WHERE name='.$_POST["name"]);	
+	$bdd->exec("UPDATE glpi_groups SET op =".$op." , telecom = ".$telecom." , visio = ".$visio." , contact = ".$contact." WHERE name='".$_POST["name"]."'");	
       Event::log($newID, "groups", 4, "setup",
                  sprintf(__('%1$s adds the item %2$s'), $_SESSION["glpiname"], $_POST["name"]));
       if ($_SESSION['glpibackcreated']) {
