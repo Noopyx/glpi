@@ -1973,23 +1973,47 @@ class User extends CommonDBTM {
 					}
 				}
 			}
-			else {
+			else if (isset($_SESSION['groupAddUser'])) {
 				foreach($dropdown as $key => $value) {
 						if(is_array($value)) {
-							$result = $bdd->query("select name from glpi_groups where id=".$key);
-							while($donnees = $result->fetch())
+							$result = $bdd->query("select * from glpi_groups where id=".$key);
+							while($donnees = $result->fetch()) {
 								echo "<optgroup label=\"".$donnees['name']."\">";
 							
-							foreach ($dropdown[$key] as $key2 => $val2) {
-								echo "<option value=".$key2." >".$val2."</option>";
+								foreach ($dropdown[$key] as $key2 => $val2) {
+									if ($_SESSION['groupAddUser'] == $key2)
+										echo "<option value=".$key2." selected>".$val2."</option>";
+									else
+										echo "<option value=".$key2." >".$val2."</option>";
+								}
+								echo "</optgroup>";
 							}
-							
-							echo "</optgroup>";
 						}
 						else {
-							echo "<option value =".$key." >".$val."</option>";
+							if ($_SESSION['groupAddUser'] == $key)
+								echo "<option value=".$key." selected>".$val."</option>";
+							else
+								echo "<option value=".$key." >".$val."</option>";
 						}
 					}
+			}
+			else {
+				foreach($dropdown as $key => $value) {
+					if(is_array($value)) {
+						$result = $bdd->query("select name from glpi_groups where id=".$key);
+						while($donnees = $result->fetch())
+							echo "<optgroup label=\"".$donnees['name']."\">";
+							
+						foreach ($dropdown[$key] as $key2 => $val2) {
+							echo "<option value=".$key2." >".$val2."</option>";
+						}
+						
+						echo "</optgroup>";
+					}
+					else {
+						echo "<option value =".$key." >".$val."</option>";
+					}
+				}
 			}
 		 }
 		 
@@ -2051,16 +2075,17 @@ class User extends CommonDBTM {
 					$contact = $donnees["contact"];
 				}
 			}
-			else if (isset($this->fields['group'])) {
+			else if (isset($_SESSION['groupAddUser'])) {
 				$result = $DB->query("select * from glpi_groups where id=".$this->fields['group']);
 				if($result) {
-				while ($donnees = $result->fetch()) {
-					$op = $donnees["op"];
-					$telecom = $donnees["telecom"];
-					$visio = $donnees["visio"];
-					$contact = $donnees["contact"];
+					while ($donnees = $result->fetch()) {
+						$op = $donnees["op"];
+						$telecom = $donnees["telecom"];
+						$visio = $donnees["visio"];
+						$contact = $donnees["contact"];
+					}
 				}
-			}
+				unset($_SESSION['groupAddUser']);
 			}
 		}
 		

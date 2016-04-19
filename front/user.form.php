@@ -45,7 +45,9 @@ if (empty($_GET["id"])) {
 $user      = new User();
 $groupuser = new Group_User();
 
-
+if(isset($_GET['group'])) {
+	$_SESSION['groupAddUser'] = $_GET['group'];
+}
 if (empty($_GET["id"]) && isset($_GET["name"])) {
 
    $user->getFromDBbyName($_GET["name"]);
