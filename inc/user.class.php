@@ -2076,7 +2076,7 @@ class User extends CommonDBTM {
 				}
 			}
 			else if (isset($_SESSION['groupAddUser'])) {
-				$result = $DB->query("select * from glpi_groups where id=".$this->fields['group']);
+				$result = $DB->query("select * from glpi_groups where id=".$_SESSION['groupAddUser']);
 				if($result) {
 					while ($donnees = $result->fetch()) {
 						$op = $donnees["op"];
