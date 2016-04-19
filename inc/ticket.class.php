@@ -4080,7 +4080,40 @@ class Ticket extends CommonITILObject {
       echo "</td></tr>";
 
       echo "<tr class='tab_bg_1'>";
-	  echo "<th>".$tt->getBeginHiddenFieldText('priority');
+      echo "<th>".$tt->getBeginHiddenFieldText('impact');
+      printf(__('%1$s%2$s'), __('Impact'), $tt->getMandatoryMark('impact'));
+      echo $tt->getEndHiddenFieldText('impact')."</th>";
+      echo "<td>";
+      echo $tt->getBeginHiddenFieldValue('impact');
+
+      if ($canupdate) {
+         $idimpact = self::dropdownImpact(array('value' => $this->fields["impact"]));
+      } else {
+         $idimpact = "value_impact".mt_rand();
+         echo "<input id='$idimpact' type='hidden' name='impact' value='".$this->fields["impact"]."'>";
+         echo parent::getImpactName($this->fields["impact"]);
+      }
+      echo $tt->getEndHiddenFieldValue('impact',$this);
+      echo "</td>";
+
+      echo "<th>".$tt->getBeginHiddenFieldText('locations_id');
+      printf(__('%1$s%2$s'), __('Location'), $tt->getMandatoryMark('locations_id'));
+      echo $tt->getEndHiddenFieldText('locations_id')."</th>";
+      echo "<td>";
+      echo $tt->getBeginHiddenFieldValue('locations_id');
+      if ($canupdate || !$ID) {
+         Location::dropdown(array('value'  => $this->fields['locations_id'],
+                                  'entity' => $this->fields['entities_id']));
+      } else {
+         echo Dropdown::getDropdownName('glpi_locations', $this->fields["locations_id"]);
+      }
+      echo $tt->getEndHiddenFieldValue('locations_id', $this);
+      echo "</td>";
+      echo "</tr>";
+
+
+      echo "<tr class='tab_bg_1'>";
+      echo "<th>".$tt->getBeginHiddenFieldText('priority');
       printf(__('%1$s%2$s'), __('Priority'), $tt->getMandatoryMark('priority'));
       echo $tt->getEndHiddenFieldText('priority')."</th>";
       echo "<td>";
@@ -4111,21 +4144,6 @@ class Ticket extends CommonITILObject {
                                        $idajax,
                                        $CFG_GLPI["root_doc"]."/ajax/priority.php", $params);
       }
-      echo "</td>";
-      echo "<th>".$tt->getBeginHiddenFieldText('impact');
-      printf(__('%1$s%2$s'), __('Impact'), $tt->getMandatoryMark('impact'));
-      echo $tt->getEndHiddenFieldText('impact')."</th>";
-      echo "<td>";
-      echo $tt->getBeginHiddenFieldValue('impact');
-
-      if ($canupdate) {
-         $idimpact = self::dropdownImpact(array('value' => $this->fields["impact"]));
-      } else {
-         $idimpact = "value_impact".mt_rand();
-         echo "<input id='$idimpact' type='hidden' name='impact' value='".$this->fields["impact"]."'>";
-         echo parent::getImpactName($this->fields["impact"]);
-      }
-      echo $tt->getEndHiddenFieldValue('impact',$this);
       echo "</td>";
 
      /* echo "<th>".$tt->getBeginHiddenFieldText('locations_id');

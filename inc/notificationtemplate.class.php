@@ -296,7 +296,7 @@ class NotificationTemplate extends CommonDBTM {
                            ".$this->fields['css']."
                          </style>
                         </head>
-                        <body>\n<p>Bienvenue</p>".(!empty($add_header)?$add_header."\n<br><br>":'').
+                        <body>\n".(!empty($add_header)?$add_header."\n<br><br>":'').
                         $template_datas['content_html'].
                      "<br><br>-- \n<br>".$signature_html.
                      //TRANS %s is the GLPI version
