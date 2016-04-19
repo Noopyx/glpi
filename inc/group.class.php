@@ -391,7 +391,7 @@ class Group extends CommonTreeDropdown {
       Html::displayTitle($CFG_GLPI["root_doc"] . "/pics/groupes.png", self::getTypeName(Session::getPluralNumber()), $title,
                          $buttons);
 						 
-	 echo "<a class=\"vsubmit\" href=\"group.form.php\" style=\"margin-top:5px;\">Ajouter</a> "
+	 echo "<a class=\"vsubmit\" href=\"group.form.php\" style=\"margin-top:5px;\">Ajouter</a> ";
    }
 
 
