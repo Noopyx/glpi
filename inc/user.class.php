@@ -1915,7 +1915,7 @@ class User extends CommonDBTM {
 		 $result = $bdd->query("select * from glpi_groups");
 		 
 		 
-		$dropdown = array();
+		/*$dropdown = array();
 		 
 		 if ($result) {
 				 while ($donnees = $result->fetch()) {
@@ -1977,13 +1977,13 @@ class User extends CommonDBTM {
 						}
 					}
 			}
-		 }
+		 }*/
 		 
-		 /*$result = $bdd->query("select * from glpi_groups");
+		 $result = $bdd->query("select * from glpi_groups");
 		 $result2 = $bdd->query("select * from glpi_users where id=".$ID);
 		 if ($result) {
 			 
-			 if()
+			 if($result2)
 			 while ($myId = $result2->fetch()) {
 				 while ($donnees = $result->fetch()) {
 					 if($myId['id_group'] == $donnees['id'])
@@ -1992,7 +1992,7 @@ class User extends CommonDBTM {
 						echo "<option value=".$donnees['id'].">".$donnees['completename']."</option>";
 				 }
 			 }
-		 }*/
+		 }
 		 echo "</select>";
 		 echo "</td>";
 		 echo "</tr>";
