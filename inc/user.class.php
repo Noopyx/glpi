@@ -1914,7 +1914,7 @@ class User extends CommonDBTM {
 		$result = $bdd->query("select * from glpi_groups");
 		if ($result) {
 			while ($donnees = $result->fetch()) {
-				$output .= "tab[".$donnees['id']."] = [".$donnees['op']." , ".$donnees['telecom']." , ".$donnees['visio']." , ".$donnees['contact']."];";
+				$output .= "tab[".$donnees['id']."] = [".$donnees['op']." , ".$donnees['telecom']." , ".$donnees['visio']." , ".$donnees['contact']."];\n";
 			}
 		}					
 		$output .= "function reloadGroup () {

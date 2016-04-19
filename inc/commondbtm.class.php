@@ -420,13 +420,13 @@ class CommonDBTM extends CommonGLPI {
 
          $i = 0;
 		
+		try	{
+			$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+		}
+		catch(Exception $e) {
+			die('Erreur : '.$e->getMessage());
+		}
 		if(isset($this->input['itilcategories_id'])) {
-			try	{
-				$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
-			}
-			catch(Exception $e) {
-					die('Erreur : '.$e->getMessage());
-			}
 			if($this->input['itilcategories_id'] == 1)
 				$mycategory = $bdd->query("select * from glpi_itilcategories where name='Operateur DATA'");
 			if($this->input['itilcategories_id'] == 2)
@@ -443,6 +443,9 @@ class CommonDBTM extends CommonGLPI {
 				}
 			
 			
+		}
+		if(isset($this->input['group'])) {
+			$this->fields['id_group'] = $this->input['group'];
 		}
          foreach ($this->fields as $key => $val) {
             $fields[$i] = $key;
