@@ -1942,7 +1942,7 @@ class User extends CommonDBTM {
 		 if ($result) {
 				 while ($donnees = $result->fetch()) {
 					 if($donnees['groups_id'] == 0) {
-						 $result2 = $bdd->numrows("select * from glpi_groups where groups_id=".$donnees['id']);
+						 $result2 = $bdd->mysql_num_rows("select * from glpi_groups where groups_id=".$donnees['id']);
 						 if($result2 > 0) {
 							 echo "<script type=\"text/javascript\"> console.log(\"ID :".$donnees['id']." \");</script>";
 							$dropdown[$donnees['id']] = array();
