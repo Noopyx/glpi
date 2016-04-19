@@ -4096,7 +4096,7 @@ class Ticket extends CommonITILObject {
       echo $tt->getEndHiddenFieldValue('impact',$this);
       echo "</td>";
 
-      echo "<th>".$tt->getBeginHiddenFieldText('locations_id');
+      /*echo "<th>".$tt->getBeginHiddenFieldText('locations_id');
       printf(__('%1$s%2$s'), __('Location'), $tt->getMandatoryMark('locations_id'));
       echo $tt->getEndHiddenFieldText('locations_id')."</th>";
       echo "<td>";
@@ -4108,7 +4108,7 @@ class Ticket extends CommonITILObject {
          echo Dropdown::getDropdownName('glpi_locations', $this->fields["locations_id"]);
       }
       echo $tt->getEndHiddenFieldValue('locations_id', $this);
-      echo "</td>";
+      echo "</td>";*/
       echo "</tr>";
 
 
