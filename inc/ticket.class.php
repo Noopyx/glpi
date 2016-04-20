@@ -2996,6 +2996,7 @@ class Ticket extends CommonITILObject {
       if (empty($delegating)
           && NotificationTargetTicket::isAuthorMailingActivatedForHelpdesk()) {
          echo "<tr class='tab_bg_1'>";
+		 echo "<script type=\"text/javascript\"> console.log(\"Lng : ".$_SESSION["glpilanguage"]." \");</script>";
 		 if ($values["type"] == self::DEMAND_TYPE) {
 			echo "<td>".__('Inform me about the actions taken')."a demande</td>";
 		}
