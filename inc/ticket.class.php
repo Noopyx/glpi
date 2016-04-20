@@ -4744,7 +4744,7 @@ class Ticket extends CommonITILObject {
                default :
                   $options['criteria'][0]['field']      = 12; // status
                   $options['criteria'][0]['searchtype'] = 'equals';
-                  $options['criteria'][0]['value']      = 'new';
+                  $options['criteria'][0]['value']      = 1;
                   $options['criteria'][0]['link']       = 'AND';
 
                   $options['criteria'][1]['field']      = 8; // groups_id
@@ -4752,7 +4752,7 @@ class Ticket extends CommonITILObject {
                   $options['criteria'][1]['value']      = 'mygroups';
                   $options['criteria'][1]['link']       = 'AND';
 
-                  echo "<a href=\"".$CFG_GLPI["root_doc"]."/front/ticket.php?".
+                  echo "<a href=\"".Html::$CFG_GLPI["root_doc"]."/front/ticket.php?".
                          Toolbox::append_params($options,'&amp;')."\">".
                          Html::makeTitle('Nouveaux Tickets', $number, $numrows)."</a>";
             }
