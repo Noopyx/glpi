@@ -1927,7 +1927,7 @@ abstract class CommonITILObject extends CommonDBTM {
 		}
 		else if (strcmp($p['action'],"update") === 0) {
 			//$sql = "select * from glpi_users where id=(SELECT users_id_recipient FROM glpi_tickets WHERE id=".$options['id'].")";					
-			$result = $bdd->prepare("select * from glpi_users where id=(SELECT users_id_recipient FROM glpi_tickets WHERE id= :id");
+			$result = $bdd->prepare("select * from glpi_users where id=(SELECT users_id_recipient FROM glpi_tickets WHERE id= :id)");
 			$result->bindValue('id', $options['id'], PDO::PARAM_INT);
 		}
 		$result->execute();
