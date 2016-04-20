@@ -1537,8 +1537,6 @@ class Stat extends CommonGLPI {
       $stat_list["Ticket"]["Ticket_Global"]["file"]   = "stat.global.php?itemtype=Ticket";
       $stat_list["Ticket"]["Ticket_Ticket"]["name"]   = __('By ticket');
       $stat_list["Ticket"]["Ticket_Ticket"]["file"]   = "stat.tracking.php?itemtype=Ticket";
-	  $stat_list["Ticket"]["Ticket_Group"]["name"]   = "Par groupe"
-      $stat_list["Ticket"]["Ticket_Group"]["file"]   = "stat.tracking.php?itemtype=Ticket&type=group";
       $stat_list["Ticket"]["Ticket_Location"]["name"] = __('By hardware characteristics');
       $stat_list["Ticket"]["Ticket_Location"]["file"] = "stat.location.php?itemtype=Ticket";
       $stat_list["Ticket"]["Ticket_Item"]["name"]     = __('By hardware');
