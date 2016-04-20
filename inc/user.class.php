@@ -1963,12 +1963,10 @@ class User extends CommonDBTM {
 				}
 				
 				// $result2 = $bdd->query("select * from glpi_users where id=".$ID);
-				if(isset($ID) && $ID > 0) {
-					$result2 = $bdd->prepare("select * from glpi_users where id=?");
-					$result2->bindValue(1, $ID, PDO::PARAM_INT);
-					$result2->execute();
-				}
-			if(isset($result2) && $result2) {
+			$result2 = $bdd->prepare("select * from glpi_users where id=:id");
+			$result2->bindValue(":id", $ID, PDO::PARAM_INT);
+			$result2->execute();
+			if($result2) {
 				while ($myId = $result2->fetch()) {			
 					foreach($dropdown as $key => $val) {
 						if(is_array($val)) {
@@ -2051,7 +2049,7 @@ class User extends CommonDBTM {
 		}
 		
 		if($op == 0 && $telecom == 0 && $visio == 0 && $contact == 0) {
-			$result = $DB->query("select * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id=".$ID.")");
+			$result = $pdo->query("select * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id=".$ID.")");
 			if($result) {
 				while ($donnees = $result->fetch()) {
 					$op = $donnees["op"];
