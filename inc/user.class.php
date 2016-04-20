@@ -1965,9 +1965,11 @@ class User extends CommonDBTM {
 				}
 				
 				// $result2 = $bdd->query("select * from glpi_users where id=".$ID);
-				$result2 = $bdd->prepare("select * from glpi_users where id=?");
-				$result2->bindValue(1, $ID, PDO::PARAM_INT);
-				$result2->execute();
+				if(isset($ID) && $ID > 0) {
+					$result2 = $bdd->prepare("select * from glpi_users where id=?");
+					$result2->bindValue(1, $ID, PDO::PARAM_INT);
+					$result2->execute();
+				}
 				if($result2) {
 				while ($myId = $result2->fetch()) {			
 					foreach($dropdown as $key => $val) {
