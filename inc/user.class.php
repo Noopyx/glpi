@@ -1943,9 +1943,7 @@ class User extends CommonDBTM {
 				 while ($donnees = $result->fetch()) {
 					 if($donnees['groups_id'] == 0) {
 						 $result2 = $bdd->query("select * from glpi_groups where groups_id=".$donnees['id']);
-						 echo "<script type=\"text/javascript\"> console.log(\"NumRow :".$result2->fetchColumn()." \");</script>";
 						 if($result2->fetchColumn() > 0) {
-							 echo "<script type=\"text/javascript\"> console.log(\"ID :".$donnees['id']." \");</script>";
 							$dropdown[$donnees['id']] = array();
 						 }
 						 else {
@@ -1970,7 +1968,7 @@ class User extends CommonDBTM {
 					$result2->bindValue(1, $ID, PDO::PARAM_INT);
 					$result2->execute();
 				}
-				if($result2) {
+				if(isset($result2) && $result2) {
 				while ($myId = $result2->fetch()) {			
 					foreach($dropdown as $key => $val) {
 						if(is_array($val)) {
