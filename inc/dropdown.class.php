@@ -1748,9 +1748,6 @@ class Dropdown {
                   if (!isset($param['used'][$key2])) {
                      $output .= "<option value='".$key2."'";
                      // Do not use in_array : trouble with 0 and empty value
-					 if($key2 == $num) {
-						 $output .= " selected";
-					 }
                      foreach ($param['values'] as $value) {
                        if (strcmp($key2,$value) === 0) {
                            $output .= " selected";
