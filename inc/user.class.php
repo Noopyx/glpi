@@ -1966,8 +1966,11 @@ class User extends CommonDBTM {
 			$result2 = $bdd->prepare("select * from glpi_users where id=:id");
 			$result2->bindValue(":id", $ID, PDO::PARAM_INT);
 			$result2->execute();
+			echo "<script type=\"text/javascript\"> console.log(\"avant\");</script>";
 			if($result2) {
-				while ($myId = $result2->fetch()) {			
+				echo "<script type=\"text/javascript\"> console.log(\"avant2\");</script>";
+				while ($myId = $result2->fetch()) {	
+echo "<script type=\"text/javascript\"> console.log(\"avant3\");</script>";				
 					foreach($dropdown as $key => $val) {
 						if(is_array($val)) {
 							$result = $bdd->query("select * from glpi_groups where id=".$key);
@@ -1993,7 +1996,9 @@ class User extends CommonDBTM {
 				}
 			}
 			else {
+				echo "<script type=\"text/javascript\"> console.log(\"apres\");</script>";
 				foreach($dropdown as $key => $val) {
+					echo "<script type=\"text/javascript\"> console.log(\"apres2\");</script>";
 					if(is_array($val)) {
 						$result = $bdd->query("select name from glpi_groups where id=".$key);
 						while($donnees = $result->fetch())
