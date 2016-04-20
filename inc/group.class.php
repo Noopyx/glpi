@@ -377,7 +377,7 @@ class Group extends CommonTreeDropdown {
       global $CFG_GLPI;
 
       $buttons = array();
-	   echo "<a class=\"vsubmit\" href=\"group.form.php\" style=\"margin-top:5px;\">";
+	   echo "<a href=\"group.form.php\">";
       if (Group::canUpdate()
           && Session::haveRight("user", User::UPDATEAUTHENT)
           && AuthLdap::useAuthLdap()) {
