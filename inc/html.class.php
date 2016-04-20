@@ -1519,17 +1519,17 @@ class Html {
                $data['title'] = Toolbox::substr($data['title'], 0, 14)."...";
             }
             if(strcmp($part,"accueil") ===0)
-            	$link = "/glpi/front/central.php";
+            	$link = "/front/central.php";
             else if(strcmp($part,"creation") === 0)
-            	$link = "/glpi/front/helpdesk.php?create_ticket=1";
+            	$link = "/front/helpdesk.php?create_ticket=1";
             else if(strcmp($part,"FAQ") === 0)
-            	$link = "/glpi/front/knowbaseitem.php";
+            	$link = "/front/knowbaseitem.php";
             else if(strcmp($part,"tickets") === 0)
-            	$link = "/glpi/front/ticket.php";
+            	$link = "/front/ticket.php";
 			 else if(strcmp($part,"stat") === 0)
-            	$link = "/glpi/front/stat.php";
+            	$link = "/front/stat.php";
 			 else if(strcmp($part,"planning") === 0)
-            	$link = "/glpi/front/planning.php";
+            	$link = "/front/planning.php";
 			
             echo "<a href='$link' class='itemP'>".$data['title']."</a>";
             echo "<ul class='ssmenu'>";
