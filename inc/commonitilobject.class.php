@@ -1991,9 +1991,7 @@ abstract class CommonITILObject extends CommonDBTM {
 
       }
    }
-http://100.66.4.6/glpi/front/ticket.php?is_deleted=0&criteria%5B0%5D%5Bfield%5D=12&criteria%5B0%5D%5Bsearchtype%5D=equals&criteria%5B0%5D%5Bvalue%5D=notold&criteria%5B1%5D%5Blink%5D=AND&criteria%5B1%5D%5Bfield%5D=8&criteria%5B1%5D%5Bsearchtype%5D=equals&criteria%5B1%5D%5Bvalue%5D=mygroups&search=Rechercher&itemtype=Ticket&start=0&_glpi_csrf_token=939640d6255f8a0a1b34056b257e1cfb
-http://100.66.4.6/glpi/front/ticket.php?reset=reset&criteria[0][field]=12&criteria[0][searchtype]=equals&criteria[0][value]=notold&criteria[0][link]=AND&criteria[1][field]=71&criteria[1][searchtype]=equals&criteria[1][value]=mygroups&criteria[1][link]=AND
-   /**
+	/**
     * Dropdown of ITIL object Impact
     *
     * @since version 0.84 new proto
