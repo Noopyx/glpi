@@ -1966,11 +1966,10 @@ class User extends CommonDBTM {
 			$result2 = $bdd->prepare("select * from glpi_users where id=:id");
 			$result2->bindValue(":id", $ID, PDO::PARAM_INT);
 			$result2->execute();
-			echo "<script type=\"text/javascript\"> console.log(\"avant\");</script>";
-			if($result2) {
-				echo "<script type=\"text/javascript\"> console.log(\"avant2\");</script>";
+			if($result2->fetchColumn() > 0) {
+				echo "<script type=\"text/javascript\"> console.log(\"avant\");</script>";
 				while ($myId = $result2->fetch()) {	
-echo "<script type=\"text/javascript\"> console.log(\"avant3\");</script>";				
+echo "<script type=\"text/javascript\"> console.log(\"avant2\");</script>";				
 					foreach($dropdown as $key => $val) {
 						if(is_array($val)) {
 							$result = $bdd->query("select * from glpi_groups where id=".$key);
