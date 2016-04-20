@@ -4744,7 +4744,7 @@ class Ticket extends CommonITILObject {
                default :
                   $options['criteria'][0]['field']      = 12; // status
                   $options['criteria'][0]['searchtype'] = 'equals';
-                  $options['criteria'][0]['value']      = 'process';
+                  $options['criteria'][0]['value']      = 'new';
                   $options['criteria'][0]['link']       = 'AND';
 
                   $options['criteria'][1]['field']      = 71; // groups_id
