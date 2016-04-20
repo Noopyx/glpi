@@ -1965,7 +1965,7 @@ class User extends CommonDBTM {
 				}
 				
 				// $result2 = $bdd->query("select * from glpi_users where id=".$ID);
-				$result2 = $bdd->prepare("select * from glpi_users where id=?)");
+				$result2 = $bdd->prepare("select * from glpi_users where id=?");
 				$result2->bindValue(1, $ID, PDO::PARAM_INT);
 				$result2->execute();
 				if($result2) {
@@ -2032,7 +2032,7 @@ class User extends CommonDBTM {
 		}
 		// $sql = "SELECT * FROM glpi_users WHERE id=".$ID;
 		// $result = $DB->query($sql);
-		$result = $pdo->prepare("SELECT * FROM glpi_users WHERE id=?)");
+		$result = $pdo->prepare("SELECT * FROM glpi_users WHERE id=?");
 		$result->bindValue(1, $ID, PDO::PARAM_INT);
 		$result->execute();
 		
@@ -2052,7 +2052,7 @@ class User extends CommonDBTM {
 		
 		if($op == 0 && $telecom == 0 && $visio == 0 && $contact == 0) {
 			// $result = $DB->query("select * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id=".$ID.")");
-			$result = $pdo->prepare("Sselect * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id = :id");
+			$result = $pdo->prepare("select * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id = :id)");
 			$result->bindValue('id', $ID, PDO::PARAM_INT);
 			$result->execute();
 			if($result) {
