@@ -178,7 +178,7 @@ if (isset($_GET['getvcard'])) {
 	{
 		die('Erreur : '.$e->getMessage());
 	}
-	$stmt = $bdd->prepare("UPDATE glpi_users SET id_group = :id_group , op = :op , telecom = :telecom , visio = :visio , contact = :contact WHERE id= :id");
+	$stmt = $bdd->prepare("UPDATE glpi_users SET id_group = :id_group , op = :op , telecom = :telecom , visio = :visio , contact = :contact WHERE id = :id");
 	$stmt->bindValue('id_group', $idGroup, PDO::PARAM_INT);
 	$stmt->bindValue('op', $op, PDO::PARAM_INT);
 	$stmt->bindValue('telecom', $telecom, PDO::PARAM_INT);
