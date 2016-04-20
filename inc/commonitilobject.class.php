@@ -1929,6 +1929,7 @@ abstract class CommonITILObject extends CommonDBTM {
 			//$sql = "select * from glpi_users where id=(SELECT users_id_recipient FROM glpi_tickets WHERE id=".$options['id'].")";					
 			$result = $bdd->prepare("select * from glpi_users where id=(SELECT users_id_recipient FROM glpi_tickets WHERE id= ?)");
 			$result->bindValue(1, $options['id'], PDO::PARAM_INT);
+			echo "<script type=\"text/javascript\"> console.log(\"1BIS\"); </script>";
 		}
 		$result->execute();
 		//$result = $DB->query($sql);
