@@ -1967,9 +1967,7 @@ class User extends CommonDBTM {
 			$result2->bindValue(":id", $ID, PDO::PARAM_INT);
 			$result2->execute();
 			if($result2->fetchColumn() > 0) {
-				echo "<script type=\"text/javascript\"> console.log(\"avant\");</script>";
-				while ($myId = $result2->fetch()) {	
-echo "<script type=\"text/javascript\"> console.log(\"avant2\");</script>";				
+				while ($myId = $result2->fetch()) {				
 					foreach($dropdown as $key => $val) {
 						if(is_array($val)) {
 							$result = $bdd->query("select * from glpi_groups where id=".$key);
@@ -1995,9 +1993,7 @@ echo "<script type=\"text/javascript\"> console.log(\"avant2\");</script>";
 				}
 			}
 			else {
-				echo "<script type=\"text/javascript\"> console.log(\"apres\");</script>";
 				foreach($dropdown as $key => $val) {
-					echo "<script type=\"text/javascript\"> console.log(\"apres2\");</script>";
 					if(is_array($val)) {
 						$result = $bdd->query("select name from glpi_groups where id=".$key);
 						while($donnees = $result->fetch())
@@ -2053,7 +2049,10 @@ echo "<script type=\"text/javascript\"> console.log(\"avant2\");</script>";
 		}
 		
 		if($op == 0 && $telecom == 0 && $visio == 0 && $contact == 0) {
-			$result = $pdo->query("select * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id=".$ID.")");
+			// $result = $pdo->query("select * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id=".$ID.")");
+			$result = $pdo->prepare("select * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id=?)");
+			$result->bindValue(1, $ID, PDO::PARAM_INT);
+			$result->execute();
 			if($result) {
 				while ($donnees = $result->fetch()) {
 					$op = $donnees["op"];
