@@ -4747,7 +4747,7 @@ class Ticket extends CommonITILObject {
                   $options['criteria'][0]['value']      = 'new';
                   $options['criteria'][0]['link']       = 'AND';
 
-                  $options['criteria'][1]['field']      = 71; // groups_id
+                  $options['criteria'][1]['field']      = 8; // groups_id
                   $options['criteria'][1]['searchtype'] = 'equals';
                   $options['criteria'][1]['value']      = 'mygroups';
                   $options['criteria'][1]['link']       = 'AND';
