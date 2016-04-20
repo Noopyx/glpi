@@ -1196,7 +1196,7 @@ class Html {
       //$menu['list']['title']     = __('Liste de mes Tickets');
       $menu['planning']['title']   = __('Planning');
 	  $menu['stat']['title']       = __('Statistiques');
-      $menu['FAQ']['title']        = __('FAQ');
+     // $menu['FAQ']['title']        = __('FAQ');
       $menu['creationCompte']['title'] = __('Administration');
       $menu['creationCompte']['types'] = array('User','Group','Profile','QueuedMail','Event');
       
@@ -2053,13 +2053,13 @@ class Html {
          $menu['reservation']['content'] = array(true);
       }*/
       
-      // FAQ
+      /*// FAQ
       if (Session::haveRight('knowbase', KnowbaseItem::READFAQ)) {
          $menu['faq']['id']      = "menu5";
          $menu['faq']['default'] = '/front/helpdesk.faq.php';
          $menu['faq']['title']   = __s('FAQ');
          $menu['faq']['content'] = array(true);
-      }
+      }*/
 
       echo "<ul id='menu'>";
 

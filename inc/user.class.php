@@ -2018,7 +2018,7 @@ class User extends CommonDBTM {
          echo "<td><input type='password' name='password2' value='' size='20' autocomplete='off'>";
          echo "</td>";
 		 
-		 echo "<td><div id=\"checkBox\" display=\"inline-block\">";
+		 echo "<td></td><td><div id=\"checkBox\" display=\"inline-block\">";
 		 
 		 try {
 			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
@@ -2163,15 +2163,15 @@ class User extends CommonDBTM {
       echo "<textarea cols='45' rows='6' name='comment' >".$this->fields["comment"]."</textarea>";
       echo "</td></tr>";
 
-      echo "<tr class='tab_bg_1'><td>" . __('Administrative number') . "</td><td>";
+      /*echo "<tr class='tab_bg_1'><td>" . __('Administrative number') . "</td><td>";
       Html::autocompletionTextField($this, "registration_number");
-      echo "</td></tr>";
+      echo "</td></tr>";*/
 
-      echo "<tr class='tab_bg_1'><td>" . _x('person','Title') . "&nbsp;:</td><td>";
+     /* echo "<tr class='tab_bg_1'><td>" . _x('person','Title') . "&nbsp;:</td><td>";
       UserTitle::dropdown(array('value' => $this->fields["usertitles_id"]));
-      echo "</td></tr>";
+      echo "</td></tr>";*/
 
-      echo "<tr class='tab_bg_1'>";
+     /*echo "<tr class='tab_bg_1'>";
       if (!empty($ID)) {
          echo "<td>" . __('Location') . "</td><td>";
          $entities = Profile_User::getUserEntities($ID, true);
@@ -2182,7 +2182,7 @@ class User extends CommonDBTM {
                                   'entity' => $entities));
          echo "</td>";
       }
-      echo "</tr>";
+      echo "</tr>";*/
 
       if (empty($ID)) {
          echo "<tr class='tab_bg_1'>";

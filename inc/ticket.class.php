@@ -3026,13 +3026,13 @@ class Ticket extends CommonITILObject {
          }
       }*/
 
-      if (!$tt->isHiddenField('locations_id')) {
+     /* if (!$tt->isHiddenField('locations_id')) {
          echo "<tr class='tab_bg_1'><td>";
          printf(__('%1$s%2$s'), __('Location'), $tt->getMandatoryMark('locations_id'));
          echo "</td><td>";
          Location::dropdown(array('value'  => $values["locations_id"]));
          echo "</td></tr>";
-      }
+      }*/
 
       if (!$tt->isHiddenField('_users_id_observer')
           || $tt->isPredefinedField('_users_id_observer')) {
