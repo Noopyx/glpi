@@ -1198,7 +1198,7 @@ class Html {
 	  $menu['stat']['title']       = __('Statistiques');
      // $menu['FAQ']['title']        = __('FAQ');
       $menu['creationCompte']['title'] = __('Administration');
-      $menu['creationCompte']['types'] = array('CommonDropdown','User','Group','Profile','QueuedMail','Event','SLA','Plugin','Notification','Config', 'Control', 'Crontask', 'Auth');
+      $menu['creationCompte']['types'] = array('CommonDropdown','User','Group','Profile','QueuedMail','Event','SLA','Plugin','Notification','Config', 'Crontask');
       
 /*$menu['assets']['types']       = array('Computer', 'Monitor', 'Software',
                                              'NetworkEquipment', 'Peripheral', 'Printer',
