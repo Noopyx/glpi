@@ -2996,7 +2996,13 @@ class Ticket extends CommonITILObject {
       if (empty($delegating)
           && NotificationTargetTicket::isAuthorMailingActivatedForHelpdesk()) {
          echo "<tr class='tab_bg_1'>";
-         echo "<td>".__('Inform me about the actions taken')."</td>";
+		 if ($values["type"] == self::DEMAND_TYPE) {
+			echo "<td>".__('Inform me about the actions taken')."a demande</td>";
+		}
+		else {
+			echo "<td>".__('Inform me about the actions taken')."'incident</td>";
+		}
+         
          echo "<td>";
          if ($values["_users_id_requester"] == 0) {
             $values['_users_id_requester'] = Session::getLoginUserID();
