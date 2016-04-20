@@ -1964,8 +1964,11 @@ class User extends CommonDBTM {
 						$dropdown[$donnees['id']] = $donnees['name'];
 				}
 				
-				$result2 = $bdd->query("select * from glpi_users where id=".$ID);
-			if($result2) {
+				// $result2 = $bdd->query("select * from glpi_users where id=".$ID);
+				$result2 = $pdo->prepare("select * from glpi_users where id = :id)");
+				$result2->bindValue('id', $ID, PDO::PARAM_INT);
+				$result2->execute();
+				if($result2) {
 				while ($myId = $result2->fetch()) {			
 					foreach($dropdown as $key => $val) {
 						if(is_array($val)) {
@@ -2020,16 +2023,16 @@ class User extends CommonDBTM {
 		 
 		 echo "<td></td><td><div id=\"checkBox\" display=\"inline-block\">";
 		 
-		 // try {
-			// $bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
-	    // }
-		// catch(Exception $e)
-		// {
-			// die('Erreur : '.$e->getMessage());
-		// }
+		try {
+			$pdo = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+	    }
+		catch(Exception $e)
+		{
+			die('Erreur : '.$e->getMessage());
+		}
 		// $sql = "SELECT * FROM glpi_users WHERE id=".$ID;
 		// $result = $DB->query($sql);
-		$result = $bdd->prepare("SELECT * FROM glpi_users WHERE id = :id)");
+		$result = $pdo->prepare("SELECT * FROM glpi_users WHERE id = :id)");
 		$result->bindValue('id', $ID, PDO::PARAM_INT);
 		$result->execute();
 		
@@ -2049,7 +2052,7 @@ class User extends CommonDBTM {
 		
 		if($op == 0 && $telecom == 0 && $visio == 0 && $contact == 0) {
 			// $result = $DB->query("select * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id=".$ID.")");
-			$result = $bdd->prepare("Sselect * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id = :id");
+			$result = $pdo->prepare("Sselect * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id = :id");
 			$result->bindValue('id', $ID, PDO::PARAM_INT);
 			$result->execute();
 			if($result) {
