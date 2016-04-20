@@ -1919,7 +1919,7 @@ abstract class CommonITILObject extends CommonDBTM {
 		{
 			die('Erreur : '.$e->getMessage());
 		}
-		if(!isset($p['id'])) {
+		if($p['id'] == 0) {
 			//$sql = "SELECT * FROM glpi_users WHERE name='".$_SESSION["glpiname"]."'";
 			$result = $bdd->prepare("SELECT * FROM glpi_users WHERE name= ?");
 			$result->bindValue(1, $_SESSION["glpiname"], PDO::PARAM_STR);
