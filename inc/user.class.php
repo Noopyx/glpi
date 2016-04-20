@@ -1968,6 +1968,7 @@ class User extends CommonDBTM {
 			$result2->execute();
 			if($result2->fetchColumn() > 0) {
 				echo "<script type=\"text/javascript\"> console.log(\"1\"); </script>";
+				$result2->execute();
 				while ($myId = $result2->fetch()) {				
 						echo "<script type=\"text/javascript\"> console.log(\"2\"); </script>";
 					foreach($dropdown as $key => $val) {
