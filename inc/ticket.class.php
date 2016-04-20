@@ -4752,7 +4752,7 @@ class Ticket extends CommonITILObject {
                   $options['criteria'][1]['value']      = 'mygroups';
                   $options['criteria'][1]['link']       = 'AND';
 
-                  echo "<a href=\"".Html::$CFG_GLPI["root_doc"]."/front/ticket.php?".
+                  echo "<a href=\"".$CFG_GLPI["root_doc"]."/front/ticket.php?".
                          Toolbox::append_params($options,'&amp;')."\">".
                          Html::makeTitle('Nouveaux Tickets', $number, $numrows)."</a>";
             }
