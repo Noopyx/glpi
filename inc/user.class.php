@@ -1965,8 +1965,8 @@ class User extends CommonDBTM {
 				}
 				
 				// $result2 = $bdd->query("select * from glpi_users where id=".$ID);
-				$result2 = $bdd->prepare("select * from glpi_users where id=:id)");
-				$result2->bindValue(':id', $ID, PDO::PARAM_INT);
+				$result2 = $bdd->prepare("select * from glpi_users where id=?)");
+				$result2->bindValue(1, $ID, PDO::PARAM_INT);
 				$result2->execute();
 				if($result2) {
 				while ($myId = $result2->fetch()) {			
@@ -2032,8 +2032,8 @@ class User extends CommonDBTM {
 		}
 		// $sql = "SELECT * FROM glpi_users WHERE id=".$ID;
 		// $result = $DB->query($sql);
-		$result = $pdo->prepare("SELECT * FROM glpi_users WHERE id = :id)");
-		$result->bindValue(':id', $ID, PDO::PARAM_INT);
+		$result = $pdo->prepare("SELECT * FROM glpi_users WHERE id=?)");
+		$result->bindValue(1, $ID, PDO::PARAM_INT);
 		$result->execute();
 		
 		$op = 0;
