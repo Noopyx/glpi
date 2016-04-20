@@ -277,7 +277,8 @@ class Group extends CommonTreeDropdown {
 		$visio = 0;
 		$contact = 0;
 		
-		if($result) {
+		if($result->fetchColumn() > 0) {
+			$result->execute();
 			while ($donnees = $result->fetch()) {
 				$op = $donnees["op"];
 				$telecom = $donnees["telecom"];
