@@ -1965,7 +1965,7 @@ class User extends CommonDBTM {
 				}
 				
 				// $result2 = $bdd->query("select * from glpi_users where id=".$ID);
-				$result2 = $bdd->prepare("select * from glpi_users where id = :id)");
+				$result2 = $bdd->prepare("select * from glpi_users where id=:id)");
 				$result2->bindValue('id', $ID, PDO::PARAM_INT);
 				$result2->execute();
 				if($result2) {
