@@ -1967,7 +1967,9 @@ class User extends CommonDBTM {
 			$result2->bindValue(":id", $ID, PDO::PARAM_INT);
 			$result2->execute();
 			if($result2->fetchColumn() > 0) {
+				echo "<script type=\"text/javascript\"> console.log(\"1\"); </script>";
 				while ($myId = $result2->fetch()) {				
+						echo "<script type=\"text/javascript\"> console.log(\"2\"); </script>";
 					foreach($dropdown as $key => $val) {
 						if(is_array($val)) {
 							$result = $bdd->query("select * from glpi_groups where id=".$key);
@@ -2050,7 +2052,7 @@ class User extends CommonDBTM {
 		
 		if($op == 0 && $telecom == 0 && $visio == 0 && $contact == 0) {
 			// $result = $pdo->query("select * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id=".$ID.")");
-			$result = $pdo->prepare("select * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id=?)");
+			$result = $pdo->prepare("select * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id=?");
 			$result->bindValue(1, $ID, PDO::PARAM_INT);
 			$result->execute();
 			if($result) {
