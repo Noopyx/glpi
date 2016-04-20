@@ -4742,7 +4742,7 @@ class Ticket extends CommonITILObject {
 
                case "requestbyself" :
                default :
-                  $options['criteria'][0]['field']      = 12; // status
+                  $options['criteria'][0]['field']      = 11; // status
                   $options['criteria'][0]['searchtype'] = 'equals';
                   $options['criteria'][0]['value']      = 'notold';
                   $options['criteria'][0]['link']       = 'AND';

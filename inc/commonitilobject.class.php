@@ -1923,20 +1923,16 @@ abstract class CommonITILObject extends CommonDBTM {
 			//$sql = "SELECT * FROM glpi_users WHERE name='".$_SESSION["glpiname"]."'";
 			$result = $bdd->prepare("SELECT * FROM glpi_users WHERE name= ?");
 			$result->bindValue(1, $_SESSION["glpiname"], PDO::PARAM_STR);
-			echo "<script type=\"text/javascript\"> console.log(\"1\"); </script>";
 		}
 		else if (strcmp($p['action'],"update") === 0) {
 			//$sql = "select * from glpi_users where id=(SELECT users_id_recipient FROM glpi_tickets WHERE id=".$options['id'].")";					
 			$result = $bdd->prepare("select * from glpi_users where id=(SELECT users_id_recipient FROM glpi_tickets WHERE id= ?)");
 			$result->bindValue(1, $options['id'], PDO::PARAM_INT);
-			echo "<script type=\"text/javascript\"> console.log(\"1BIS : ".$p['action']." ID ".$p['id']."\"); </script>";
 		}
 		$result->execute();
 		//$result = $DB->query($sql);
-			echo "<script type=\"text/javascript\"> console.log(\"2\"); </script>";
 			if($result->fetchColumn() > 0) {
 				$result->execute();
-				echo "<script type=\"text/javascript\"> console.log(\"3\"); </script>";
 				while ($donnees = $result->fetch()) {
 					if($donnees['op'] == 1) 
 						$values[1] = "Operateur";
@@ -1995,8 +1991,8 @@ abstract class CommonITILObject extends CommonDBTM {
 
       }
    }
-
-
+http://100.66.4.6/glpi/front/ticket.php?is_deleted=0&criteria%5B0%5D%5Bfield%5D=12&criteria%5B0%5D%5Bsearchtype%5D=equals&criteria%5B0%5D%5Bvalue%5D=notold&criteria%5B1%5D%5Blink%5D=AND&criteria%5B1%5D%5Bfield%5D=8&criteria%5B1%5D%5Bsearchtype%5D=equals&criteria%5B1%5D%5Bvalue%5D=mygroups&search=Rechercher&itemtype=Ticket&start=0&_glpi_csrf_token=939640d6255f8a0a1b34056b257e1cfb
+http://100.66.4.6/glpi/front/ticket.php?reset=reset&criteria[0][field]=12&criteria[0][searchtype]=equals&criteria[0][value]=notold&criteria[0][link]=AND&criteria[1][field]=71&criteria[1][searchtype]=equals&criteria[1][value]=mygroups&criteria[1][link]=AND
    /**
     * Dropdown of ITIL object Impact
     *
