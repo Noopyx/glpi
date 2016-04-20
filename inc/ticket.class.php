@@ -5411,8 +5411,11 @@ class Ticket extends CommonITILObject {
 			die('Erreur : '.$e->getMessage());
 		}
 		
-		$result = $bdd->query("select * from glpi_itilcategories where id = (select itilcategories_id from glpi_tickets where id=".$job->fields['id'].")");
-
+		//$result = $bdd->query("select * from glpi_itilcategories where id = (select itilcategories_id from glpi_tickets where id=".$job->fields['id'].")");
+		$result = $bdd->prepare("select * from glpi_itilcategories where id = (select itilcategories_id from glpi_tickets where id = :id )");
+		$result->bindValue('id', $job->fields['id'], PDO::PARAM_INT);
+		$result->execute();
+		
 		if($result)
 			while ($donnees = $result->fetch()) {
 				echo $donnees['completename'];

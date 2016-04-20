@@ -1920,12 +1920,18 @@ abstract class CommonITILObject extends CommonDBTM {
 			die('Erreur : '.$e->getMessage());
 		}
 		if(isset($p['action']) && strcmp($p['action'],"add") === 0) {
-			$sql = "SELECT * FROM glpi_users WHERE name='".$_SESSION["glpiname"]."'";
+			//$sql = "SELECT * FROM glpi_users WHERE name='".$_SESSION["glpiname"]."'";
+			$result = $bdd->prepare("SELECT * FROM glpi_users WHERE name= :name");
+			$result->bindValue('name', $_SESSION["glpiname"], PDO::PARAM_STR);
+			
 		}
 		else if (strcmp($p['action'],"update") === 0) {
-			$sql = "select * from glpi_users where id=(SELECT users_id_recipient FROM glpi_tickets WHERE id=".$options['id'].")";					
+			//$sql = "select * from glpi_users where id=(SELECT users_id_recipient FROM glpi_tickets WHERE id=".$options['id'].")";					
+			$result = $bdd->prepare("select * from glpi_users where id=(SELECT users_id_recipient FROM glpi_tickets WHERE id= :id");
+			$result->bindValue('id', $options['id'], PDO::PARAM_INT);
 		}
-			$result = $DB->query($sql);
+		$result->execute();
+		//$result = $DB->query($sql);
 			
 			if($result) {
 				while ($donnees = $result->fetch()) {

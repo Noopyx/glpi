@@ -502,16 +502,31 @@ class CommonDBTM extends CommonGLPI {
 					$this->fields['itilcategories_id'] = $donnees['id'];
 				}
 				
-				$result = $bdd->query("select * from glpi_groups where name=(select completename from glpi_itilcategories where id=".$this->fields['itilcategories_id'].")");
+				//$result = $bdd->query("select * from glpi_groups where name=(select completename from glpi_itilcategories where id=".$this->fields['itilcategories_id'].")");
+				$result = $bdd->prepare("select * from glpi_groups where name=(select completename from glpi_itilcategories where id= :id)");
+				$result->bindValue('id', $this->fields['itilcategories_id'], PDO::PARAM_INT);
+				$result->execute();	
 				while ($donnees = $result->fetch()) {
 					if (isset($donnees['id'])) {
-						$bdd->exec("insert into glpi_groups_tickets (tickets_id, groups_id, type) values (".$this->fields['id'].",".$donnees['id'].", 2)");
+						//$bdd->exec("insert into glpi_groups_tickets (tickets_id, groups_id, type) values (".$this->fields['id'].",".$donnees['id'].", 2)");
+						$result = $bdd->prepare("insert into glpi_groups_tickets (tickets_id, groups_id, type) values (:id, :idGroup, 2)");
+						$result->bindValue('id', $this->fields['id'], PDO::PARAM_INT);
+						$result->bindValue('idGroup', $donnees['id'], PDO::PARAM_INT);
+						$result->execute();
 					}
 				}
-				$result = $bdd->query("select * from glpi_groups where id=(select groups_id from glpi_groups_users where users_id=".$this->fields['users_id_recipient'].")");
+				
+				//$result = $bdd->query("select * from glpi_groups where id=(select groups_id from glpi_groups_users where users_id=".$this->fields['users_id_recipient'].")");
+				$result = $bdd->prepare("select * from glpi_groups where id=(select groups_id from glpi_groups_users where users_id= :id)");
+				$result->bindValue('id', $this->fields['users_id_recipient'], PDO::PARAM_INT);
+				$result->execute();	
 				while ($donnees = $result->fetch()) {
 					if (isset($donnees['id'])) {
-						$bdd->exec("insert into glpi_groups_tickets (tickets_id, groups_id, type) values (".$this->fields['id'].",".$donnees['id'].", 1)");
+						//$bdd->exec("insert into glpi_groups_tickets (tickets_id, groups_id, type) values (".$this->fields['id'].",".$donnees['id'].", 1)");
+						$result = $bdd->prepare("insert into glpi_groups_tickets (tickets_id, groups_id, type) values ( :id , :idGroup , 1)");
+						$result->bindValue('id', $this->fields['id'], PDO::PARAM_INT);
+						$result->bindValue('idGroup', $donnees['id'], PDO::PARAM_INT);
+						$result->execute();
 					}
 				}
 			}

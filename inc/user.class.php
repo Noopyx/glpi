@@ -2027,8 +2027,11 @@ class User extends CommonDBTM {
 		{
 			die('Erreur : '.$e->getMessage());
 		}
-		$sql = "SELECT * FROM glpi_users WHERE id=".$ID;
-		$result = $DB->query($sql);
+		// $sql = "SELECT * FROM glpi_users WHERE id=".$ID;
+		// $result = $DB->query($sql);
+		$result = $bdd->prepare("SELECT * FROM glpi_users WHERE id = :id)");
+		$result->bindValue('id', $ID, PDO::PARAM_INT);
+		$result->execute();
 		
 		$op = 0;
 		$telecom = 0;

@@ -1775,8 +1775,12 @@ class Dropdown {
 						catch(Exception $e) {
 							die('Erreur : '.$e->getMessage());
 						}
-						$query = "select * from glpi_itilcategories where id=(select itilcategories_id from glpi_tickets where  id = ".$Id_ticket.")";
-						$result = $bdd->query($query);
+						//$query = "select * from glpi_itilcategories where id=(select itilcategories_id from glpi_tickets where  id = ".$Id_ticket.")";
+						//$result = $bdd->query($query);
+						$result = $bdd->prepare("select * from glpi_itilcategories where id=(select itilcategories_id from glpi_tickets where  id = :id)");
+						$result->bindValue('id', $Id_ticket, PDO::PARAM_INT);
+						$result->execute();
+						
 						if($result) {
 							while($donnees = $result->fetch()) {
 								if(strcmp($donnees['name'],$val) == 0) {
@@ -1807,8 +1811,11 @@ class Dropdown {
 						catch(Exception $e) {
 							die('Erreur : '.$e->getMessage());
 						}
-						$query = "select * from glpi_itilcategories where id=(select itilcategories_id from glpi_tickets where  id = ".$Id_ticket.")";
-						$result = $bdd->query($query); 
+						//$query = "select * from glpi_itilcategories where id=(select itilcategories_id from glpi_tickets where  id = ".$Id_ticket.")";
+						// $result = $bdd->query($query); 
+						$result = $bdd->prepare("select * from glpi_itilcategories where id=(select itilcategories_id from glpi_tickets where  id = :id)");
+						$result->bindValue('id', $Id_ticket, PDO::PARAM_INT);
+						$result->execute();
 						if($result) {
 							while($donnees = $result->fetch()) {
 								if(strcmp($donnees['name'],$val) == 0) {
