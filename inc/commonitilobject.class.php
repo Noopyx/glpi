@@ -1913,7 +1913,7 @@ abstract class CommonITILObject extends CommonDBTM {
       $values = array();
 
 	  try {
-			$DB = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+			$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 	   }
 		catch(Exception $e)
 		{
