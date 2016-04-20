@@ -1933,7 +1933,8 @@ abstract class CommonITILObject extends CommonDBTM {
 		$result->execute();
 		//$result = $DB->query($sql);
 			
-			if($result) {
+			if($result->fetchColumn() > 0) {
+				$result->execute();
 				while ($donnees = $result->fetch()) {
 					if($donnees['op'] == 1) 
 						$values[1] = "Operateur";
