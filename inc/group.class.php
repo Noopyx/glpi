@@ -269,7 +269,7 @@ class Group extends CommonTreeDropdown {
 		// $sql = "SELECT * FROM glpi_groups WHERE id=".$ID;
 		// $result = $bdd->query($sql);
 		$result = $bdd->prepare("SELECT * FROM glpi_groups WHERE id = :id)");
-		$result->bindValue('id', $ID, PDO::PARAM_INT);
+		$result->bindValue(':id', $ID, PDO::PARAM_INT);
 		$result->execute();
 		
 		$op = 0;
