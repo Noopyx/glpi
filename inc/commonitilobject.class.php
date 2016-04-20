@@ -1921,9 +1921,9 @@ abstract class CommonITILObject extends CommonDBTM {
 		}
 		if(isset($p['action']) && strcmp($p['action'],"add") === 0) {
 			//$sql = "SELECT * FROM glpi_users WHERE name='".$_SESSION["glpiname"]."'";
-			$result = $bdd->prepare("SELECT * FROM glpi_users WHERE name= :name");
-			$result->bindValue(":name", $_SESSION["glpiname"], PDO::PARAM_STR);
-			
+			$result = $bdd->prepare("SELECT * FROM glpi_users WHERE name= ?");
+			$result->bindValue(1, $_SESSION["glpiname"], PDO::PARAM_STR);
+			echo "<script type=\"text/javascript\"> console.log(\"1\"); </script>";
 		}
 		else if (strcmp($p['action'],"update") === 0) {
 			//$sql = "select * from glpi_users where id=(SELECT users_id_recipient FROM glpi_tickets WHERE id=".$options['id'].")";					
@@ -1932,9 +1932,10 @@ abstract class CommonITILObject extends CommonDBTM {
 		}
 		$result->execute();
 		//$result = $DB->query($sql);
-			
+			echo "<script type=\"text/javascript\"> console.log(\"2\"); </script>";
 			if($result->fetchColumn() > 0) {
 				$result->execute();
+				echo "<script type=\"text/javascript\"> console.log(\"3\"); </script>";
 				while ($donnees = $result->fetch()) {
 					if($donnees['op'] == 1) 
 						$values[1] = "Operateur";
