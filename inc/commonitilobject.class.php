@@ -1896,7 +1896,7 @@ abstract class CommonITILObject extends CommonDBTM {
    }
 
 
-   static function dropdownCategory(array $options = array()) {
+   static function dropdownCategory(array $options = array() ) {
       global $CFG_GLPI;
 
       $p['name']     = 'itilcategories_id';
@@ -1919,7 +1919,7 @@ abstract class CommonITILObject extends CommonDBTM {
 		{
 			die('Erreur : '.$e->getMessage());
 		}
-		if(isset($p['action']) && strcmp($p['action'],"add") === 0) {
+		if(!isset($p['id'])) {
 			//$sql = "SELECT * FROM glpi_users WHERE name='".$_SESSION["glpiname"]."'";
 			$result = $bdd->prepare("SELECT * FROM glpi_users WHERE name= ?");
 			$result->bindValue(1, $_SESSION["glpiname"], PDO::PARAM_STR);
@@ -1929,7 +1929,7 @@ abstract class CommonITILObject extends CommonDBTM {
 			//$sql = "select * from glpi_users where id=(SELECT users_id_recipient FROM glpi_tickets WHERE id=".$options['id'].")";					
 			$result = $bdd->prepare("select * from glpi_users where id=(SELECT users_id_recipient FROM glpi_tickets WHERE id= ?)");
 			$result->bindValue(1, $options['id'], PDO::PARAM_INT);
-			echo "<script type=\"text/javascript\"> console.log(\"1BIS : ".$p['action']."\"); </script>";
+			echo "<script type=\"text/javascript\"> console.log(\"1BIS : ".$p['action']." ID ".$p['id']."\"); </script>";
 		}
 		$result->execute();
 		//$result = $DB->query($sql);
