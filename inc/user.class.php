@@ -1992,8 +1992,8 @@ class User extends CommonDBTM {
 				}
 			}
 			else {
-				foreach($dropdown as $key => $value) {
-					if(is_array($value)) {
+				foreach($dropdown as $key => $val) {
+					if(is_array($val)) {
 						$result = $bdd->query("select name from glpi_groups where id=".$key);
 						while($donnees = $result->fetch())
 							echo "<optgroup label=\"".$donnees['name']."\">";
@@ -2150,9 +2150,10 @@ class User extends CommonDBTM {
       echo "<td>" . __('Mobile phone') . "</td><td>";
       Html::autocompletionTextField($this, "mobile");
       echo "</td>";
-      echo "<td>" . __('Category') . "</td><td>";
+      /*echo "<td>" . __('Category') . "</td><td>";
       UserCategory::dropdown(array('value' => $this->fields["usercategories_id"]));
-      echo "</td></tr>";
+      echo "</td>":*/
+	  echo "</tr>";
 
       echo "<tr class='tab_bg_1'>";
       echo "<td>" .  __('Phone 2') . "</td><td>";
