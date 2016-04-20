@@ -1194,11 +1194,11 @@ class Html {
 
       $menu['accueil']['title']       = __('Home');
       //$menu['list']['title']     = __('Liste de mes Tickets');
-      $menu['planning']['title']   = __('Planning');
+      //$menu['planning']['title']   = __('Planning');
 	  $menu['stat']['title']       = __('Statistiques');
      // $menu['FAQ']['title']        = __('FAQ');
       $menu['creationCompte']['title'] = __('Administration');
-      $menu['creationCompte']['types'] = array('User','Group','Profile','QueuedMail','Event');
+      $menu['creationCompte']['types'] = array('CommonDropdown','User','Group','Profile','QueuedMail','Event','SLA','Plugin','Notification','Config', 'Control', 'Crontask', 'Auth');
       
 /*$menu['assets']['types']       = array('Computer', 'Monitor', 'Software',
                                              'NetworkEquipment', 'Peripheral', 'Printer',

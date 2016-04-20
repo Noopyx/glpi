@@ -2,7 +2,7 @@
 /* ===== LOGIN ===== */
 
 #firstboxlogin  {
-   background-color: #00B0F1;
+   background-color: #00BDF2;
 }
 
 #logo_login {
@@ -32,7 +32,7 @@ a, a:link, .ui-widget-content a {
 /* ====== HEADER ====== */
 
 #header_top {
-   background-color: #00B0F1;
+   background-color: #00BDF2;
 }
 
 #c_preference a {
@@ -49,7 +49,7 @@ a, a:link, .ui-widget-content a {
 }
 
 ul#menu a.itemP, ul#menu a.itemP1 {
-   color: #00B0F1;
+   color: #00BDF2;
 }
 
 ul#menu > li.active,
@@ -63,11 +63,11 @@ ul#menu > li:hover {
 
 ul#menu ul li a:hover {
    background: #D5D5D5;
-   color: #00B0F1;
+   color: #00BDF2;
 }
 
 ul#menu ul li a {
-   color: #00B0F1;
+   color: #00BDF2;
 }
 
 /* ====== BUTTONS ====== */
