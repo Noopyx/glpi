@@ -2982,13 +2982,13 @@ class Ticket extends CommonITILObject {
 	  echo '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>';
 	  echo "<img id=\"categoryTool\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Tooltip on bottom\" src=\"/pics/info-small.png\" class=\"pointer\">";
 		
-	  echo '<div class="tooltip top" role="tooltip">
-  <div class="tooltip-arrow"></div>
-  <div class="tooltip-inner">
-    Some tooltip text!
-  </div>
-</div>';
-
+	  echo "<script type=\"text/javascript\"> $('#categoryTool').qtip({
+         position: { viewport: $(window) },
+         content: {text: $('#comment__users_id_observer__472448870')}, style: { classes: 'qtip-shadow qtip-bootstrap'}});
+		 </script>";
+	  echo "<div id=\"toolDiv\" class=\"invisible\">Text</div>";
+		 
+		 
       if ($CFG_GLPI['urgency_mask'] != (1<<3)) {
          if (!$tt->isHiddenField('urgency')) {
             echo "<tr class='tab_bg_1'>";
