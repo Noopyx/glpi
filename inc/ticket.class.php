@@ -2979,11 +2979,11 @@ class Ticket extends CommonITILObject {
 	
       //ITILCategory::dropdown($opt); 							QPO: Appel à une nouvelle fonction pour faire le dropdown
 	  self::dropdownCategory(array('action' => 'add'));
-	  echo "<img id=\"categoryTool\" data-toggle=\"tooltip\" data-content=\"TEST\" src=\"/pics/info-small.png\" class=\"pointer\">";
+	  echo "<img id=\"categoryTool\" data-toggle=\"tooltip\" src=\"/pics/info-small.png\" class=\"pointer\" style=\"margin-left:10px;\">";
 		
 	  echo "<script type=\"text/javascript\"> $('#categoryTool').qtip({
          position: { viewport: $(window) },
-         content: {text: \"Operateur : concerne l'infrastructure, Telecom : concerne la partie Avaya, Centre de contact : concerne le Kiamo\"},
+         content: {text: \"Operateur : concerne l'infrastructure\nTelecom : concerne la partie Avaya\n Centre de contact : concerne le Kiamo\"},
 		 style: { classes: 'qtip-shadow qtip-bootstrap'}});
 		 </script>";
 		 
