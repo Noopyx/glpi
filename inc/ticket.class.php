@@ -2979,20 +2979,14 @@ class Ticket extends CommonITILObject {
 	
       //ITILCategory::dropdown($opt); 							QPO: Appel à une nouvelle fonction pour faire le dropdown
 	  self::dropdownCategory(array('action' => 'add'));
-	  echo "<img id=\"categoryTool\" src=\"/pics/info-small.png\" class=\"pointer\" data-hasqtip=\"0\" aria-describedby=\"qtip-0\">";
-	  echo "<script type=\"text/javascript\" > 
-//<![CDATA[
-
-$('#categoryTool').qtip({
-         position: { viewport: $(window) },
-         content: {text: $('#toolCateg')}, style: { classes: 'qtip-shadow qtip-bootstrap', values: 'text'}});
-
-//]]>
-</script>";
-	  echo '<div id="qtip-0" class="qtip qtip-default qtip-shadow qtip-bootstrap qtip-pos-tl" tracking="false" role="alert" aria-live="polite" aria-atomic="false" aria-describedby="qtip-0-content" aria-hidden="true" data-qtip-id="0" style="z-index: 15001;"><div class="qtip-tip" style="border: 0px !important; width: 8px; height: 8px; line-height: 8px; left: 6px; top: -8px; background-color: transparent !important;"><canvas width="8" height="8" style="border: 0px !important; background-color: transparent !important;"></canvas></div><div class="qtip-content" id="qtip-0-content" aria-atomic="true">';
-	  echo "<div id=\"toolCateg\" class=\"invisible\" style=\"display: block;\">Operateur : concerne votre infrastructure<br/>Telecom : concerne votre Avaya<br/>Centre de contact : concerne votre Kiamo</div></div>";
-      echo "</td></tr>";
-
+	  echo "<img id=\"categoryTool\" data-toggle=\"tooltip\" src=\"/pics/info-small.png\" class=\"pointer\">";
+		
+	  echo '<div class="tooltip top" role="tooltip">
+  <div class="tooltip-arrow"></div>
+  <div class="tooltip-inner">
+    Some tooltip text!
+  </div>
+</div>';
 
       if ($CFG_GLPI['urgency_mask'] != (1<<3)) {
          if (!$tt->isHiddenField('urgency')) {
