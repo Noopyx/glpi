@@ -41,6 +41,7 @@ Session::checkRight("contact_enterprise", READ);
 
 Html::header(Supplier::getTypeName(Session::getPluralNumber()), '', "management", "supplier");
 
+echo "<a class=\"submit\" href=\"/front/suplier.form\">Ajouter</a>";
 Search::show('Supplier');
 
 Html::footer();
