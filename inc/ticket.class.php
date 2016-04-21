@@ -2979,6 +2979,7 @@ class Ticket extends CommonITILObject {
 	
       //ITILCategory::dropdown($opt); 							QPO: Appel à une nouvelle fonction pour faire le dropdown
 	  self::dropdownCategory(array('action' => 'add'));
+	  echo '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>';
 	  echo "<img id=\"categoryTool\" data-toggle=\"tooltip\" src=\"/pics/info-small.png\" class=\"pointer\">";
 		
 	  echo '<div class="tooltip top" role="tooltip">
