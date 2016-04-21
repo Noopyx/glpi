@@ -1531,6 +1531,8 @@ class Html {
             	$link = "/front/stat.php";
 			 else if(strcmp($part,"planning") === 0)
             	$link = "/front/planning.php";
+			 else if(strcmp($part,"config") === 0)
+            	$link = "/front/dropdown.php";
 			
             echo "<a href='$link' class='itemP'>".$data['title']."</a>";
             echo "<ul class='ssmenu'>";
