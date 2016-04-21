@@ -25,9 +25,6 @@ a, a:link, .ui-widget-content a {
     color : #3A5693;
 }
 
-.main_form tr.headerRow th {
-   color: #00BDF2;
-}
 
 /* ====== HEADER ====== */
 
@@ -50,11 +47,6 @@ a, a:link, .ui-widget-content a {
 
 ul#menu a.itemP, ul#menu a.itemP1 {
    color: #00BDF2;
-}
-
-ul#menu > li.active,
-ul.ssmenu li.active {
-   background-color: #00BDF2;
 }
 
 ul#menu > li:hover {
