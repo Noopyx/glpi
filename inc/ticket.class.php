@@ -2983,9 +2983,9 @@ class Ticket extends CommonITILObject {
 		
 	  echo "<script type=\"text/javascript\"> $('#categoryTool').qtip({
          position: { viewport: $(window) },
-         content: {text: $('#toolDiv')}, style: { classes: 'qtip-shadow qtip-bootstrap'}});
+         content: {text: \"Avaya\"},
+		 style: { classes: 'qtip-shadow qtip-bootstrap'}});
 		 </script>";
-	  echo "<div id=\"toolDiv\" class=\"invisible\">Text</div>";
 		 
 		 
       if ($CFG_GLPI['urgency_mask'] != (1<<3)) {
