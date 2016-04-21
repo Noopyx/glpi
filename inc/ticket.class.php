@@ -2989,7 +2989,7 @@ $('#categoryTool').qtip({
 
 //]]>
 </script>";
-	  echo "<div id=\"toolCateg\" class=\"invisible\" style=\"display: block;\">&nbsp;</div>";
+	  echo "<div id=\"toolCateg\" class=\"invisible\" style=\"display: block;\">Operateur : concerne votre infrastructure<br/>Telecom : concerne votre Avaya<br/>Centre de contact : concerne votre Kiamo</div>";
       echo "</td></tr>";
 
 
