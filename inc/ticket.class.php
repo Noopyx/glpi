@@ -2986,7 +2986,7 @@ class Ticket extends CommonITILObject {
          position: { viewport: $(window) },
          content: {text: $('#comment__users_id_observer__472448870')}, style: { classes: 'qtip-shadow qtip-bootstrap'}});
 		 </script>";
-	  echo "<div id=\"toolDiv\" class=\"invisible\">Text</div>";
+	  //echo "<div id=\"toolDiv\" class=\"invisible\">Text</div>";
 		 
 		 
       if ($CFG_GLPI['urgency_mask'] != (1<<3)) {
