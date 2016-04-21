@@ -2985,7 +2985,7 @@ class Ticket extends CommonITILObject {
 
 $('#categoryTool').qtip({
          position: { viewport: $(window) },
-         content: {text: $('#toolCateg')}, style: { classes: 'qtip-shadow qtip-bootstrap'}});
+         content: {text: $('#toolCateg')}, style: { classes: 'qtip-shadow qtip-bootstrap', values: 'text'}});
 
 //]]>
 </script>";
