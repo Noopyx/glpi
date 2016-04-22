@@ -77,7 +77,7 @@ if (!isset($_POST["itemtype"])
 
 if (isset($_POST['add'])) {
    if ($newID = $track->add($_POST)) {
-      if (isset($_POST["_type"]) && ($_POST["_type"] == "Helpdesk") && strcmp($_POST['content'],"Récurrence (Cas unique / aléatoire / systématique / ... ) : \n\nSymptôme(s) rencontré(s) : ") != 0 && strcmp($_POST['content'],"Veuillez indiquez votre demande :") != 0)) {
+      if (isset($_POST["_type"]) && ($_POST["_type"] == "Helpdesk") && strcmp($_POST['content'],"Récurrence (Cas unique / aléatoire / systématique / ... ) : \n\nSymptôme(s) rencontré(s) : ") != 0 && strcmp($_POST['content'],"Veuillez indiquez votre demande :") != 0) {
          echo "<div class='center spaced'>".
                 __('Your ticket has been registered, its treatment is in progress.');
          Html::displayBackLink();
