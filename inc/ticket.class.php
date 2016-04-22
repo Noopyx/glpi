@@ -3135,7 +3135,7 @@ class Ticket extends CommonITILObject {
 				$values["content"] .= "Description de votre demande ici";
 			}
 			else {
-				$values["content"] .= "Récurrence (Cas unique / aléatoire / systématique / ... ) : <br/>Symptôme(s) rencontré(s) : ";
+				$values["content"] .= "Récurrence (Cas unique / aléatoire / systématique / ... ) : \"\n\"Symptôme(s) rencontré(s) : ";
 			}
          }
 
