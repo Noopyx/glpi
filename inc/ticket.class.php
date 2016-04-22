@@ -3132,27 +3132,29 @@ class Ticket extends CommonITILObject {
          } else {
             $values["content"] = $this->setSimpleTextContent($values["content"]);
 			if ($values["type"] == self::DEMAND_TYPE) {
-				$values["content"] .= "Description de votre demande ici";
+				$values["content"] .= "Veuillez indiquez votre demande :";
 			}
 			else {
-				$values["content"] .= "Récurrence (Cas unique / aléatoire / systématique / ... ) : \nSymptôme(s) rencontré(s) : ";
+				$values["content"] .= "Récurrence (Cas unique / aléatoire / systématique / ... ) : \n\nSymptôme(s) rencontré(s) : ";
 			}
          }
 
          echo "<div id='content$rand_text'>";
          echo "<textarea id='$content_id' name='content' cols='$cols' rows='$rows'>".
                 $values['content']."</textarea></div>";
+		if ($values["type"] == self::DEMAND_TYPE) {
 		 echo "<script type=\"text/javascript\">
 			$(\"#$content_id\").focus(function() {
-                if (this.value === \"Récurrence (Cas unique / aléatoire / systématique / ... ) : \nSymptôme(s) rencontré(s) : \") {
+                if (this.value === \"Veuillez indiquez votre demande :\") {
 					this.value = '';
 				}
 			})
 			.blur(function() {
 				if (this.value === '') {
-					this.value = \"Récurrence (Cas unique / aléatoire / systématique / ... ) : \nSymptôme(s) rencontré(s) : \";
+					this.value = \"Veuillez indiquez votre demande :\";
 				}
 			});</script>";
+		}
          echo "</td></tr>";
       }
 
