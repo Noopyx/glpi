@@ -1903,7 +1903,8 @@ abstract class CommonITILObject extends CommonDBTM {
       $p['value']    = 0;
       $p['showtype'] = 'normal';
       $p['display']  = true;
-
+	  $p['display_emptychoice'] = true;
+	  
       if (is_array($options) && count($options)) {
          foreach ($options as $key => $val) {
             $p[$key] = $val;
@@ -1995,7 +1996,7 @@ abstract class CommonITILObject extends CommonDBTM {
             $p[$key] = $val;
          }
       }
-	  $values[0] = "---";
+	  
 	  $values = array();
 	   $values[1] = "Avaya 1";
 	   $values[2] = "Avaya 2";
