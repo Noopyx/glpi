@@ -1977,7 +1977,7 @@ abstract class CommonITILObject extends CommonDBTM {
 	   $values[12] = "5.1.0";
 	   $values[13] = "5.1.1";
 	   $values[13] = "5.1.2";
-	   $values[14] = "A préciser dans la description"
+	   $values[14] = "A préciser dans la description";
 	   
 	   return Dropdown::showFromArray($p['name'],$values, $p);
    }
