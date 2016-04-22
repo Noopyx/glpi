@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: GLPI Project\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-25 10:48+0100\n"
-"PO-Revision-Date: 2016-04-20 09:27+0200\n"
+"PO-Revision-Date: 2016-04-22 16:01+0200\n"
 "Last-Translator: Alexandre DELAUNAY <delaunay.alexandre@gmail.com>\n"
 "Language-Team: French (France) (http://www.transifex.com/glpi/GLPI/language/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -5020,7 +5020,7 @@ msgstr "Revue"
 #: inc/change.class.php:486 inc/problem.class.php:522 inc/ticket.class.php:2607
 msgctxt "status"
 msgid "Closed"
-msgstr "Cloturé avec Validation client"
+msgstr "Clos"
 
 #: inc/change.class.php:490 inc/problem.class.php:525 inc/ticket.class.php:2610
 msgctxt "status"
@@ -12536,7 +12536,7 @@ msgstr "En cours Partenaire"
 #: inc/problem.class.php:520 inc/ticket.class.php:2606
 msgctxt "status"
 msgid "Solved"
-msgstr "Cloturé sans validation client"
+msgstr "Résolu"
 
 #: inc/problem.class.php:521
 msgid "Under observation"
@@ -14402,7 +14402,7 @@ msgstr "Description de la demande ou de l'incident"
 
 #: inc/ticket.class.php:2994
 msgid "Inform me about the actions taken"
-msgstr "Suivis de l"
+msgstr "Suivi de l"
 
 #: inc/ticket.class.php:3169
 msgid "Submit message"
