@@ -1949,7 +1949,7 @@ abstract class CommonITILObject extends CommonDBTM {
       return Dropdown::showFromArray($p['name'],$values, $p, $options['id']);
    }
    
-   static function dropdownVersionKiamo(array $options = array() ) {
+   static function dropdownVersionKiamo() {
       global $CFG_GLPI;
 
       $p['name']     = 'version';
@@ -1978,6 +1978,56 @@ abstract class CommonITILObject extends CommonDBTM {
 	   $values[13] = "5.1.1";
 	   $values[13] = "5.1.2";
 	   $values[14] = "A préciser dans la description";
+	   
+	   return Dropdown::showFromArray($p['name'],$values, $p);
+   }
+   
+   static function dropdownVersionAvaya() {
+      global $CFG_GLPI;
+
+      $p['name']     = 'version';
+      $p['value']    = 0;
+      $p['showtype'] = 'normal';
+      $p['display']  = true;
+
+      if (is_array($options) && count($options)) {
+         foreach ($options as $key => $val) {
+            $p[$key] = $val;
+         }
+      }
+	  
+	  $values = array();
+	   $values[1] = "Avaya 1";
+	   $values[2] = "Avaya 2";
+	   $values[3] = "Avaya 3";
+	   $values[4] = "Avaya 4";
+	   $values[5] = "Avaya 5";
+	   $values[6] = "A préciser dans la description";
+	   
+	   return Dropdown::showFromArray($p['name'],$values, $p);
+   }
+   
+   static function dropdownVersionInfra() {
+      global $CFG_GLPI;
+
+      $p['name']     = 'version';
+      $p['value']    = 0;
+      $p['showtype'] = 'normal';
+      $p['display']  = true;
+
+      if (is_array($options) && count($options)) {
+         foreach ($options as $key => $val) {
+            $p[$key] = $val;
+         }
+      }
+	  
+	  $values = array();
+	   $values[1] = "Infra 1";
+	   $values[2] = "Infra 2";
+	   $values[3] = "Infra 3";
+	   $values[4] = "Infra 4";
+	   $values[5] = "Infra 5";
+	   $values[6] = "A préciser dans la description";
 	   
 	   return Dropdown::showFromArray($p['name'],$values, $p);
    }

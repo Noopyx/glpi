@@ -2978,7 +2978,7 @@ class Ticket extends CommonITILObject {
       }
 	
       //ITILCategory::dropdown($opt); 							QPO: Appel à une nouvelle fonction pour faire le dropdown
-	  self::dropdownCategory(array('action' => 'add'));
+	  self::dropdownCategory(array('action' => 'add','on_change' => 'this.form.submit()'));
 	  echo "<img id=\"categoryTool\" data-toggle=\"tooltip\" src=\"/pics/info-small.png\" class=\"pointer\" style=\"margin-left:10px;\">";
 		
 	  echo "<script type=\"text/javascript\"> $('#categoryTool').qtip({
@@ -2990,10 +2990,13 @@ class Ticket extends CommonITILObject {
 	  echo "<tr class='tab_bg_1'>";
       echo "<td>Version</td>";
       echo "<td>";
-	  $opt = array('on_change' => 'this.form.submit()');
 	  
 	  if( $values['itilcategories_id'] == 4)
-		self::dropdownVersionKiamo($opt);
+		self::dropdownVersionKiamo();
+	  if( $values['itilcategories_id'] == 2)
+		self::dropdownVersionAvaya();
+	  if( $values['itilcategories_id'] == 1)
+		self::dropdownVersionInfra();
 	  echo "</td>";
 		 
       if ($CFG_GLPI['urgency_mask'] != (1<<3)) {
