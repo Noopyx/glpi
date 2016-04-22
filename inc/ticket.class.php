@@ -2986,7 +2986,15 @@ class Ticket extends CommonITILObject {
          content: {text: \"Operateur : concerne l'infrastructure<br/>Telecom : concerne la partie Avaya<br/>Centre de contact : concerne le Kiamo\"},
 		 style: { classes: 'qtip-shadow qtip-bootstrap'}});
 		 </script>";
-		 
+	
+	  echo "<tr class='tab_bg_1'>";
+      echo "<td>Version</td>";
+      echo "<td>";
+	  $opt = array('on_change' => 'this.form.submit()');
+	  
+	  if( strcmp($values['itilcategories_id'],"Telecom") == 0)
+		self::dropdownVersionKiamo($opt);
+	  echo "</td>";
 		 
       if ($CFG_GLPI['urgency_mask'] != (1<<3)) {
          if (!$tt->isHiddenField('urgency')) {
@@ -2995,6 +3003,13 @@ class Ticket extends CommonITILObject {
                  "</td>";
             echo "<td>";
             self::dropdownUrgency(array('value' => $values["urgency"]));
+			 echo "<img id=\"categoryTool\" data-toggle=\"tooltip\" src=\"/pics/info-small.png\" class=\"pointer\" style=\"margin-left:10px;\">";
+		
+			  echo "<script type=\"text/javascript\"> $('#categoryTool').qtip({
+				 position: { viewport: $(window) },
+				 content: {text: \"Urgence\"},
+				 style: { classes: 'qtip-shadow qtip-bootstrap'}});
+				 </script>";
             echo "</td></tr>";
          }
       }

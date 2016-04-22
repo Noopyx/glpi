@@ -1948,6 +1948,39 @@ abstract class CommonITILObject extends CommonDBTM {
 		/*$used = $values*/
       return Dropdown::showFromArray($p['name'],$values, $p, $options['id']);
    }
+   
+   static function dropdownVersionKiamo(array $options = array() ) {
+      global $CFG_GLPI;
+
+      $p['name']     = 'version';
+      $p['value']    = 0;
+      $p['showtype'] = 'normal';
+      $p['display']  = true;
+
+      if (is_array($options) && count($options)) {
+         foreach ($options as $key => $val) {
+            $p[$key] = $val;
+         }
+      }
+	  
+	  $values = array();
+	   $values[1] = "3.1.x";
+	   $values[2] = "3.2.x";
+	   $values[3] = "4.0.x";
+	   $values[4] = "4.2.20";
+	   $values[5] = "4.3.4";
+	   $values[6] = "4.4.0";
+	   $values[7] = "4.4.2";
+	   $values[9] = "4.4.4";
+	   $values[10] = "4.4.6";
+	   $values[11] = "5.0.0";
+	   $values[12] = "5.1.0";
+	   $values[13] = "5.1.1";
+	   $values[13] = "5.1.2";
+	   $values[14] = "A préciser dans la description"
+	   
+	   return Dropdown::showFromArray($p['name'],$values, $p);
+   }
    /**
     * Get ITIL object Urgency Name
     *
