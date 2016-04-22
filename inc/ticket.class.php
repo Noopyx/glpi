@@ -2992,7 +2992,7 @@ class Ticket extends CommonITILObject {
       echo "<td>";
 	  $opt = array('on_change' => 'this.form.submit()');
 	  
-	  if( strcmp($values['itilcategories_id'],"Telecom") == 0)
+	  if( $values['itilcategories_id'] == 4)
 		self::dropdownVersionKiamo($opt);
 	  echo "</td>";
 		 
@@ -3003,9 +3003,9 @@ class Ticket extends CommonITILObject {
                  "</td>";
             echo "<td>";
             self::dropdownUrgency(array('value' => $values["urgency"]));
-			 echo "<img id=\"categoryTool\" data-toggle=\"tooltip\" src=\"/pics/info-small.png\" class=\"pointer\" style=\"margin-left:10px;\">";
+			 echo "<img id=\"categoryTool2\" data-toggle=\"tooltip\" src=\"/pics/info-small.png\" class=\"pointer\" style=\"margin-left:10px;\">";
 		
-			  echo "<script type=\"text/javascript\"> $('#categoryTool').qtip({
+			  echo "<script type=\"text/javascript\"> $('#categoryTool2').qtip({
 				 position: { viewport: $(window) },
 				 content: {text: \"Urgence\"},
 				 style: { classes: 'qtip-shadow qtip-bootstrap'}});
