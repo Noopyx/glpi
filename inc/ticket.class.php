@@ -3102,7 +3102,7 @@ class Ticket extends CommonITILObject {
       if (!$tt->isHiddenField('name')
           || $tt->isPredefinedField('name')) {
          echo "<tr class='tab_bg_1'>";
-         echo "<td>".sprintf(__('%1$s%2$s'), __('Title'), $tt->getMandatoryMark('name'))."<p style=\"color:red;\">*</p><td>";
+         echo "<td>".sprintf(__('%1$s%2$s'), __('Title'), $tt->getMandatoryMark('name'))."<span style=\"color:red;\">*</span><td>";
          if (!$tt->isHiddenField('name')) {
             echo "<input type='text' maxlength='250' size='80' name='name'
                        value=\"".$values['name']."\">";
@@ -3117,7 +3117,7 @@ class Ticket extends CommonITILObject {
           || $tt->isPredefinedField('content')) {
          echo "<tr class='tab_bg_1'>";
          echo "<td>".sprintf(__('%1$s%2$s'), __('Description'), $tt->getMandatoryMark('content')).
-              "<p style=\"color:red;\">*</p></td><td>";
+              "<span style=\"color:red;\">*</span></td><td>";
          $rand      = mt_rand();
          $rand_text = mt_rand();
 
@@ -3135,7 +3135,7 @@ class Ticket extends CommonITILObject {
 				$values["content"] .= "Description de votre demande ici";
 			}
 			else {
-				$values["content"] .= "Récurrence (Cas unique / aléatoire / systématique / ... ) : \nSymptôme(s) rencontré(s) : ";
+				$values["content"] .= "Récurrence (Cas unique / aléatoire / systématique / ... ) : <br/>Symptôme(s) rencontré(s) : ";
 			}
          }
 
@@ -3144,13 +3144,13 @@ class Ticket extends CommonITILObject {
                 $values['content']."</textarea></div>";
 		 echo "<script type=\"text/javascript\">
 			$(\"#$content_id\").focus(function() {
-                if (this.value === \"Récurrence (Cas unique / aléatoire / systématique / ... ) : \nSymptôme(s) rencontré(s) : \") {
+                if (this.value === \"Récurrence (Cas unique / aléatoire / systématique / ... ) : <br/>Symptôme(s) rencontré(s) : \") {
 					this.value = '';
 				}
 			})
 			.blur(function() {
 				if (this.value === '') {
-					this.value = \"Récurrence (Cas unique / aléatoire / systématique / ... ) : \nSymptôme(s) rencontré(s) : \";
+					this.value = \"Récurrence (Cas unique / aléatoire / systématique / ... ) : <br/>Symptôme(s) rencontré(s) : \";
 				}
 			});</script>";
          echo "</td></tr>";
