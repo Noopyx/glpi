@@ -5068,7 +5068,7 @@ class Ticket extends CommonITILObject {
                 WHERE `status` = '".self::INCOMING."' ".
                       getEntitiesRestrictRequest("AND","glpi_tickets")."
                       AND NOT `is_deleted`
-                ORDER BY `glpi_tickets`.`priority` DESC, `glpi_tickets`.`date_mod` DESC
+                ORDER BY `glpi_tickets`.`date_mod` DESC
                 LIMIT ".intval($_SESSION['glpilist_limit']);
 
       $result = $DB->query($query);
