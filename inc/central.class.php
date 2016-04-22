@@ -239,7 +239,7 @@ class Central extends CommonGLPI {
       echo "</table></td>";
       echo "<td class='top'  width='50%'><table class='central'>";
       echo "<tr class='noHover'><td>";
-      Planning::showCentral(Session::getLoginUserID());
+      //Planning::showCentral(Session::getLoginUserID());
       /*Reminder::showListForCentral();
       if (Session::haveRight("reminder_public", READ)) {
          Reminder::showListForCentral(false);
