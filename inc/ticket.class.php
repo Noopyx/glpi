@@ -2998,9 +2998,9 @@ class Ticket extends CommonITILObject {
 	  else if( $values['itilcategories_id'] == 1)
 		self::dropdownVersionInfra();
 	  else if( $values['itilcategories_id'] == 3) 
-		echo "<input type='text' name='version' value='Aucune'>";
+		echo "<span>Aucune</span><input type='hidden' name='version' value='Aucune'>";
 	  else
-		echo "<input type='text' name='version' value='Choisissez votre catégorie'>";
+		echo "<span>Choisissez votre catégorie</span><input type='hidden' name='version' value='noChoice'>";
 	  echo "</td>";
 		 
       if ($CFG_GLPI['urgency_mask'] != (1<<3)) {
