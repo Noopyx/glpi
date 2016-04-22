@@ -2978,7 +2978,7 @@ class Ticket extends CommonITILObject {
       }
 	
       //ITILCategory::dropdown($opt); 							QPO: Appel à une nouvelle fonction pour faire le dropdown
-	  self::dropdownCategory(array('action' => 'add','on_change' => 'this.form.submit()'));
+	  self::dropdownCategory(array('action' => 'add','on_change' => 'this.form.submit()','value'     => $values['itilcategories_id']));
 	  echo "<img id=\"categoryTool\" data-toggle=\"tooltip\" src=\"/pics/info-small.png\" class=\"pointer\" style=\"margin-left:10px;\">";
 		
 	  echo "<script type=\"text/javascript\"> $('#categoryTool').qtip({
