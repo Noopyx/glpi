@@ -876,7 +876,6 @@ class CommonDBTM extends CommonGLPI {
 
       if ($DB->isSlave()) {
          return false;
-         return false;
       }
 
       // Store input in the object to be available in all sub-method / hook
