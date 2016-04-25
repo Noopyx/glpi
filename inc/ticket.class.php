@@ -3152,7 +3152,7 @@ class Ticket extends CommonITILObject {
             $cols              = 100;
             $rows              = 10;
          } else {
-            $values["content"] = $this->setSimpleTextContent($values["content"]);
+            // $values["content"] = $this->setSimpleTextContent($values["content"]);
 			if( !isset($values["content"])) {
 				if ($values["type"] == self::DEMAND_TYPE) {
 					$values["content"] .= "Veuillez indiquez votre demande :";
