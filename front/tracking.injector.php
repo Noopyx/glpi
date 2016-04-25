@@ -78,7 +78,7 @@ if (!isset($_POST["itemtype"])
 if (isset($_POST['add'])) {
 	$defaultContent = "Récurrence (Cas unique / aléatoire / systématique / ... ) : \n\nSymptôme(s) rencontré(s) : ";
    
-	if(strlen($_POST['name']) > 0 && $_POST['itilcategories_id'] == 0 && strcmp($_POST['content'],$defaultContent) != 0 && $newID = $track->add($_POST)) {
+	if(strlen($_POST['name']) > 0 && $_POST['itilcategories_id'] != 0 && strcmp($_POST['content'],$defaultContent) != 0 && $newID = $track->add($_POST)) {
       if (isset($_POST["_type"]) && ($_POST["_type"] == "Helpdesk")) {
          echo "<div class='center spaced'>".
                 __('Your ticket has been registered, its treatment is in progress.');
@@ -96,7 +96,7 @@ if (isset($_POST['add'])) {
 	   $displayMsg = 0;
 	   $msg = "";
 	   
-	   if ( strlen($_POST['name']) > 0 ){
+	   if ( strlen($_POST['name']) == 0 ){
 	    $msg = __('Title');
 		$displayMsg = 1;
 	   }
@@ -107,6 +107,13 @@ if (isset($_POST['add'])) {
 			$msg .=__('Category');
 		$displayMsg = 1;
 	   }
+	    if (strcmp($_POST['content'],$defaultContent) == 0) {
+			if($displayMsg == 1)
+				$msg .=", ".__('Description');
+			else 
+				$msg .=__('Description');
+			$displayMsg = 1;
+		}
    
    
    if($displayMsg == 1) {
