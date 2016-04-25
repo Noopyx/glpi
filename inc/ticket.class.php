@@ -4162,7 +4162,7 @@ class Ticket extends CommonITILObject {
 	  catch(Exception $e){
 		die('Erreur : '.$e->getMessage());
 	  }
-	  $result->prepare("select * from glpi_tickets where id = ?");
+	  $result = $bdd->prepare("select * from glpi_tickets where id = ?");
 	  $result->bindValue(1, $ID, PDO::PARAM_INT);
 	  while($donnees = $result->fetch()) 
 		echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='noChoice'>";
