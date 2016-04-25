@@ -2957,7 +2957,7 @@ class Ticket extends CommonITILObject {
 
       echo "<tr class='tab_bg_1'>";
       echo "<td>".sprintf(__('%1$s%2$s'), __('Category'),
-                          $tt->getMandatoryMark('itilcategories_id'))."</td>";
+                          $tt->getMandatoryMark('itilcategories_id'))."<span style=\"color:red;\">*</span></td>";
       echo "<td>";
 
       $condition = "`is_helpdeskvisible`='1'";
