@@ -2987,22 +2987,25 @@ class Ticket extends CommonITILObject {
 		 style: { classes: 'qtip-shadow qtip-bootstrap'}});
 		 </script>";
 	
-	  echo "<tr class='tab_bg_1'>";
-      echo "<td>Version</td>";
-      echo "<td>";
 	  
-	  if( $values['itilcategories_id'] == 4)
-		self::dropdownVersionKiamo();
-	  else if( $values['itilcategories_id'] == 2)
-		self::dropdownVersionAvaya();
-	  else if( $values['itilcategories_id'] == 1)
-		self::dropdownVersionInfra();
-	  else if( $values['itilcategories_id'] == 3) 
-		echo "<span>Aucune</span><input type='hidden' name='version' value='Aucune'>";
-	  else
-		echo "<span>Choisissez votre catégorie</span><input type='hidden' name='version' value='noChoice'>";
-	  echo "</td>";
-		 
+      
+	  if(isset($values['itilcategories_id'])) {
+		  echo "<tr class='tab_bg_1'>";
+		  echo "<td>Version</td>";
+		  echo "<td>";
+		  
+		  if( $values['itilcategories_id'] == 4)
+			self::dropdownVersionKiamo();
+		  else if( $values['itilcategories_id'] == 2)
+			self::dropdownVersionAvaya();
+		  else if( $values['itilcategories_id'] == 1)
+			self::dropdownVersionInfra();
+		  else if( $values['itilcategories_id'] == 3) 
+			echo "<span>Aucune</span><input type='hidden' name='version' value='Aucune'>";
+		  else
+			echo "<span>Choisissez votre catégorie</span><input type='hidden' name='version' value='noChoice'>";
+		  echo "</td></tr>";
+	  }
       if ($CFG_GLPI['urgency_mask'] != (1<<3)) {
          if (!$tt->isHiddenField('urgency')) {
             echo "<tr class='tab_bg_1'>";
