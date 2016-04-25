@@ -1198,7 +1198,7 @@ class Html {
 	  $menu['stat']['title']       = __('Statistiques');
      // $menu['FAQ']['title']        = __('FAQ');
       $menu['creationCompte']['title'] = __('Administration');
-      $menu['creationCompte']['types'] = array('User','Group','Profile', 'Supplier','Ticket');
+      $menu['creationCompte']['types'] = array('User','Group','Profile', 'Supplier','Ticket','Ticket Template','TicketRecurrent');
 	  $menu['config']['title']      = __('Setup');
       $menu['config']['types'] = array('CommonDropdown','QueuedMail','Event','SLA','Plugin','Notification','Config', 'Crontask');
 /*$menu['assets']['types']       = array('Computer', 'Monitor', 'Software',
@@ -1207,7 +1207,7 @@ class Html {
 	*/
      
       /*$menu['helpdesk']['types']     = array('Ticket', 'Problem', 'Change',
-                                             'Planning', 'Stat', 'TicketRecurrent');
+                                             'Planning', 'Stat', );
 */
       
       /*$menu['management']['types']   = array('Budget', 'Supplier', 'Contact', 'Contract',

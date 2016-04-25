@@ -2983,7 +2983,7 @@ class Ticket extends CommonITILObject {
 		
 	  echo "<script type=\"text/javascript\"> $('#categoryTool').qtip({
          position: { viewport: $(window) },
-         content: {text: \"Operateur : concerne l'infrastructure<br/>Telecom : concerne la partie Avaya<br/>Centre de contact : concerne le Kiamo\"},
+         content: {text: \"Operateur : Lien DATA XDSL , VOIX<br/>Telecom : Matériel telecom (Autocom, poste, ...)<br/>Centre de contact : Lié à votre outil centre de contact, service client\"},
 		 style: { classes: 'qtip-shadow qtip-bootstrap'}});
 		 </script>";
 	
