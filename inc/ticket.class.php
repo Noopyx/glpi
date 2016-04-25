@@ -3146,18 +3146,20 @@ class Ticket extends CommonITILObject {
          $cols       = 90;
          $rows       = 6;
          $content_id = "content$rand";
-		 $values["content"] = "";
+		 //$values["content"] = "";
          if ($CFG_GLPI["use_rich_text"]) {
             $values["content"] = $this->setRichTextContent($content_id, $values["content"], $rand);
             $cols              = 100;
             $rows              = 10;
          } else {
             $values["content"] = $this->setSimpleTextContent($values["content"]);
-			if ($values["type"] == self::DEMAND_TYPE) {
-				$values["content"] .= "Veuillez indiquez votre demande :";
-			}
-			else {
-				$values["content"] .= "Récurrence (Cas unique / aléatoire / systématique / ... ) : \n\nSymptôme(s) rencontré(s) : ";
+			if( !isset($values["content"])) {
+				if ($values["type"] == self::DEMAND_TYPE) {
+					$values["content"] = "Veuillez indiquez votre demande :";
+				}
+				else {
+					$values["content"] = "Récurrence (Cas unique / aléatoire / systématique / ... ) : \n\nSymptôme(s) rencontré(s) : ";
+				}
 			}
          }
 
