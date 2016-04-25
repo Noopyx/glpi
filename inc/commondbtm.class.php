@@ -482,12 +482,12 @@ class CommonDBTM extends CommonGLPI {
                $this->fields['id'] = $DB->insert_id();
             }
 			if( isset($this->fields['itilcategories_id']) && $this->fields['itilcategories_id'] != 0) {
-				// try	{
-					// $bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
-				// }
-				// catch(Exception $e) {
-						// die('Erreur : '.$e->getMessage());
-				// }
+				try	{
+					$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+				}
+				catch(Exception $e) {
+						die('Erreur : '.$e->getMessage());
+				}
 				
 				// if($this->input['itilcategories_id'] == 1)
 					// $mycategory = $bdd->query("select * from glpi_itilcategories where name='Operateur'");
