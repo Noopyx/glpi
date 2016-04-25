@@ -1924,8 +1924,9 @@ class User extends CommonDBTM {
 						for (var id in tab) {
 							if (id == document.form.group.options[i].value) {
 								var cpt = 0;
-								for (var elem in document.getElementsByName('category[]')) {
-									elem.checked = tab[id][cpt];
+								elem = document.getElementsByName('category[]');
+								while (elem[cpt] != undefined) {
+									elem[cpt].checked = tab[id][cpt];
 									cpt++;
 								}
 							}
