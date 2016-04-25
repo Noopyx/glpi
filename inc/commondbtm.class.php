@@ -420,28 +420,6 @@ class CommonDBTM extends CommonGLPI {
 
          $i = 0;
 		
-		// try	{
-			// $bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
-		// }
-		// catch(Exception $e) {
-			// die('Erreur : '.$e->getMessage());
-		// }
-		// if(isset($this->input['itilcategories_id'])) {
-			// if($this->input['itilcategories_id'] == 1)
-				// $mycategory = $bdd->query("select * from glpi_itilcategories where name='Operateur'");
-			// if($this->input['itilcategories_id'] == 2)
-				// $mycategory = $bdd->query("select * from glpi_itilcategories where name='Telecom'");
-			// if($this->input['itilcategories_id'] == 3)
-				// $mycategory = $bdd->query("select * from glpi_itilcategories where name='Visio-Conference'");
-			// if($this->input['itilcategories_id'] == 4)
-				// $mycategory = $bdd->query("select * from glpi_itilcategories where name='Centre de contact'");
-			
-			// while ($donnees = $mycategory->fetch()) {
-					// $this->fields['itilcategories_id'] = $donnees['id'];
-				// }
-			
-			
-		// }
 		if(isset($this->input['group'])) {
 			$this->fields['id_group'] = $this->input['group'];
 		}
@@ -488,20 +466,7 @@ class CommonDBTM extends CommonGLPI {
 				catch(Exception $e) {
 						die('Erreur : '.$e->getMessage());
 				}
-				
-				// if($this->input['itilcategories_id'] == 1)
-					// $mycategory = $bdd->query("select * from glpi_itilcategories where name='Operateur'");
-				// if($this->input['itilcategories_id'] == 2)
-					// $mycategory = $bdd->query("select * from glpi_itilcategories where name='Telecom'");
-				// if($this->input['itilcategories_id'] == 3)
-					// $mycategory = $bdd->query("select * from glpi_itilcategories where name='Visio-Conference'");
-				// if($this->input['itilcategories_id'] == 4)
-					// $mycategory = $bdd->query("select * from glpi_itilcategories where name='Centre de contact'");
-				
-				// while ($donnees = $mycategory->fetch()) {
-					// $this->fields['itilcategories_id'] = $donnees['id'];
-				// }
-				
+								
 				//$result = $bdd->query("select * from glpi_groups where name=(select completename from glpi_itilcategories where id=".$this->fields['itilcategories_id'].")");
 				$result = $bdd->prepare("select * from glpi_groups where name=(select completename from glpi_itilcategories where id= :id)");
 				$result->bindValue('id', $this->fields['itilcategories_id'], PDO::PARAM_INT);
