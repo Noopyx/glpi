@@ -1869,10 +1869,10 @@ abstract class CommonITILObject extends CommonDBTM {
       }
 
       if (isset($CFG_GLPI[static::URGENCY_MASK_FIELD])) {
-         /*if (($p['showtype'] == 'search')
+         if (($p['showtype'] == 'search')
              || ($CFG_GLPI[static::URGENCY_MASK_FIELD] & (1<<5))) {
             $values[5]  = static::getUrgencyName(5);
-         }*/
+         }
 
          if (($p['showtype'] == 'search')
              || ($CFG_GLPI[static::URGENCY_MASK_FIELD] & (1<<4))) {
