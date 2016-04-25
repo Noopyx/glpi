@@ -107,7 +107,7 @@ if (isset($_POST['add'])) {
 			$msg .=__('Category');
 		$displayMsg = 1;
 	   }
-   }
+   
    
    if($displayMsg == 1) {
 	   $message = sprintf(__('Mandatory fields are not filled. Please correct: %s'), $msg);
