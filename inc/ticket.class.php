@@ -4153,7 +4153,7 @@ class Ticket extends CommonITILObject {
       }
       echo $tt->getEndHiddenFieldValue('impact',$this);
       echo "</td>";
-	  echo "<td>Version</td>";
+	  echo "<th>Version</th>";
       echo "<td>";
 	  
 	  try {
@@ -4164,6 +4164,7 @@ class Ticket extends CommonITILObject {
 	  }
 	  $result = $bdd->prepare("select * from glpi_tickets where id = ?");
 	  $result->bindValue(1, $ID, PDO::PARAM_INT);
+	  $result->execute();
 	  while($donnees = $result->fetch()) 
 		echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='noChoice'>";
 	  echo "</td>";
