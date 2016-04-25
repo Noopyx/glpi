@@ -489,7 +489,7 @@ class TicketTemplate extends CommonDropdown {
    **/
    function isMandatoryField($field) {
 	   
-      if (isset($this->mandatory[$field]) && cpt === 1) {
+      if (isset($this->mandatory[$field])) {
          return true;
       }
       return false;
