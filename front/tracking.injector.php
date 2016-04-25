@@ -102,9 +102,9 @@ if (isset($_POST['add'])) {
 	   }
 	   if($_POST['itilcategories_id'] == 0) {
 		if($displayMsg == 1)
-			$msg .=", ".__('Category'));
+			$msg .=", ".__('Category');
 		else 
-			$msg .="__('Category')";
+			$msg .=__('Category');
 		$displayMsg = 1;
 	   }
    }
