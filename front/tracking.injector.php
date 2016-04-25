@@ -76,8 +76,9 @@ if (!isset($_POST["itemtype"])
 }
 
 if (isset($_POST['add'])) {
-	// $defaultContent = "Récurrence (Cas unique / aléatoire / systématique / ... ) : \n\nSymptôme(s) rencontré(s) : ";&& strcmp($_POST['content'],$defaultContent) != 0
-   if ( strlen($_POST['name']) > 0  && $newID = $track->add($_POST)) {
+	$defaultContent = "Récurrence (Cas unique / aléatoire / systématique / ... ) : \n\nSymptôme(s) rencontré(s) : ";
+   
+	if(strlen($_POST['name']) > 0 && $_POST['itilcategories_id'] == 0 && strcmp($_POST['content'],$defaultContent) != 0 && $newID = $track->add($_POST)) {
       if (isset($_POST["_type"]) && ($_POST["_type"] == "Helpdesk")) {
          echo "<div class='center spaced'>".
                 __('Your ticket has been registered, its treatment is in progress.');
@@ -92,6 +93,26 @@ if (isset($_POST['add'])) {
       }
 
    } else {
+	   $displayMsg = 0;
+	   $msg = "";
+	   
+	   if ( strlen($_POST['name']) > 0 ){
+	    $msg = __('Title');
+		$displayMsg = 1;
+	   }
+	   if($_POST['itilcategories_id'] == 0) {
+		if($displayMsg == 1)
+			$msg .=", ".__('Category'));
+		else 
+			$msg .="__('Category')";
+		$displayMsg = 1;
+	   }
+   }
+   
+   if($displayMsg == 1) {
+	   $message = sprintf(__('Mandatory fields are not filled. Please correct: %s'), $msg);
+   }
+  
       echo "<div class='center'>";
       echo "<img src='".$CFG_GLPI["root_doc"]."/pics/warning.png' alt='".__s('Warning')."'><br>";
       Html::displayMessageAfterRedirect();
