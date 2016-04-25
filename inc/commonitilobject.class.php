@@ -1965,7 +1965,7 @@ abstract class CommonITILObject extends CommonDBTM {
       }
 	  
 	  $values = array();
-	   $values[1] = "3.1.x";
+	   $values['3.1.x'] = "3.1.x";
 	   $values[2] = "3.2.x";
 	   $values[3] = "4.0.x";
 	   $values[4] = "4.2.20";
