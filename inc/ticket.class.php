@@ -4153,7 +4153,20 @@ class Ticket extends CommonITILObject {
       }
       echo $tt->getEndHiddenFieldValue('impact',$this);
       echo "</td>";
-
+	  echo "<td>Version</td>";
+      echo "<td>";
+	  
+	  try {
+		$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+	  }
+	  catch(Exception $e){
+		die('Erreur : '.$e->getMessage());
+	  }
+	  $result->prepare("select * from glpi_tickets where id = ?");
+	  $result->bindValue(1, $ID, PDO::PARAM_INT);
+	  while($donnees = $result->fetch()) 
+		echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='noChoice'>";
+	  echo "</td>";
       /*echo "<th>".$tt->getBeginHiddenFieldText('locations_id');
       printf(__('%1$s%2$s'), __('Location'), $tt->getMandatoryMark('locations_id'));
       echo $tt->getEndHiddenFieldText('locations_id')."</th>";

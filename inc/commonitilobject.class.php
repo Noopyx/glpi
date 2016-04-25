@@ -1966,19 +1966,19 @@ abstract class CommonITILObject extends CommonDBTM {
 	  
 	  $values = array();
 	   $values['3.1.x'] = "3.1.x";
-	   $values[2] = "3.2.x";
-	   $values[3] = "4.0.x";
-	   $values[4] = "4.2.20";
-	   $values[5] = "4.3.4";
-	   $values[6] = "4.4.0";
-	   $values[7] = "4.4.2";
-	   $values[9] = "4.4.4";
-	   $values[10] = "4.4.6";
-	   $values[11] = "5.0.0";
-	   $values[12] = "5.1.0";
-	   $values[13] = "5.1.1";
-	   $values[13] = "5.1.2";
-	   $values[14] = "A préciser dans la description";
+	   $values['3.2.x'] = "3.2.x";
+	   $values["4.0.x"] = "4.0.x";
+	   $values["4.2.20"] = "4.2.20";
+	   $values["4.3.4"] = "4.3.4";
+	   $values["4.4.0"] = "4.4.0";
+	   $values["4.4.2"] = "4.4.2";
+	   $values["4.4.4"] = "4.4.4";
+	   $values["4.4.6"] = "4.4.6";
+	   $values["5.0.0"] = "5.0.0";
+	   $values["5.1.0"] = "5.1.0";
+	   $values["5.1.1"] = "5.1.1";
+	   $values["5.1.2"] = "5.1.2";
+	   $values["Description"] = "A préciser dans la description";
 	   
 	   return Dropdown::showFromArray($p['name'],$values, $p);
    }
@@ -1998,12 +1998,12 @@ abstract class CommonITILObject extends CommonDBTM {
       }
 	  
 	  $values = array();
-	   $values[1] = "Avaya 1";
-	   $values[2] = "Avaya 2";
-	   $values[3] = "Avaya 3";
-	   $values[4] = "Avaya 4";
-	   $values[5] = "Avaya 5";
-	   $values[6] = "A préciser dans la description";
+	   $values["Avaya 1"] = "Avaya 1";
+	   $values["Avaya 2"] = "Avaya 2";
+	   $values["Avaya 3"] = "Avaya 3";
+	   $values["Avaya 4"] = "Avaya 4";
+	   $values["Avaya 5"] = "Avaya 5";
+	   $values["Description"] = "A préciser dans la description";
 	   
 	   return Dropdown::showFromArray($p['name'],$values, $p);
    }
@@ -2023,12 +2023,12 @@ abstract class CommonITILObject extends CommonDBTM {
       }
 	  
 	  $values = array();
-	   $values[1] = "Infra 1";
-	   $values[2] = "Infra 2";
-	   $values[3] = "Infra 3";
-	   $values[4] = "Infra 4";
-	   $values[5] = "Infra 5";
-	   $values[6] = "A préciser dans la description";
+	   $values["Infra 1"] = "Infra 1";
+	   $values["Infra 2"] = "Infra 2";
+	   $values["Infra 3"] = "Infra 3";
+	   $values["Infra 4"] = "Infra 4";
+	   $values["Infra 5"] = "Infra 5";
+	   $values["Description"] = "A préciser dans la description";
 	   
 	   return Dropdown::showFromArray($p['name'],$values, $p);
    }
