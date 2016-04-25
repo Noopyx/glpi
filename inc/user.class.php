@@ -1923,10 +1923,11 @@ class User extends CommonDBTM {
 						
 						for (var id in tab) {
 							if (id == document.form.group.options[i].value) {
-								document.getElementsByName('category[]')[0].checked = tab[id][0];
-								document.getElementsByName('category[]')[1].checked = tab[id][1];
-								document.getElementsByName('category[]')[2].checked = tab[id][2];
-								document.getElementsByName('category[]')[3].checked = tab[id][3];
+								var cpt = 0;
+								for (var elem in document.getElementsByName('category[]')) {
+									elem.checked = tab[id][cpt];
+									cpt++;
+								}
 							}
 						}
 					}
@@ -1969,7 +1970,6 @@ class User extends CommonDBTM {
 			if($result2->fetchColumn() > 0) {
 				$result2->execute();
 				while ($myId = $result2->fetch()) {				
-						echo "<script type=\"text/javascript\"> console.log(\"2\"); </script>";
 					foreach($dropdown as $key => $val) {
 						if(is_array($val)) {
 							$result = $bdd->query("select * from glpi_groups where id=".$key);
