@@ -3174,12 +3174,11 @@ class Ticket extends CommonITILObject {
          $cols       = 90;
          $rows       = 6;
          $content_id = "content$rand";
-		 // $values["content"] = "";
+		 $values["content"] = "";
          if ($CFG_GLPI["use_rich_text"]) {
             $values["content"] = $this->setRichTextContent($content_id, $values["content"], $rand);
             $cols              = 100;
             $rows              = 10;
-			echo "<script type=\"text/javascript\"> console.log(\"Com : ".$values["content"]."\");</script>";
          } else {
             $values["content"] = $this->setSimpleTextContent($values["content"]);
 			//if( !isset($values["content"])) {
@@ -3193,22 +3192,21 @@ class Ticket extends CommonITILObject {
 				$resultat = $bdd->prepare("select * from glpi_itilcategories where id = ?");
 				$resultat->bindValue(1, $values['itilcategories_id'] , PDO::PARAM_INT);
 				$resultat->execute();
-				echo "<script type=\"text/javascript\"> console.log(\"Com2 : ".$values["content"]."\");</script>";
 				while ($donnees = $resultat->fetch()) {
 					if ( strcmp($donnees['name'],"Telecom") == 0 ) {
-						if (strcmp($values['visio'],"Avaya 1") == 0) {
+						if (strcmp($values['version'],"Avaya 1") == 0) {
 							$values["content"] .= "Avaya numéro 1";
 						}
-						else if (strcmp($values['visio'],"Avaya 2") == 0) {
+						else if (strcmp($values['version'],"Avaya 2") == 0) {
 							$values["content"] .= "Avaya numéro 2";
 						}
-						else if (strcmp($values['visio'],"Avaya 3") == 0) {
+						else if (strcmp($values['version'],"Avaya 3") == 0) {
 							$values["content"] .= "Avaya numéro 3";
 						}
-						else if (strcmp($values['visio'],"Avaya 4") == 0) {
+						else if (strcmp($values['version'],"Avaya 4") == 0) {
 							$values["content"] .= "Avaya numéro 4";
 						}
-						else if (strcmp($values['visio'],"Avaya 5") == 0) {
+						else if (strcmp($values['version'],"Avaya 5") == 0) {
 							$values["content"] .= "Avaya numéro 5";
 						}
 						else {
