@@ -3014,7 +3014,7 @@ class Ticket extends CommonITILObject {
 			echo "<tr class='tab_bg_1'>";
 			echo "<td>Source du problème</td>";
 			echo "<td>";
-			self::dropdownVersionAvaya();
+			self::dropdownVersionAvaya('on_change' => 'this.form.submit()','value' => $values['itilcategories_id']);
 			echo "</td></tr>";
 		  }
 		  else if( strcmp($donnees['name'],"Operateur") == 0) {

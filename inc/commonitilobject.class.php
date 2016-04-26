@@ -2007,7 +2007,7 @@ abstract class CommonITILObject extends CommonDBTM {
 	   return Dropdown::showFromArray($p['name'],$values, $p);
    }
    
-   static function dropdownVersionAvaya() {
+   static function dropdownVersionAvaya(array $options = array() ) {
       global $CFG_GLPI;
 
       $p['name']     = 'version';
