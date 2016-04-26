@@ -4050,8 +4050,8 @@ class Ticket extends CommonITILObject {
             default :
                break;
          }
-         echo "<span id='show_category_by_type test'>";
-		 self::dropdownCategory(array('action' => 'update' , 'id' => $ID));
+         echo "<span id='show_category_by_type t'>";
+		 self::dropdownCategory(array('action' => 'update' , 'id' => $ID , 'onChange' => 'this.form.submit()'));
          //ITILCategory::dropdown($opt);
          echo "</span>";
       } else {
@@ -4210,7 +4210,7 @@ class Ticket extends CommonITILObject {
 		
 		while($donnees = $result->fetch()) {
 			$result2 = $bdd->prepare("select * from glpi_itilcategories where id = ?");
-			$result2->bindValue(1, $donnees['itilcategories_id'], PDO::PARAM_INT);
+			$result2->bindValue(1, $this->fields['itilcategories_id'], PDO::PARAM_INT);
 			$result2->execute();
 			while($donnees2 = $result2->fetch()) {
 			  if( strcmp($donnees2['name'],"Centre de contact") == 0) {
