@@ -4208,31 +4208,36 @@ class Ticket extends CommonITILObject {
 	  $result->execute();
 		
 		while($donnees = $result->fetch()) {
-		  if( strcmp($donnees['name'],"Centre de contact") == 0) {
-			echo "<tr class='tab_bg_1'>";
-			echo "<td>Version</td>";
-			echo "<td>";
-			echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='".$donnees['version']."'>";
-			echo "</td></tr>";
-		  }
-		  else if( strcmp($donnees['name'],"Telecom") == 0) {
-			echo "<tr class='tab_bg_1'>";
-			echo "<td>Source du problème</td>";
-			echo "<td>";
-			echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='".$donnees['version']."'>";
-			echo "</td></tr>";
-		  }
-		  else if( strcmp($donnees['name'],"Operateur") == 0) {
-			echo "<tr class='tab_bg_1'>";
-			echo "<td>Source du problème</td>";
-			echo "<td>";
-			echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='".$donnees['version']."'>";
-			echo "</td></tr>";
-		  }
-		  else if( strcmp($donnees['name'],"Visio-Conference") == 0)
-			echo "<input type='hidden' name='version' value='Aucune'>";
-		  else
-			echo "<input type='hidden' name='version' value=0>";
+			$result2 = $bdd->prepare("select * from glpi_itilcategories where id = ?");
+			$result2->bindValue(1, $donnees['itilcategories_id'], PDO::PARAM_INT);
+			$result2->execute();
+			while($donnees2 = $result2->fetch()) {
+			  if( strcmp($donnees2['name'],"Centre de contact") == 0) {
+				echo "<tr class='tab_bg_1'>";
+				echo "<td>Version</td>";
+				echo "<td>";
+				echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='".$donnees['version']."'>";
+				echo "</td></tr>";
+			  }
+			  else if( strcmp($donnees2['name'],"Telecom") == 0) {
+				echo "<tr class='tab_bg_1'>";
+				echo "<td>Source du problème</td>";
+				echo "<td>";
+				echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='".$donnees['version']."'>";
+				echo "</td></tr>";
+			  }
+			  else if( strcmp($donnees2['name'],"Operateur") == 0) {
+				echo "<tr class='tab_bg_1'>";
+				echo "<td>Source du problème</td>";
+				echo "<td>";
+				echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='".$donnees['version']."'>";
+				echo "</td></tr>";
+			  }
+			  else if( strcmp($donnees2['name'],"Visio-Conference") == 0)
+				echo "<input type='hidden' name='version' value='Aucune'>";
+			  else
+				echo "<input type='hidden' name='version' value=0>";
+			}
 		}
 		  
 	  
