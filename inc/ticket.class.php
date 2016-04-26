@@ -4213,22 +4213,19 @@ class Ticket extends CommonITILObject {
 			$result2->execute();
 			while($donnees2 = $result2->fetch()) {
 			  if( strcmp($donnees2['name'],"Centre de contact") == 0) {
-				echo "<tr class='tab_bg_1'>";
-				echo "<td>Version</td>";
+				echo "<th>Version</th>";
 				echo "<td>";
 				echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='".$donnees['version']."'>";
 				echo "</td></tr>";
 			  }
 			  else if( strcmp($donnees2['name'],"Telecom") == 0) {
-				echo "<tr class='tab_bg_1'>";
-				echo "<td>Source du problème</td>";
+				echo "<th>Source du problème</th>";
 				echo "<td>";
 				echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='".$donnees['version']."'>";
 				echo "</td></tr>";
 			  }
 			  else if( strcmp($donnees2['name'],"Operateur") == 0) {
-				echo "<tr class='tab_bg_1'>";
-				echo "<td>Source du problème</td>";
+				echo "<th>Source du problème</th>";
 				echo "<td>";
 				echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='".$donnees['version']."'>";
 				echo "</td></tr>";
