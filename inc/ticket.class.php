@@ -3183,6 +3183,13 @@ class Ticket extends CommonITILObject {
          } else {
             $values["content"] = $this->setSimpleTextContent($values["content"]);
 			//if( !isset($values["content"])) {
+				try {
+					$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+				}
+				catch(Exception $e)
+				{
+					die('Erreur : '.$e->getMessage());
+				}
 				$resultat = $bdd->prepare("select * from glpi_itilcategories where id = ?");
 				$resultat->bindValue(1, $values['itilcategories_id'] , PDO::PARAM_INT);
 				$resultat->execute();
@@ -3205,7 +3212,7 @@ class Ticket extends CommonITILObject {
 							$values["content"] .= "Avaya numéro 5";
 						}
 						else {
-							$values["content"] .= "Veuillez selectionner une machin";
+							$values["content"] .= "Veuillez selectionner un machin";
 						}
 					}
 				}
@@ -3215,19 +3222,6 @@ class Ticket extends CommonITILObject {
          echo "<div id='content$rand_text'>";
          echo "<textarea id='$content_id' name='content' cols='$cols' rows='$rows'>".
                 $values['content']."</textarea></div>";
-		if ($values["type"] == self::DEMAND_TYPE) {
-		 echo "<script type=\"text/javascript\">
-			$(\"#$content_id\").focus(function() {
-                if (this.value === \"Veuillez indiquez votre demande :\") {
-					this.value = '';
-				}
-			})
-			.blur(function() {
-				if (this.value === '') {
-					this.value = \"Veuillez indiquez votre demande :\";
-				}
-			});</script>";
-		}
          echo "</td></tr>";
       }
 
