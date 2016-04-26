@@ -4235,7 +4235,7 @@ class Ticket extends CommonITILObject {
 			echo "<input type='hidden' name='version' value=0>";
 		}
 		  
-	  }
+	  
       /*echo "<th>".$tt->getBeginHiddenFieldText('locations_id');
       printf(__('%1$s%2$s'), __('Location'), $tt->getMandatoryMark('locations_id'));
       echo $tt->getEndHiddenFieldText('locations_id')."</th>";
