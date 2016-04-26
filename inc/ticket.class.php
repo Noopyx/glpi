@@ -4215,19 +4215,19 @@ class Ticket extends CommonITILObject {
 			  if( strcmp($donnees2['name'],"Centre de contact") == 0) {
 				echo "<th>Version</th>";
 				echo "<td>";
-				echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='".$donnees['version']."'>";
+				self::dropdownVersionKiamo(array ('value' => $donnees['version']));
 				echo "</td></tr>";
 			  }
 			  else if( strcmp($donnees2['name'],"Telecom") == 0) {
 				echo "<th>Source du problème</th>";
 				echo "<td>";
-				echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='".$donnees['version']."'>";
+				self::dropdownVersionAvaya(array ('on_change' => 'this.form.submit()','value' => $donnees['version']));
 				echo "</td></tr>";
 			  }
 			  else if( strcmp($donnees2['name'],"Operateur") == 0) {
 				echo "<th>Source du problème</th>";
 				echo "<td>";
-				echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='".$donnees['version']."'>";
+				self::dropdownVersionInfra(array ('value' => $donnees['version']));
 				echo "</td></tr>";
 			  }
 			  else if( strcmp($donnees2['name'],"Visio-Conference") == 0)

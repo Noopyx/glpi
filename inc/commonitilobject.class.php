@@ -1974,7 +1974,7 @@ abstract class CommonITILObject extends CommonDBTM {
       return Dropdown::showFromArray($p['name'],$values, $p, $options['id']);
    }
    
-   static function dropdownVersionKiamo() {
+   static function dropdownVersionKiamo(array $options = array()) {
       global $CFG_GLPI;
 
       $p['name']     = 'version';
@@ -2033,7 +2033,7 @@ abstract class CommonITILObject extends CommonDBTM {
 	   return Dropdown::showFromArray($p['name'],$values, $p);
    }
    
-   static function dropdownVersionInfra() {
+   static function dropdownVersionInfra(array $options = array()) {
       global $CFG_GLPI;
 
       $p['name']     = 'version';
