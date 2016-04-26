@@ -1580,7 +1580,7 @@ class Html {
 
 
       //  Le fil d ariane
-      echo "<div id='c_ssmenu2' >";
+      /*echo "<div id='c_ssmenu2' >";
       echo "<ul>";
 
       // Display item
@@ -1715,7 +1715,7 @@ class Html {
 
       } else {
          echo "<li>&nbsp;</li>";
-      }
+      }*/
 
       // Add common items
 

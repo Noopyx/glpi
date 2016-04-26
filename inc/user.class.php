@@ -2078,12 +2078,12 @@ class User extends CommonDBTM {
 	 
 		 if($visio == 1)
 			 echo "<input type=\"checkbox\" name=\"category[]\" value=3 checked=\"checked\">   Visio-Conference     <br/>";
-			else
+		else
 			 echo "<input type=\"checkbox\" name=\"category[]\" value=3>   Visio-Conference     <br/>";
 	 
 		if($contact == 1)
 			 echo "<input type=\"checkbox\" name=\"category[]\" value=4 checked=\"checked\">   Centre de contact     <br/>";
-			else
+		else
 			 echo "<input type=\"checkbox\" name=\"category[]\" value=4>   Centre de contact     <br/>";
 	 
 	 
