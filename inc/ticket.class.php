@@ -4050,7 +4050,7 @@ class Ticket extends CommonITILObject {
             default :
                break;
          }
-         echo "<span id='show_category_by_type'>";
+         echo "<span id='show_category_by_type test'>";
 		 self::dropdownCategory(array('action' => 'update' , 'id' => $ID));
          //ITILCategory::dropdown($opt);
          echo "</span>";
