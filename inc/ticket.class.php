@@ -4051,7 +4051,7 @@ class Ticket extends CommonITILObject {
                break;
          }
          echo "<span id='show_category_by_type t'>";
-		 self::dropdownCategory(array('action' => 'update' , 'id' => $ID , 'on_change' => 'this.form.submit()'));
+		 self::dropdownCategory(array('action' => 'update' , 'id' => $ID ));
          //ITILCategory::dropdown($opt);
          echo "</span>";
       } else {
@@ -4222,7 +4222,7 @@ class Ticket extends CommonITILObject {
 			  else if( strcmp($donnees2['name'],"Telecom") == 0) {
 				echo "<th>Source du problème</th>";
 				echo "<td>";
-				self::dropdownVersionAvaya(array ('on_change' => 'this.form.submit()','value' => $donnees['version']));
+				self::dropdownVersionAvaya(array ('value' => $donnees['version']));
 				echo "</td></tr>";
 			  }
 			  else if( strcmp($donnees2['name'],"Operateur") == 0) {
