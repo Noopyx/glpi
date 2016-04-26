@@ -3000,7 +3000,7 @@ class Ticket extends CommonITILObject {
 		}
 		$resultat = $bdd->prepare("select * from glpi_itilcategories where id = ?");
 		$resultat->bindValue(1, $values['itilcategories_id'] , PDO::PARAM_INT);
-		$resultar->execute();
+		$resultat->execute();
 		
 		while($donnees = $resultat->fetch()) {
 		  if( strcmp($donnees['name'],"Centre de contact") == 0) {
