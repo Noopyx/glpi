@@ -4059,7 +4059,7 @@ class Ticket extends CommonITILObject {
       }
       echo "</td>";
       echo "</tr>";
-
+	  
       if (!$ID) {
          echo "</table>";
          $this->showActorsPartForm($ID, $values);
@@ -4196,8 +4196,6 @@ class Ticket extends CommonITILObject {
       }
       echo $tt->getEndHiddenFieldValue('impact',$this);
       echo "</td>";
-	  echo "<th>Version</th>";
-      echo "<td>";
 	  
 	  try {
 		$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
@@ -4208,9 +4206,36 @@ class Ticket extends CommonITILObject {
 	  $result = $bdd->prepare("select * from glpi_tickets where id = ?");
 	  $result->bindValue(1, $ID, PDO::PARAM_INT);
 	  $result->execute();
-	  while($donnees = $result->fetch()) 
-		echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='noChoice'>";
-	  echo "</td>";
+		
+		while($donnees = $result->fetch()) {
+		  if( strcmp($donnees['name'],"Centre de contact") == 0) {
+			echo "<tr class='tab_bg_1'>";
+			echo "<td>Version</td>";
+			echo "<td>";
+			echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='".$donnees['version']."'>";
+			echo "</td></tr>";
+		  }
+		  else if( strcmp($donnees['name'],"Telecom") == 0) {
+			echo "<tr class='tab_bg_1'>";
+			echo "<td>Source du problème</td>";
+			echo "<td>";
+			echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='".$donnees['version']."'>";
+			echo "</td></tr>";
+		  }
+		  else if( strcmp($donnees['name'],"Operateur") == 0) {
+			echo "<tr class='tab_bg_1'>";
+			echo "<td>Source du problème</td>";
+			echo "<td>";
+			echo "<span>".$donnees['version']."</span><input type='hidden' name='version' value='".$donnees['version']."'>";
+			echo "</td></tr>";
+		  }
+		  else if( strcmp($donnees['name'],"Visio-Conference") == 0)
+			echo "<input type='hidden' name='version' value='Aucune'>";
+		  else
+			echo "<input type='hidden' name='version' value=0>";
+		}
+		  
+	  }
       /*echo "<th>".$tt->getBeginHiddenFieldText('locations_id');
       printf(__('%1$s%2$s'), __('Location'), $tt->getMandatoryMark('locations_id'));
       echo $tt->getEndHiddenFieldText('locations_id')."</th>";
