@@ -3014,7 +3014,7 @@ class Ticket extends CommonITILObject {
 			echo "<tr class='tab_bg_1'>";
 			echo "<td>Source du problème</td>";
 			echo "<td>";
-			self::dropdownVersionAvaya(array ('on_change' => 'this.form.submit()','value' => $values['itilcategories_id']));
+			self::dropdownVersionAvaya(array ('on_change' => 'this.form.submit()','value' => $values['version']));
 			echo "</td></tr>";
 		  }
 		  else if( strcmp($donnees['name'],"Operateur") == 0) {
@@ -3182,10 +3182,10 @@ class Ticket extends CommonITILObject {
 			echo "<script type=\"text/javascript\"> console.log(\"Com : ".$values["content"]."\");</script>";
          } else {
             $values["content"] = $this->setSimpleTextContent($values["content"]);
-			if( !isset($values["content"])) {
+			//if( !isset($values["content"])) {
 				$resultat = $bdd->prepare("select * from glpi_itilcategories where id = ?");
 				$resultat->bindValue(1, $values['itilcategories_id'] , PDO::PARAM_INT);
-				$resultar->execute();
+				$resultat->execute();
 				echo "<script type=\"text/javascript\"> console.log(\"Com2 : ".$values["content"]."\");</script>";
 				while ($donnees = $resultat->fetch()) {
 					if ( strcmp($donnees['name'],"Telecom") == 0 ) {
@@ -3209,7 +3209,7 @@ class Ticket extends CommonITILObject {
 						}
 					}
 				}
-			}
+			//}
          }
 
          echo "<div id='content$rand_text'>";
