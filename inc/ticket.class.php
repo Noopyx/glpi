@@ -4055,7 +4055,8 @@ class Ticket extends CommonITILObject {
          //ITILCategory::dropdown($opt);
          echo "</span>";
       } else {
-         echo Dropdown::getDropdownName("glpi_itilcategories", $this->fields["itilcategories_id"]);
+         //echo Dropdown::getDropdownName("glpi_itilcategories", $this->fields["itilcategories_id"]);
+		  self::dropdownCategory(array('action' => 'update' , 'id' => $ID));
       }
       echo "</td>";
       echo "</tr>";
