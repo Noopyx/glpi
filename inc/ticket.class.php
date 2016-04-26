@@ -2957,7 +2957,7 @@ class Ticket extends CommonITILObject {
 
       echo "<tr class='tab_bg_1'>";
       echo "<td>".sprintf(__('%1$s%2$s'), __('Category'),
-                          $tt->getMandatoryMark('itilcategories_id'))."<span style=\"color:red;\">*</span></td>";
+                          $tt->getMandatoryMark('itilcategories_id'))."</td>";
       echo "<td>";
 
       $condition = "`is_helpdeskvisible`='1'";
@@ -2989,22 +2989,47 @@ class Ticket extends CommonITILObject {
 	
 	  
       
-	  if(isset($values['itilcategories_id'])) {
-		  echo "<tr class='tab_bg_1'>";
-		  echo "<td>Version</td>";
-		  echo "<td>";
+	  if(isset($values['itilcategories_id']) && $values['itilcategories_id']!=0) {
 		  
-		  if( $values['itilcategories_id'] == 4)
+		try {
+			$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+		}
+		catch(Exception $e)
+		{
+			die('Erreur : '.$e->getMessage());
+		}
+		$resultat = $bdd->prepare("select * from glpi_itilcategories where id = ?");
+		$resultat->bindValue(1, $values['itilcategories_id'] , PDO::PARAM_INT);
+		$resultar->execute();
+		
+		while($donnees = $resultat->fetch()) {
+		  if( strcmp($donnees['name'],"Centre de contact") == 0) {
+			echo "<tr class='tab_bg_1'>";
+			echo "<td>Version</td>";
+			echo "<td>";
 			self::dropdownVersionKiamo();
-		  else if( $values['itilcategories_id'] == 2)
+			echo "</td></tr>";
+		  }
+		  else if( strcmp($donnees['name'],"Telecom") == 0) {
+			echo "<tr class='tab_bg_1'>";
+			echo "<td>Source du problème</td>";
+			echo "<td>";
 			self::dropdownVersionAvaya();
-		  else if( $values['itilcategories_id'] == 1)
+			echo "</td></tr>";
+		  }
+		  else if( strcmp($donnees['name'],"Operateur") == 0) {
+			echo "<tr class='tab_bg_1'>";
+			echo "<td>Source du problème</td>";
+			echo "<td>";
 			self::dropdownVersionInfra();
-		  else if( $values['itilcategories_id'] == 3) 
-			echo "<span>Aucune</span><input type='hidden' name='version' value='Aucune'>";
+			echo "</td></tr>";
+		  }
+		  else if( strcmp($donnees['name'],"Visio-Conference") == 0)
+			echo "<input type='hidden' name='version' value='Aucune'>";
 		  else
-			echo "<span>Choisissez votre catégorie</span><input type='hidden' name='version' value='noChoice'>";
-		  echo "</td></tr>";
+			echo "<input type='hidden' name='version' value=0>";
+		}
+		  
 	  }
       if ($CFG_GLPI['urgency_mask'] != (1<<3)) {
          if (!$tt->isHiddenField('urgency')) {
@@ -3127,7 +3152,7 @@ class Ticket extends CommonITILObject {
       if (!$tt->isHiddenField('name')
           || $tt->isPredefinedField('name')) {
          echo "<tr class='tab_bg_1'>";
-         echo "<td>".sprintf(__('%1$s%2$s'), __('Title'), $tt->getMandatoryMark('name'))."<span style=\"color:red;\">*</span><td>";
+         echo "<td>".sprintf(__('%1$s%2$s'), __('Title'), $tt->getMandatoryMark('name'))."<td>";
          if (!$tt->isHiddenField('name')) {
             echo "<input type='text' maxlength='250' size='80' name='name'
                        value=\"".$values['name']."\">";
@@ -3142,28 +3167,49 @@ class Ticket extends CommonITILObject {
           || $tt->isPredefinedField('content')) {
          echo "<tr class='tab_bg_1'>";
          echo "<td>".sprintf(__('%1$s%2$s'), __('Description'), $tt->getMandatoryMark('content')).
-              "<span style=\"color:red;\">*</span></td><td>";
+              "</td><td>";
          $rand      = mt_rand();
          $rand_text = mt_rand();
 
          $cols       = 90;
          $rows       = 6;
          $content_id = "content$rand";
-		 $values["content"] = "";
+		 // $values["content"] = "";
          if ($CFG_GLPI["use_rich_text"]) {
             $values["content"] = $this->setRichTextContent($content_id, $values["content"], $rand);
             $cols              = 100;
             $rows              = 10;
+			echo "<script type=\"text/javascript\"> console.log(\"Com : ".$values["content"]."\");</script>";
          } else {
             $values["content"] = $this->setSimpleTextContent($values["content"]);
-			// if( !isset($values["content"])) {
-				// if ($values["type"] == self::DEMAND_TYPE) {
-					// $values["content"] .= "Veuillez indiquez votre demande :";
-				// }
-				// else {
-					// $values["content"] .= "Récurrence (Cas unique / aléatoire / systématique / ... ) : \n\nSymptôme(s) rencontré(s) : ";
-				// }
-			// }
+			if( !isset($values["content"])) {
+				$resultat = $bdd->prepare("select * from glpi_itilcategories where id = ?");
+				$resultat->bindValue(1, $values['itilcategories_id'] , PDO::PARAM_INT);
+				$resultar->execute();
+				
+				while ($donnees = $resultat->fetch()) {
+					if ( strcmp($donnees['name'],"Telecom") == 0 ) {
+						if (strcmp($values['visio'],"Avaya 1") == 0) {
+							$values["content"] .= "Avaya numéro 1";
+						}
+						else if (strcmp($values['visio'],"Avaya 2") == 0) {
+							$values["content"] .= "Avaya numéro 2";
+						}
+						else if (strcmp($values['visio'],"Avaya 3") == 0) {
+							$values["content"] .= "Avaya numéro 3";
+						}
+						else if (strcmp($values['visio'],"Avaya 4") == 0) {
+							$values["content"] .= "Avaya numéro 4";
+						}
+						else if (strcmp($values['visio'],"Avaya 5") == 0) {
+							$values["content"] .= "Avaya numéro 5";
+						}
+						else {
+							$values["content"] .= "Veuillez selectionner une machin";
+						}
+					}
+				}
+			}
          }
 
          echo "<div id='content$rand_text'>";

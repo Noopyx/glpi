@@ -2027,7 +2027,6 @@ abstract class CommonITILObject extends CommonDBTM {
 	   $values["Avaya 3"] = "Avaya 3";
 	   $values["Avaya 4"] = "Avaya 4";
 	   $values["Avaya 5"] = "Avaya 5";
-	   $values["Description"] = "A préciser dans la description";
 	   
 	   return Dropdown::showFromArray($p['name'],$values, $p);
    }
