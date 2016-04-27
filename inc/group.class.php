@@ -297,8 +297,7 @@ class Group extends CommonTreeDropdown {
       echo "<td>"._n('Item', 'Items', Session::getPluralNumber())."</td>";
       echo "<td>";
       Dropdown::showYesNo('is_itemgroup', $this->fields['is_itemgroup']);
-      echo "</td><td colspan='2'></td>";
-	   echo "<td >";
+      echo "</td><td colspan='2'>";
 	  echo "<div id=\"checkBox\" display=\"inline-block\">";
 		 
 		try {
