@@ -3042,7 +3042,7 @@ class Ticket extends CommonITILObject {
 		
 			  echo "<script type=\"text/javascript\"> $('#categoryTool2').qtip({
 				 position: { viewport: $(window) },
-				 content: {text: \"Urgence\"},
+				 content: {text: \"Très haut : Blocage de la production<br/>Haut : Impact sur la production<br/>Moyen : Impact moyen sur la production\"},
 				 style: { classes: 'qtip-shadow qtip-bootstrap'}});
 				 </script>";
             echo "</td></tr>";
@@ -4072,6 +4072,7 @@ class Ticket extends CommonITILObject {
 	  $result->execute();
 		
 	  if($result->fetchColumn() > 0) {
+		  $result->execute();
 		while($donnees = $result->fetch()) {
 			$result2 = $bdd->prepare("select * from glpi_itilcategories where id = ?");
 			$result2->bindValue(1, $this->fields['itilcategories_id'], PDO::PARAM_INT);
