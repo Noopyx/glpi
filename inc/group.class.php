@@ -309,7 +309,7 @@ class Group extends CommonTreeDropdown {
 	 
 	 
 	 
-         echo "</div></td>";
+         echo "</div></td></tr>";
 
       echo "<tr class='tab_bg_1'>";
       echo "<td class='subheader' colspan='2'>".__('Visible in a ticket');

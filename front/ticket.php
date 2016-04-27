@@ -53,6 +53,7 @@ if ($_SESSION['glpirefresh_ticket_list'] > 0) {
    echo "</script>\n";
 }
 
+
 Search::show('Ticket');
 
 if ($_SESSION["glpiactiveprofile"]["interface"] == "helpdesk") {
