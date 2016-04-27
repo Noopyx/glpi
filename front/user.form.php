@@ -67,48 +67,33 @@ if (isset($_GET['getvcard'])) {
    $user->check(-1, CREATE, $_POST);
    // Pas de nom pas d'ajout
    if (!empty($_POST["name"]) && ($newID = $user->add($_POST))) {
-	   $op = 0;
-		$telecom = 0;
-		$visio = 0;
-		$contact = 0;
-		$idGroup = 0;
-		
+	   try {
+			$pdo = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+	    }
+		catch(Exception $e)
+		{
+			die('Erreur : '.$e->getMessage());
+		}
+		$delete = $pdo->prepare("delete from qpo_users_itilcategories where user_id = (select id from glpi_users where name = ?)");
+		$delete->bindValue(1,$_POST['name'],PDO::PARAM_STR);
+		$delete->execute();
+				
 		foreach($_POST['category'] as $valeur) {
-	   if( $valeur == 1)
-		   $op = 1;
-	   if( $valeur == 2)
-		   $telecom = 1;
-	   if( $valeur == 3)
-		   $visio = 1;
-	   if( $valeur == 4)
-		   $contact = 1;
+			$insert = $pdo->prepare("insert into qpo_users_itilcategories(user_id,itilcategory_id) values ((select id from glpi_users where name = ?) , ?)");
+			$insert->bindValue(2, $valeur, PDO::PARAM_INT);
+			$insert->bindValue(1, $_POST["name"], PDO::PARAM_STR);
+			$insert->execute();
+		}
 	}
 	
 	if(isset($_POST['group']) && $_POST['group'] > 0) {
 		$idGroup = $_POST['group'];
 	}
 	
-	try {
-		$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
-	}
-	catch(Exception $e)
-	{
-		die('Erreur : '.$e->getMessage());
-	}
-	$stmt = $bdd->prepare("UPDATE glpi_users SET id_group = :id_group , op = :op , telecom = :telecom , visio = :visio , contact = :contact WHERE name= :name");
-	$stmt->bindValue('id_group', $idGroup, PDO::PARAM_INT);
-	$stmt->bindValue('op', $op, PDO::PARAM_INT);
-	$stmt->bindValue('telecom', $telecom, PDO::PARAM_INT);
-	$stmt->bindValue('visio', $visio, PDO::PARAM_INT);
-	$stmt->bindValue('contact', $contact, PDO::PARAM_INT);
-	$stmt->bindValue('name', $_POST["name"], PDO::PARAM_STR);
-	$stmt->execute();	
-	
       Event::log($newID, "users", 4, "setup", sprintf(__('%1$s adds the item %2$s'), $_SESSION["glpiname"], $_POST["name"]));
       if ($_SESSION['glpibackcreated']) {
          Html::redirect($user->getFormURL()."?id=".$newID);
       }
-   }
    Html::back();
 
 } else if (isset($_POST["delete"])) {
@@ -144,48 +129,29 @@ if (isset($_GET['getvcard'])) {
    Html::back();
 
 } else if (isset($_POST["update"])) {
-	$op = 0;
-	$telecom = 0;
-	$visio = 0;
-	$contact = 0;
-	$idGroup = 0;
-	
    $user->check($_POST['id'], UPDATE);
    $user->update($_POST);
    Event::log($_POST['id'], "users", 5, "setup",
               //TRANS: %s is the user login
               sprintf(__('%s updates an item'), $_SESSION["glpiname"]));
 			  
-	foreach($_POST['category'] as $valeur) {
-	   if( $valeur == 1)
-		   $op = 1;
-	   if( $valeur == 2)
-		   $telecom = 1;
-	   if( $valeur == 3)
-		   $visio = 1;
-	   if( $valeur == 4)
-		   $contact = 1;
-	}
-	
-	if(isset($_POST['group'])) {
-		$idGroup = $_POST['group'];
-	}
-	
 	try {
-		$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+		$pdo = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 	}
 	catch(Exception $e)
 	{
 		die('Erreur : '.$e->getMessage());
 	}
-	$stmt = $bdd->prepare("UPDATE glpi_users SET id_group = :id_group , op = :op , telecom = :telecom , visio = :visio , contact = :contact WHERE id = :id");
-	$stmt->bindValue('id_group', $idGroup, PDO::PARAM_INT);
-	$stmt->bindValue('op', $op, PDO::PARAM_INT);
-	$stmt->bindValue('telecom', $telecom, PDO::PARAM_INT);
-	$stmt->bindValue('visio', $visio, PDO::PARAM_INT);
-	$stmt->bindValue('contact', $contact, PDO::PARAM_INT);
-	$stmt->bindValue('id', $_POST["id"], PDO::PARAM_INT);
-	$stmt->execute();	
+	$delete = $pdo->prepare("delete from qpo_users_itilcategories where user_id = ?");
+	$delete->bindValue(1,$_POST['id'],PDO::PARAM_INT);
+	$delete->execute();
+				
+	foreach($_POST['category'] as $valeur) {
+		$insert = $pdo->prepare("insert into qpo_users_itilcategories(user_id,itilcategory_id) values (? , ?)");
+		$insert->bindValue(2, $valeur, PDO::PARAM_INT);
+		$insert->bindValue(1, $_POST["id"], PDO::PARAM_INT);
+		$insert->execute();
+	}
 	
    Html::back();
 

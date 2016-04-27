@@ -3042,7 +3042,7 @@ class Ticket extends CommonITILObject {
 		
 			  echo "<script type=\"text/javascript\"> $('#categoryTool2').qtip({
 				 position: { viewport: $(window) },
-				 content: {text: \"Très haut : Blocage de la production<br/>Haut : Impact sur la production<br/>Moyen : Impact moyen sur la production\"},
+				 content: {text: \"Critique : Blocage de la production<br/>Haut : Impact sur la production<br/>Moyen : Impact moyen sur la production\"},
 				 style: { classes: 'qtip-shadow qtip-bootstrap'}});
 				 </script>";
             echo "</td></tr>";

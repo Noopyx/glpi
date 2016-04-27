@@ -2024,6 +2024,25 @@ class User extends CommonDBTM {
 		 
 		 echo "<td></td><td><div id=\"checkBox\" display=\"inline-block\">";
 		 
+		
+		// $sql = "SELECT * FROM glpi_users WHERE id=".$ID;
+		// $result = $DB->query($sql);
+		
+		
+		// if($op == 0 && $telecom == 0 && $visio == 0 && $contact == 0) {
+			// $result = $pdo->query("select * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id=".$ID.")");
+			// $result = $pdo->prepare("select * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id=?");
+			// $result->bindValue(1, $ID, PDO::PARAM_INT);
+			// $result->execute();
+			// if($result) {
+				// while ($donnees = $result->fetch()) {
+					// $op = $donnees["op"];
+					// $telecom = $donnees["telecom"];
+					// $visio = $donnees["visio"];
+					// $contact = $donnees["contact"];
+				// }
+			// }
+		// }
 		try {
 			$pdo = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 	    }
@@ -2031,60 +2050,35 @@ class User extends CommonDBTM {
 		{
 			die('Erreur : '.$e->getMessage());
 		}
-		// $sql = "SELECT * FROM glpi_users WHERE id=".$ID;
-		// $result = $DB->query($sql);
-		$result = $pdo->prepare("SELECT * FROM glpi_users WHERE id=?");
+		$result = $pdo->prepare("SELECT * FROM qpo_users_itilcategories WHERE user_id=? and itilcategory_id = ?");
 		$result->bindValue(1, $ID, PDO::PARAM_INT);
-		$result->execute();
+		$result2 = $bdd->query("select * from glpi_itilcategories");
 		
-		$op = 0;
-		$telecom = 0;
-		$visio = 0;
-		$contact = 0;
-		
-		if($result) {
-			while ($donnees = $result->fetch()) {
-				$op = $donnees["op"];
-				$telecom = $donnees["telecom"];
-				$visio = $donnees["visio"];
-				$contact = $donnees["contact"];
+		if($result2) {
+			while ($donnees = $result2->fetch()){
+				$result->bindValue(2, $donnees['id'], PDO::PARAM_INT);
+				$result->execute();
+				$row->fetchAll();
+				if(count($row) > 0)
+				 echo "<input type=\"checkbox\" name=\"category[]\" value=".$donnees['id']." checked=\"checked\">   ".$donnees['name']."    ";
+				else
+				 echo "<input type=\"checkbox\" name=\"category[]\" value=".$donnees['id'].">   ".$donnees['name']."    ";	
 			}
 		}
-		
-		if($op == 0 && $telecom == 0 && $visio == 0 && $contact == 0) {
-			// $result = $pdo->query("select * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id=".$ID.")");
-			$result = $pdo->prepare("select * from glpi_groups where id=(SELECT id_group FROM glpi_users WHERE id=?");
-			$result->bindValue(1, $ID, PDO::PARAM_INT);
-			$result->execute();
-			if($result) {
-				while ($donnees = $result->fetch()) {
-					$op = $donnees["op"];
-					$telecom = $donnees["telecom"];
-					$visio = $donnees["visio"];
-					$contact = $donnees["contact"];
-				}
-			}
-		}
-		
-		if($op == 1)
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=1 checked=\"checked\">   Operateur    ";
-		else
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=1>   Operateur    ";	
-	 	 
-		if($telecom == 1)
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=2 checked=\"checked\">   Telecom     <br/>";
-		else
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=2>   Telecom     <br/>";
+		// if($telecom == 1)
+		 // echo "<input type=\"checkbox\" name=\"category[]\" value=2 checked=\"checked\">   Telecom     <br/>";
+		// else
+		 // echo "<input type=\"checkbox\" name=\"category[]\" value=2>   Telecom     <br/>";
 	 
-		 if($visio == 1)
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=3 checked=\"checked\">   Visio-Conference     <br/>";
-		else
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=3>   Visio-Conference     <br/>";
+		 // if($visio == 1)
+			 // echo "<input type=\"checkbox\" name=\"category[]\" value=3 checked=\"checked\">   Visio-Conference     <br/>";
+		// else
+			 // echo "<input type=\"checkbox\" name=\"category[]\" value=3>   Visio-Conference     <br/>";
 	 
-		if($contact == 1)
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=4 checked=\"checked\">   Centre de contact     <br/>";
-		else
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=4>   Centre de contact     <br/>";
+		// if($contact == 1)
+			 // echo "<input type=\"checkbox\" name=\"category[]\" value=4 checked=\"checked\">   Centre de contact     <br/>";
+		// else
+			 // echo "<input type=\"checkbox\" name=\"category[]\" value=4>   Centre de contact     <br/>";
 	 
 	 
 	 

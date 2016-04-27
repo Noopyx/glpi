@@ -1922,51 +1922,25 @@ abstract class CommonITILObject extends CommonDBTM {
 		}
 		if($p['id'] == 0) {
 			//$sql = "SELECT * FROM glpi_users WHERE name='".$_SESSION["glpiname"]."'";
-			$result = $bdd->prepare("SELECT * FROM glpi_users WHERE name= ?");
+			$result = $bdd->prepare("select * from qpo_users_itilcategories where user_id = (SELECT id FROM glpi_users WHERE name= ?)");
 			$result->bindValue(1, $_SESSION["glpiname"], PDO::PARAM_STR);
 		}
 		else if (strcmp($p['action'],"update") === 0) {
 			//$sql = "select * from glpi_users where id=(SELECT users_id_recipient FROM glpi_tickets WHERE id=".$options['id'].")";					
-			$result = $bdd->prepare("select * from glpi_users where id=(SELECT users_id_recipient FROM glpi_tickets WHERE id= ?)");
+			$result = $bdd->prepare("select * from qpo_users_itilcategories where user_id = ?");
 			$result->bindValue(1, $options['id'], PDO::PARAM_INT);
 		}
-		$result->execute();
-		
-		try	{
-			$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
-		}
-		catch(Exception $e) {
-			die('Erreur : '.$e->getMessage());
-		}					
-		$result2 = $bdd->query("select * from glpi_itilcategories");
-		while ($data = $result2->fetch()) {
-			switch ($data['name']) {
-				case "Operateur":
-					$idOp = $data["id"];
-					break;
-				case "Telecom":
-					$idTelecom = $data["id"];
-					break;
-				case "Visio-Conference":
-					$idVisio = $data["id"];
-					break;
-				case "Centre de contact":
-					$idCc = $data["id"];
-					break;
-			}
-		}
-		//$result = $DB->query($sql);
+		$result->execute();	
+
 		if($result->fetchColumn() > 0) {
 			$result->execute();
 			while ($donnees = $result->fetch()) {
-				if($donnees['op'] == 1) 
-					$values[$idOp] = "Operateur";
-				if($donnees['telecom'] == 1) 
-					$values[$idTelecom] = "Telecom";
-				if($donnees['visio'] == 1) 
-					$values[$idVisio] = "Visio-Conference";
-				if($donnees['contact'] == 1) 
-					$values[$idCc] = "Centre de contact";
+				$result2 = $bdd->prepare("select * from glpi_itilcategories where id = ?");
+				$result2->bindValue(1,$donnees['itilcategory_id'], PDO::PARAM_INT);
+				$result2->execute();
+				while($donnee = $result2->fetch()) {
+					$values[$donnees['itilcategory_id']] = $donnee['name'];
+				}				
 			}
 		}
 		
