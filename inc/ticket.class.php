@@ -4061,6 +4061,46 @@ class Ticket extends CommonITILObject {
       echo "</td>";
       echo "</tr>";
 	  
+	    try {
+		$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+	  }
+	  catch(Exception $e){
+		die('Erreur : '.$e->getMessage());
+	  }
+	  $result = $bdd->prepare("select * from glpi_tickets where id = ?");
+	  $result->bindValue(1, $ID, PDO::PARAM_INT);
+	  $result->execute();
+		
+		while($donnees = $result->fetch()) {
+			$result2 = $bdd->prepare("select * from glpi_itilcategories where id = ?");
+			$result2->bindValue(1, $this->fields['itilcategories_id'], PDO::PARAM_INT);
+			$result2->execute();
+			while($donnees2 = $result2->fetch()) {
+			  if( strcmp($donnees2['name'],"Centre de contact") == 0) {
+				echo "<th>Version</th>";
+				echo "<td>";
+				self::dropdownVersionKiamo(array ('value' => $donnees['version']));
+				echo "</td></tr>";
+			  }
+			  else if( strcmp($donnees2['name'],"Telecom") == 0) {
+				echo "<th>Source du problème</th>";
+				echo "<td>";
+				self::dropdownVersionAvaya(array ('value' => $donnees['version']));
+				echo "</td></tr>";
+			  }
+			  else if( strcmp($donnees2['name'],"Operateur") == 0) {
+				echo "<th>Source du problème</th>";
+				echo "<td>";
+				self::dropdownVersionInfra(array ('value' => $donnees['version']));
+				echo "</td></tr>";
+			  }
+			  else if( strcmp($donnees2['name'],"Visio-Conference") == 0)
+				echo "<input type='hidden' name='version' value='Aucune'>";
+			  else
+				echo "<input type='hidden' name='version' value=0>";
+			}
+		}
+		
       if (!$ID) {
          echo "</table>";
          $this->showActorsPartForm($ID, $values);
