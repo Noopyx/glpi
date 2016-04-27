@@ -256,7 +256,49 @@ class Group extends CommonTreeDropdown {
                            'entity' => $this->fields['entities_id'],
                            'used'   => (($ID > 0) ? getSonsOf($this->getTable(), $ID) : array())));
       echo "</td>";
-	  echo "<td >";
+	 echo "</tr>";
+
+      echo "<tr class='tab_bg_1'>";
+      echo "<td class='subheader' colspan='2'>".__('Visible in a ticket');
+      echo "</td></tr>";
+
+      echo "<tr class='tab_bg_1'>";
+      echo "<td>".__('Requester')."</td>";
+      echo "<td>";
+      Dropdown::showYesNo('is_requester', $this->fields['is_requester']);
+      echo "</td></tr>";
+
+      echo "<tr  class='tab_bg_1'>";
+      echo "<td>".__('Assigned to')."</td><td>";
+      Dropdown::showYesNo('is_assign', $this->fields['is_assign']);
+      echo "</td></tr>";
+
+      echo "<tr class='tab_bg_1'>";
+      echo "<td>".__('Can be notified')."</td>";
+      echo "<td>";
+      Dropdown::showYesNo('is_notify', $this->fields['is_notify']);
+      echo "</td></tr>";
+
+      echo "<tr class='tab_bg_1'>";
+      echo "<td class='subheader' colspan='2'>".__('Visible in a project');
+      echo "</td></tr>";
+
+      echo "<tr class='tab_bg_1'>";
+      echo "<td>".__('Can be manager')."</td>";
+      echo "<td>";
+      Dropdown::showYesNo('is_manager', $this->fields['is_manager']);
+      echo "</td></tr>";
+
+      echo "<tr class='tab_bg_1'>";
+      echo "<td class='subheader' colspan='2'>".__('Can contain');
+      echo "</td></tr>";
+
+      echo "<tr class='tab_bg_1'>";
+      echo "<td>"._n('Item', 'Items', Session::getPluralNumber())."</td>";
+      echo "<td>";
+      Dropdown::showYesNo('is_itemgroup', $this->fields['is_itemgroup']);
+      echo "</td><td colspan='2'></td>";
+	   echo "<td >";
 	  echo "<div id=\"checkBox\" display=\"inline-block\">";
 		 
 		try {
@@ -310,47 +352,6 @@ class Group extends CommonTreeDropdown {
 	 
 	 
          echo "</div></td></tr>";
-
-      echo "<tr class='tab_bg_1'>";
-      echo "<td class='subheader' colspan='2'>".__('Visible in a ticket');
-      echo "</td></tr>";
-
-      echo "<tr class='tab_bg_1'>";
-      echo "<td>".__('Requester')."</td>";
-      echo "<td>";
-      Dropdown::showYesNo('is_requester', $this->fields['is_requester']);
-      echo "</td></tr>";
-
-      echo "<tr  class='tab_bg_1'>";
-      echo "<td>".__('Assigned to')."</td><td>";
-      Dropdown::showYesNo('is_assign', $this->fields['is_assign']);
-      echo "</td></tr>";
-
-      echo "<tr class='tab_bg_1'>";
-      echo "<td>".__('Can be notified')."</td>";
-      echo "<td>";
-      Dropdown::showYesNo('is_notify', $this->fields['is_notify']);
-      echo "</td></tr>";
-
-      echo "<tr class='tab_bg_1'>";
-      echo "<td class='subheader' colspan='2'>".__('Visible in a project');
-      echo "</td></tr>";
-
-      echo "<tr class='tab_bg_1'>";
-      echo "<td>".__('Can be manager')."</td>";
-      echo "<td>";
-      Dropdown::showYesNo('is_manager', $this->fields['is_manager']);
-      echo "</td></tr>";
-
-      echo "<tr class='tab_bg_1'>";
-      echo "<td class='subheader' colspan='2'>".__('Can contain');
-      echo "</td></tr>";
-
-      echo "<tr class='tab_bg_1'>";
-      echo "<td>"._n('Item', 'Items', Session::getPluralNumber())."</td>";
-      echo "<td>";
-      Dropdown::showYesNo('is_itemgroup', $this->fields['is_itemgroup']);
-      echo "</td><td colspan='2'></td></tr>";
 
       echo "<tr class='tab_bg_1'>";
       echo "<td>"._n('User', 'Users', Session::getPluralNumber())."</td><td>";
