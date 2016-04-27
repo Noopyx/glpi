@@ -2058,7 +2058,7 @@ class User extends CommonDBTM {
 			while ($donnees = $result2->fetch()){
 				$result->bindValue(2, $donnees['id'], PDO::PARAM_INT);
 				$result->execute();
-				$row->fetchAll();
+				$row =  $result->fetchAll();
 				if(count($row) > 0)
 				 echo "<input type=\"checkbox\" name=\"category[]\" value=".$donnees['id']." checked=\"checked\">   ".$donnees['name']."    ";
 				else
