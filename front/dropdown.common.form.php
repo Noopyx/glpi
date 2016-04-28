@@ -53,7 +53,10 @@ if (isset($_POST["id"])) {
 if (isset($_POST["add"])) {
    $dropdown->check(-1, CREATE, $_POST);
 
+   
    if ($newID=$dropdown->add($_POST)) {
+	   
+	   echo "<script type=\"text\javascript\">console.log(\"Create : ".get_class($dropdown)."\");</script>";
       if ($dropdown instanceof CommonDevice) {
          Event::log($newID, get_class($dropdown), 4, "inventory",
                     sprintf(__('%1$s adds the item %2$s'), $_SESSION["glpiname"],
