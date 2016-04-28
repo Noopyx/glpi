@@ -468,7 +468,7 @@ class CommonDBTM extends CommonGLPI {
 				}
 								
 				//$result = $bdd->query("select * from glpi_groups where name=(select completename from glpi_itilcategories where id=".$this->fields['itilcategories_id'].")");
-				$result = $bdd->prepare("select * from glpi_groups where name=(select completename from glpi_itilcategories where id= :id)");
+				$result = $bdd->prepare("select * from glpi_groups where id=(select groups_id from glpi_itilcategories where id= :id)");
 				$result->bindValue('id', $this->fields['itilcategories_id'], PDO::PARAM_INT);
 				$result->execute();	
 				while ($donnees = $result->fetch()) {
