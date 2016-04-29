@@ -309,7 +309,7 @@ class Group extends CommonTreeDropdown {
 		}
 		$result = $pdo->prepare("SELECT * FROM qpo_groups_itilcategories WHERE groups_id=? and itilcategory_id = ?");
 		$result->bindValue(1, $ID, PDO::PARAM_INT);
-		$result2 = $bdd->query("select * from glpi_itilcategories");
+		$result2 = $pdo->query("select * from glpi_itilcategories");
 		
 		if($result2) {
 			while ($donnees = $result2->fetch()){
