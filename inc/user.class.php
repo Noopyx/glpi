@@ -1955,6 +1955,7 @@ class User extends CommonDBTM {
 							elem = document.getElementsByName('category[]');
 							while (elem[cpt] != undefined) {
 								elem[cpt].checked = 0;
+								cpt++;
 							}
 						}
 					}
