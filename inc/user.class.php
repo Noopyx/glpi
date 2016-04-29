@@ -1941,7 +1941,6 @@ class User extends CommonDBTM {
 										}
 										else {
 											elem[cpt].checked = 0;
-											break;
 										}
 										console.log(tab[id][cptTab]);
 										cptTab++;
