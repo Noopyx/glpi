@@ -43,5 +43,7 @@ Html::header(SLA::getTypeName(Session::getPluralNumber()), $_SERVER['PHP_SELF'],
 
 Search::show('SLA');
 
+echo "<center><a class=\"vsubmit\" href=\"/front/sla.form.php\" style=\"margin-top:10px;\">Ajoutez un SLA</a></center>";
+
 Html::footer();
 ?>

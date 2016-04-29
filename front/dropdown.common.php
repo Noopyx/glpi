@@ -54,5 +54,11 @@ Search::show(get_class($dropdown));
 if($dropdown instanceof ITILCategory) {
 	echo "<center><a class=\"vsubmit\" href=\"/front/itilcategory.form.php\" style=\"margin-top:10px;\">Ajoutez une catégorie</a></center>";
 }
+else if($dropdown instanceof Location) {
+	echo "<center><a class=\"vsubmit\" href=\"/front/location.form.php\" style=\"margin-top:10px;\">Ajoutez un partenaire</a></center>";
+}
+else if($dropdown instanceof Calendar) {
+	echo "<center><a class=\"vsubmit\" href=\"/front/calendar.form.php\" style=\"margin-top:10px;\">Ajoutez un calendrier</a></center>";
+}
 Html::footer();
 ?>
