@@ -51,5 +51,8 @@ $dropdown->title();
 
 Search::show(get_class($dropdown));
 
+if($dropdown instanceof ITILCategory) {
+	echo "<center><a class=\"vsubmit\" href=\"/front/itilcategory.form.php\" >Ajoutez une catégorie</a></center>";
+}
 Html::footer();
 ?>
