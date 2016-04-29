@@ -1933,6 +1933,7 @@ class User extends CommonDBTM {
 								var cptTab = 0;
 								elem = document.getElementsByName('category[]');
 								while (elem[cpt] != undefined) {
+									cptTab = 0;
 									while (cptTab < tab[id].length) {
 										if(elem[cpt].value == tab[id][cptTab])
 											elem[cpt].checked = 1;
