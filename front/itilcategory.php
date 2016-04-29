@@ -39,4 +39,5 @@ include ('../inc/includes.php');
 
 $dropdown = new ITILCategory();
 include (GLPI_ROOT . "/front/dropdown.common.php");
+echo "<center><a class=\"vsubmit\" href=\"/front/itilcategory.form.php\">Ajoutez une catégorie</a></center>";
 ?>
