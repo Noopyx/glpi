@@ -333,7 +333,7 @@ class Group extends CommonTreeDropdown {
 		
 		echo "<script type=\"text/javascript\"> $('#categoryTool').qtip({
          position: { viewport: $(window) },
-         content: {text: \"Ces checkbox servent à décider quelles catégories pourront être sélectionner lors de la création d'un ticket\"},
+         content: {text: \"Ces checkbox servent a decider quelles categories pourront etre selectionner lors de la creation d'un ticket\"},
 		 style: { classes: 'qtip-shadow qtip-bootstrap'}});
 		 </script></td>";
          echo "</div></td></tr>";

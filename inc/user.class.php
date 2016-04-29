@@ -2101,7 +2101,7 @@ class User extends CommonDBTM {
 		echo "<td><img id=\"categoryTool\" data-toggle=\"tooltip\" src=\"/pics/info-small.png\" class=\"pointer\" style=\"margin-left:10px;\">";
 		echo "<script type=\"text/javascript\"> $('#categoryTool').qtip({
          position: { viewport: $(window) },
-         content: {text: \"Ces checkbox servent ? d?cider quelles cat?gories pourront ?tre s?lectionner lors de la cr?ation d'un ticket\"},
+         content: {text: \"Ces checkbox servent a decider quelles categories pourront etre selectionner lors de la creation d'un ticket\"},
 		 style: { classes: 'qtip-shadow qtip-bootstrap'}});
 		 </script></td>";
          echo "</div></td></tr>";
