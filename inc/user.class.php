@@ -1909,13 +1909,12 @@ class User extends CommonDBTM {
 		 }
 
 		$output = "<script type=\"text/javascript\">
-					var tab = {};
-					vat cpt = 0";
+					var tab = {};";
 			 
-		$result = $bdd->query("select * from qpo_groups_itilcategories");
+		$result = $bdd->query("select * from qpo_groups_itilcategories order by groups_id");
 		if ($result) {
 			while ($donnees = $result->fetch()) {
-				$output .= "tab[".$donnees['groups_id']."][cpt] = ".$donnees['itilcategory_id'].";\ncpt++;\n";
+				$output .= "tab[".$donnees['groups_id']."].push(".$donnees['itilcategory_id'].");\ncpt++;\n";
 			}
 		}					
 		$output .= "function reloadGroup () {
@@ -1924,7 +1923,7 @@ class User extends CommonDBTM {
 						
 						for (var id in tab) {
 							if (id == document.form.group.options[i].value) {
-								cpt = 0;
+								var cpt = 0;
 								var cptTab = 0;
 								elem = document.getElementsByName('category[]');
 								while (elem[cpt] != undefined) {
