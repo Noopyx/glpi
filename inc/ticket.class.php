@@ -4123,20 +4123,21 @@ class Ticket extends CommonITILObject {
       echo $tt->getEndHiddenFieldValue('impact',$this);
       echo "</td>";
 		  
-	  
-      echo "<th>".$tt->getBeginHiddenFieldText('locations_id');
-      printf(__('%1$s%2$s'), __('Location'), $tt->getMandatoryMark('locations_id'));
-      echo $tt->getEndHiddenFieldText('locations_id')."</th>";
-      echo "<td>";
-      echo $tt->getBeginHiddenFieldValue('locations_id');
-      if ($canupdate || !$ID) {
-         Location::dropdown(array('value'  => $this->fields['locations_id'],
-                                  'entity' => $this->fields['entities_id']));
-      } else {
-         echo Dropdown::getDropdownName('glpi_locations', $this->fields["locations_id"]);
-      }
-      echo $tt->getEndHiddenFieldValue('locations_id', $this);
-      echo "</td>";
+	   if ($canupdate) {
+		  echo "<th>".$tt->getBeginHiddenFieldText('locations_id');
+		  printf(__('%1$s%2$s'), __('Location'), $tt->getMandatoryMark('locations_id'));
+		  echo $tt->getEndHiddenFieldText('locations_id')."</th>";
+		  echo "<td>";
+		  echo $tt->getBeginHiddenFieldValue('locations_id');
+		  if ($canupdate || !$ID) {
+			 Location::dropdown(array('value'  => $this->fields['locations_id'],
+									  'entity' => $this->fields['entities_id']));
+		  } else {
+			 echo Dropdown::getDropdownName('glpi_locations', $this->fields["locations_id"]);
+		  }
+		  echo $tt->getEndHiddenFieldValue('locations_id', $this);
+		  echo "</td>";
+	   }
       echo "</tr>";
 
 
