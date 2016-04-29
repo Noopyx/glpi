@@ -1935,10 +1935,14 @@ class User extends CommonDBTM {
 								while (elem[cpt] != undefined) {
 									cptTab = 0;
 									while (cptTab < tab[id].length) {
-										if(elem[cpt].value == tab[id][cptTab])
+										if(elem[cpt].value == tab[id][cptTab]) {
 											elem[cpt].checked = 1;
-										else
+											break;
+										}
+										else {
 											elem[cpt].checked = 0;
+											break;
+										}
 										console.log(tab[id][cptTab]);
 										cptTab++;
 									}
