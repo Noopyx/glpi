@@ -1926,10 +1926,10 @@ class User extends CommonDBTM {
 		$output .= "function reloadGroup () {
 						i = document.form.group.selectedIndex;
 						if (i == 0) return;
-						
+						var cpt = -1;
 						for (var id in tab) {
 							if (id == document.form.group.options[i].value) {
-								var cpt = 0;
+								cpt = 0;
 								var cptTab = 0;
 								elem = document.getElementsByName('category[]');
 								while (elem[cpt] != undefined) {
@@ -1939,11 +1939,19 @@ class User extends CommonDBTM {
 											elem[cpt].checked = 1;
 										else
 											elem[cpt].checked = 0;
+										console.log(tab[id][cptTab]);
 										cptTab++;
 									}
 								cpt++;
 									
 								}
+							}
+						}
+						if(cpt == -1) {
+							cpt = 0;
+							elem = document.getElementsByName('category[]');
+							while (elem[cpt] != undefined) {
+								elem[cpt].checked = 0;
 							}
 						}
 					}
