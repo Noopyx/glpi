@@ -311,6 +311,7 @@ class Group extends CommonTreeDropdown {
 		$result->bindValue(1, $ID, PDO::PARAM_INT);
 		$result2 = $pdo->query("select * from glpi_itilcategories");
 		
+		$cpt = 1;
 		if($result2) {
 			while ($donnees = $result2->fetch()){
 				$result->bindValue(2, $donnees['id'], PDO::PARAM_INT);
@@ -320,8 +321,21 @@ class Group extends CommonTreeDropdown {
 				 echo "<input type=\"checkbox\" name=\"category[]\" value=".$donnees['id']." checked=\"checked\">   ".$donnees['name']."    ";
 				else
 				 echo "<input type=\"checkbox\" name=\"category[]\" value=".$donnees['id'].">   ".$donnees['name']."    ";	
+			 
+				if($cpt == 5) {
+					echo "<br/>";
+					$cpt = 0;
+				}
+				$cpt++;
 			}
 		}
+		echo "<img id=\"categoryTool\" data-toggle=\"tooltip\" src=\"/pics/info-small.png\" class=\"pointer\" style=\"margin-left:10px;\">";
+		
+		echo "<script type=\"text/javascript\"> $('#categoryTool').qtip({
+         position: { viewport: $(window) },
+         content: {text: \"Ces checkbox servent à décider quelles catégories pourront être sélectionner lors de la création d'un ticket\"},
+		 style: { classes: 'qtip-shadow qtip-bootstrap'}});
+		 </script>";
          echo "</div></td></tr>";
 
       echo "<tr class='tab_bg_1'>";
