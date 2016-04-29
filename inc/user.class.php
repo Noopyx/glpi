@@ -1913,7 +1913,7 @@ class User extends CommonDBTM {
 		$result = $bdd->query("select distinct groups_id from qpo_groups_itilcategories order by groups_id");
 		if ($result) {
 			while ($donnees = $result->fetch()) {
-				$output .= "tab[".$donnees['groups_id']."] = []";
+				$output .= "tab[".$donnees['groups_id']."] = [];";
 			}
 		}	
 		
