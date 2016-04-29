@@ -118,5 +118,6 @@ Html::header(Rule::getTypeName(Session::getPluralNumber()), $_SERVER['PHP_SELF']
              $rulecollection->menu_option);
 
 $rulecollection->display();
+echo "<center><a class=\"vsubmit\" href=\"/front/ruleticket.form.php\" style=\"margin-top:10px;\">Ajoutez une règle</a></center>";
 Html::footer();
 ?>
