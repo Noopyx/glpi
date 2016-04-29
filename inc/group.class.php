@@ -301,55 +301,27 @@ class Group extends CommonTreeDropdown {
 	  echo "<div id=\"checkBox\" display=\"inline-block\">";
 		 
 		try {
-			$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+			$pdo = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 	    }
 		catch(Exception $e)
 		{
 			die('Erreur : '.$e->getMessage());
 		}
-		// $sql = "SELECT * FROM glpi_groups WHERE id=".$ID;
-		// $result = $bdd->query($sql);
-		$result = $bdd->prepare("SELECT * FROM glpi_groups WHERE id = :id");
-		$result->bindValue('id', $ID, PDO::PARAM_INT);
-		$result->execute();
+		$result = $pdo->prepare("SELECT * FROM qpo_groups_itilcategories WHERE groups_id=? and itilcategory_id = ?");
+		$result->bindValue(1, $ID, PDO::PARAM_INT);
+		$result2 = $bdd->query("select * from glpi_itilcategories");
 		
-		$op = 0;
-		$telecom = 0;
-		$visio = 0;
-		$contact = 0;
-		
-		if($result->fetchColumn() > 0) {
-			$result->execute();
-			while ($donnees = $result->fetch()) {
-				$op = $donnees["op"];
-				$telecom = $donnees["telecom"];
-				$visio = $donnees["visio"];
-				$contact = $donnees["contact"];
+		if($result2) {
+			while ($donnees = $result2->fetch()){
+				$result->bindValue(2, $donnees['id'], PDO::PARAM_INT);
+				$result->execute();
+				$row =  $result->fetchAll();
+				if(count($row) > 0)
+				 echo "<input type=\"checkbox\" name=\"category[]\" value=".$donnees['id']." checked=\"checked\">   ".$donnees['name']."    ";
+				else
+				 echo "<input type=\"checkbox\" name=\"category[]\" value=".$donnees['id'].">   ".$donnees['name']."    ";	
 			}
 		}
-				
-		if($op == 1)
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=1 checked=\"checked\">   Operateur    ";
-		else
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=1>   Operateur    ";	
-	 	 
-		if($telecom == 1)
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=2 checked=\"checked\">   Telecom     <br/>";
-		else
-		 echo "<input type=\"checkbox\" name=\"category[]\" value=2>   Telecom     <br/>";
-	 
-		 if($visio == 1)
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=3 checked=\"checked\">   Visio-Conference     <br/>";
-			else
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=3>   Visio-Conference     <br/>";
-	 
-		if($contact == 1)
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=4 checked=\"checked\">   Centre de contact     <br/>";
-			else
-			 echo "<input type=\"checkbox\" name=\"category[]\" value=4>   Centre de contact     <br/>";
-	 
-	 
-	 
          echo "</div></td></tr>";
 
       echo "<tr class='tab_bg_1'>";

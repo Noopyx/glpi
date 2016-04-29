@@ -1909,12 +1909,13 @@ class User extends CommonDBTM {
 		 }
 
 		$output = "<script type=\"text/javascript\">
-					var tab = {};";
+					var tab = {};
+					vat cpt = 0";
 			 
-		$result = $bdd->query("select * from glpi_groups");
+		$result = $bdd->query("select * from qpo_groups_itilcategories");
 		if ($result) {
 			while ($donnees = $result->fetch()) {
-				$output .= "tab[".$donnees['id']."] = [".$donnees['op']." , ".$donnees['telecom']." , ".$donnees['visio']." , ".$donnees['contact']."];\n";
+				$output .= "tab[".$donnees['groups_id']."][cpt] = ".$donnees['itilcategory_id'].";\ncpt++;\n";
 			}
 		}					
 		$output .= "function reloadGroup () {
@@ -1923,11 +1924,19 @@ class User extends CommonDBTM {
 						
 						for (var id in tab) {
 							if (id == document.form.group.options[i].value) {
-								var cpt = 0;
+								cpt = 0;
+								var cptTab = 0;
 								elem = document.getElementsByName('category[]');
 								while (elem[cpt] != undefined) {
-									elem[cpt].checked = tab[id][cpt];
-									cpt++;
+									while (cptTab < tab[id].length) {
+										if(elem[cpt].value == tab[id][cptTab])
+											elem[cpt].checked = 1;
+										else
+											elem[cpt].checked = 0;
+										cptTab++;
+									}
+								cpt++;
+									
 								}
 							}
 						}

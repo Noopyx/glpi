@@ -49,37 +49,23 @@ if (isset($_POST["add"])) {
    $group->check(-1, CREATE, $_POST);
    if ($newID=$group->add($_POST)) {
 	   
-	   $op = 0;
-		$telecom = 0;
-		$visio = 0;
-		$contact = 0;
-		
-		foreach($_POST['category'] as $valeur) {
-		   if( $valeur == 1)
-			   $op = 1;
-		   if( $valeur == 2)
-			   $telecom = 1;
-		   if( $valeur == 3)
-			   $visio = 1;
-		   if( $valeur == 4)
-			   $contact = 1;
+	   try {
+			$pdo = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+	    }
+		catch(Exception $e)
+		{
+			die('Erreur : '.$e->getMessage());
 		}
-	
-	try {
-		$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
-	}
-	catch(Exception $e)
-	{
-		die('Erreur : '.$e->getMessage());
-	}
-
-	$stmt = $bdd->prepare("UPDATE glpi_groups SET op = :op , telecom = :telecom , visio = :visio , contact = :contact WHERE name= :name");
-	$stmt->bindValue('op', $op, PDO::PARAM_INT);
-	$stmt->bindValue('telecom', $telecom, PDO::PARAM_INT);
-	$stmt->bindValue('visio', $visio, PDO::PARAM_INT);
-	$stmt->bindValue('contact', $contact, PDO::PARAM_INT);
-	$stmt->bindValue('name', $_POST["name"], PDO::PARAM_STR);
-	$stmt->execute();	
+		$delete = $pdo->prepare("delete from qpo_groups_itilcategories where groups_id = (select id from glpi_groups where name = ?)");
+		$delete->bindValue(1,$_POST['name'],PDO::PARAM_STR);
+		$delete->execute();
+				
+		foreach($_POST['category'] as $valeur) {
+			$insert = $pdo->prepare("insert into qpo_groups_itilcategories(groups_id,itilcategory_id) values ((select id from glpi_groups where name = ?) , ?)");
+			$insert->bindValue(2, $valeur, PDO::PARAM_INT);
+			$insert->bindValue(1, $_POST["name"], PDO::PARAM_STR);
+			$insert->execute();
+		}
       Event::log($newID, "groups", 4, "setup",
                  sprintf(__('%1$s adds the item %2$s'), $_SESSION["glpiname"], $_POST["name"]));
       if ($_SESSION['glpibackcreated']) {
@@ -106,37 +92,25 @@ if (isset($_POST["add"])) {
    }
 
 } else if (isset($_POST["update"])) {
-	$op = 0;
-	$telecom = 0;
-	$visio = 0;
-	$contact = 0;
    $group->check($_POST["id"], UPDATE);
    $group->update($_POST);
-   foreach($_POST['category'] as $valeur) {
-	   if( $valeur == 1)
-		   $op = 1;
-	   if( $valeur == 2)
-		   $telecom = 1;
-	   if( $valeur == 3)
-		   $visio = 1;
-	   if( $valeur == 4)
-		   $contact = 1;
-	}
-	
-	try {
-		$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
+   try {
+		$pdo = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
 	}
 	catch(Exception $e)
 	{
 		die('Erreur : '.$e->getMessage());
 	}
-	$stmt = $bdd->prepare("UPDATE glpi_groups SET op = :op , telecom = :telecom , visio = :visio , contact = :contact WHERE id= :id");
-	$stmt->bindValue('op', $op, PDO::PARAM_INT);
-	$stmt->bindValue('telecom', $telecom, PDO::PARAM_INT);
-	$stmt->bindValue('visio', $visio, PDO::PARAM_INT);
-	$stmt->bindValue('contact', $contact, PDO::PARAM_INT);
-	$stmt->bindValue('id', $_POST["id"], PDO::PARAM_INT);
-	$stmt->execute();	
+	$delete = $pdo->prepare("delete from qpo_groups_itilcategories where groups_id = ?");
+	$delete->bindValue(1,$_POST['id'],PDO::PARAM_INT);
+	$delete->execute();
+				
+	foreach($_POST['category'] as $valeur) {
+		$insert = $pdo->prepare("insert into qpo_groups_itilcategories(groups_id,itilcategory_id) values (? , ?)");
+		$insert->bindValue(2, $valeur, PDO::PARAM_INT);
+		$insert->bindValue(1, $_POST["id"], PDO::PARAM_INT);
+		$insert->execute();
+	}	
    Event::log($_POST["id"], "groups", 4, "setup",
               //TRANS: %s is the user login
               sprintf(__('%s updates an item'), $_SESSION["glpiname"]));
