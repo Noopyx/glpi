@@ -1910,11 +1910,17 @@ class User extends CommonDBTM {
 
 		$output = "<script type=\"text/javascript\">
 					var tab = {};";
-			 
+		$result = $bdd->query("select distinct groups_id from qpo_groups_itilcategories order by groups_id");
+		if ($result) {
+			while ($donnees = $result->fetch()) {
+				$output .= "tab[".$donnees['groups_id']."] = []";
+			}
+		}	
+		
 		$result = $bdd->query("select * from qpo_groups_itilcategories order by groups_id");
 		if ($result) {
 			while ($donnees = $result->fetch()) {
-				$output .= "tab[".$donnees['groups_id']."].push(".$donnees['itilcategory_id'].");\ncpt++;\n";
+				$output .= "tab[".$donnees['groups_id']."].push(".$donnees['itilcategory_id'].");\n";
 			}
 		}					
 		$output .= "function reloadGroup () {
