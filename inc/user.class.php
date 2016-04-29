@@ -2098,11 +2098,12 @@ class User extends CommonDBTM {
 				$cpt++;
 			}
 		}
+		echo "<td><img id=\"categoryTool\" data-toggle=\"tooltip\" src=\"/pics/info-small.png\" class=\"pointer\" style=\"margin-left:10px;\">";
 		echo "<script type=\"text/javascript\"> $('#categoryTool').qtip({
          position: { viewport: $(window) },
          content: {text: \"Ces checkbox servent ? d?cider quelles cat?gories pourront ?tre s?lectionner lors de la cr?ation d'un ticket\"},
 		 style: { classes: 'qtip-shadow qtip-bootstrap'}});
-		 </script>";
+		 </script></td>";
          echo "</div></td></tr>";
 		// if($telecom == 1)
 		 // echo "<input type=\"checkbox\" name=\"category[]\" value=2 checked=\"checked\">   Telecom     <br/>";
