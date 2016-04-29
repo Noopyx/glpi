@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: GLPI Project\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-25 10:48+0100\n"
-"PO-Revision-Date: 2016-04-27 10:32+0200\n"
+"PO-Revision-Date: 2016-04-29 09:21+0200\n"
 "Last-Translator: Alexandre DELAUNAY <delaunay.alexandre@gmail.com>\n"
 "Language-Team: French (France) (http://www.transifex.com/glpi/GLPI/language/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -2597,8 +2597,8 @@ msgstr "Nom"
 #: inc/user.class.php:2112 inc/user.class.php:2317
 msgid "Location"
 msgid_plural "Locations"
-msgstr[0] "Lieu"
-msgstr[1] "Lieux"
+msgstr[0] "Partenaire"
+msgstr[1] "Partenaires"
 
 #: front/report.contract.list.php:185 front/report.infocom.php:131
 #: front/report.year.list.php:141 inc/entity.class.php:755
@@ -5801,7 +5801,7 @@ msgstr "Majeure"
 #: inc/commonitilobject.class.php:1797
 msgctxt "priority"
 msgid "Very high"
-msgstr "Très haute"
+msgstr "Critique"
 
 #: inc/commonitilobject.class.php:1800
 msgctxt "priority"

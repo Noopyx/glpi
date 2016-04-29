@@ -2987,50 +2987,6 @@ class Ticket extends CommonITILObject {
 		 style: { classes: 'qtip-shadow qtip-bootstrap'}});
 		 </script>";
 	
-	  
-      
-	  if(isset($values['itilcategories_id']) && $values['itilcategories_id']!=0) {
-		  
-		try {
-			$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
-		}
-		catch(Exception $e)
-		{
-			die('Erreur : '.$e->getMessage());
-		}
-		$resultat = $bdd->prepare("select * from glpi_itilcategories where id = ?");
-		$resultat->bindValue(1, $values['itilcategories_id'] , PDO::PARAM_INT);
-		$resultat->execute();
-		
-		while($donnees = $resultat->fetch()) {
-		  if( strcmp($donnees['name'],"Centre de contact") == 0) {
-			echo "<tr class='tab_bg_1'>";
-			echo "<td>Version</td>";
-			echo "<td>";
-			self::dropdownVersionKiamo();
-			echo "</td></tr>";
-		  }
-		  else if( strcmp($donnees['name'],"Telecom") == 0) {
-			echo "<tr class='tab_bg_1'>";
-			echo "<td>Source du problème</td>";
-			echo "<td>";
-			self::dropdownVersionAvaya(array ('on_change' => 'this.form.submit()','value' => $values['version']));
-			echo "</td></tr>";
-		  }
-		  else if( strcmp($donnees['name'],"Operateur") == 0) {
-			echo "<tr class='tab_bg_1'>";
-			echo "<td>Source du problème</td>";
-			echo "<td>";
-			self::dropdownVersionInfra();
-			echo "</td></tr>";
-		  }
-		  else if( strcmp($donnees['name'],"Visio-Conference") == 0)
-			echo "<input type='hidden' name='version' value='Aucune'>";
-		  else
-			echo "<input type='hidden' name='version' value=0>";
-		}
-		  
-	  }
       if ($CFG_GLPI['urgency_mask'] != (1<<3)) {
          if (!$tt->isHiddenField('urgency')) {
             echo "<tr class='tab_bg_1'>";
@@ -3042,7 +2998,7 @@ class Ticket extends CommonITILObject {
 		
 			  echo "<script type=\"text/javascript\"> $('#categoryTool2').qtip({
 				 position: { viewport: $(window) },
-				 content: {text: \"Critique : Blocage de la production<br/>Haut : Impact sur la production<br/>Moyen : Impact moyen sur la production\"},
+				 content: {text: \"Critique : Blocage de la production<br/>Haut : Impact fort sur la production<br/>Moyen : Impact mineur sur la production\"},
 				 style: { classes: 'qtip-shadow qtip-bootstrap'}});
 				 </script>";
             echo "</td></tr>";
@@ -3182,38 +3138,7 @@ class Ticket extends CommonITILObject {
          } else {
             $values["content"] = $this->setSimpleTextContent($values["content"]);
 			//if( !isset($values["content"])) {
-				try {
-					$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
-				}
-				catch(Exception $e)
-				{
-					die('Erreur : '.$e->getMessage());
-				}
-				$resultat = $bdd->prepare("select * from glpi_itilcategories where id = ?");
-				$resultat->bindValue(1, $values['itilcategories_id'] , PDO::PARAM_INT);
-				$resultat->execute();
-				while ($donnees = $resultat->fetch()) {
-					if ( strcmp($donnees['name'],"Telecom") == 0 ) {
-						if (strcmp($values['version'],"Avaya 1") == 0) {
-							$values["content"] .= "Avaya numéro 1";
-						}
-						else if (strcmp($values['version'],"Avaya 2") == 0) {
-							$values["content"] .= "Avaya numéro 2";
-						}
-						else if (strcmp($values['version'],"Avaya 3") == 0) {
-							$values["content"] .= "Avaya numéro 3";
-						}
-						else if (strcmp($values['version'],"Avaya 4") == 0) {
-							$values["content"] .= "Avaya numéro 4";
-						}
-						else if (strcmp($values['version'],"Avaya 5") == 0) {
-							$values["content"] .= "Avaya numéro 5";
-						}
-						else {
-							$values["content"] .= "Veuillez selectionner un machin";
-						}
-					}
-				}
+				
 			//}
          }
 
@@ -4061,77 +3986,6 @@ class Ticket extends CommonITILObject {
       echo "</td>";
       echo "</tr>";
 	  
-	    try {
-		$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
-	  }
-	  catch(Exception $e){
-		die('Erreur : '.$e->getMessage());
-	  }
-	  $result = $bdd->prepare("select * from glpi_tickets where id = ?");
-	  $result->bindValue(1, $ID, PDO::PARAM_INT);
-	  $result->execute();
-		
-	  if($result->fetchColumn() > 0) {
-		  $result->execute();
-		while($donnees = $result->fetch()) {
-			$result2 = $bdd->prepare("select * from glpi_itilcategories where id = ?");
-			$result2->bindValue(1, $this->fields['itilcategories_id'], PDO::PARAM_INT);
-			$result2->execute();
-			while($donnees2 = $result2->fetch()) {
-			  if( strcmp($donnees2['name'],"Centre de contact") == 0) {
-				echo "<th>Version</th>";
-				echo "<td>";
-				self::dropdownVersionKiamo(array ('value' => $donnees['version']));
-				echo "</td></tr>";
-			  }
-			  else if( strcmp($donnees2['name'],"Telecom") == 0) {
-				echo "<th>Source du problème</th>";
-				echo "<td>";
-				self::dropdownVersionAvaya(array ('value' => $donnees['version']));
-				echo "</td></tr>";
-			  }
-			  else if( strcmp($donnees2['name'],"Operateur") == 0) {
-				echo "<th>Source du problème</th>";
-				echo "<td>";
-				self::dropdownVersionInfra(array ('value' => $donnees['version']));
-				echo "</td></tr>";
-			  }
-			  else if( strcmp($donnees2['name'],"Visio-Conference") == 0)
-				echo "<input type='hidden' name='version' value='Aucune'>";
-			  else
-				echo "<input type='hidden' name='version' value=0>";
-			}
-		}
-	  }
-	  else {
-		  $result2 = $bdd->prepare("select * from glpi_itilcategories where id = ?");
-			$result2->bindValue(1, $this->fields['itilcategories_id'], PDO::PARAM_INT);
-			$result2->execute();
-			while($donnees2 = $result2->fetch()) {
-			  if( strcmp($donnees2['name'],"Centre de contact") == 0) {
-				echo "<th>Version</th>";
-				echo "<td>";
-				self::dropdownVersionKiamo(array ('value' => $this->fields['version']));
-				echo "</td></tr>";
-			  }
-			  else if( strcmp($donnees2['name'],"Telecom") == 0) {
-				echo "<th>Source du problème</th>";
-				echo "<td>";
-				self::dropdownVersionAvaya(array ('value' => $this->fields['version']));
-				echo "</td></tr>";
-			  }
-			  else if( strcmp($donnees2['name'],"Operateur") == 0) {
-				echo "<th>Source du problème</th>";
-				echo "<td>";
-				self::dropdownVersionInfra(array ('value' => $this->fields['version']));
-				echo "</td></tr>";
-			  }
-			  else if( strcmp($donnees2['name'],"Visio-Conference") == 0)
-				echo "<input type='hidden' name='version' value='Aucune'>";
-			  else
-				echo "<input type='hidden' name='version' value=0>";
-			}
-	  }
       if (!$ID) {
          echo "</table>";
          $this->showActorsPartForm($ID, $values);
@@ -4268,46 +4122,6 @@ class Ticket extends CommonITILObject {
       }
       echo $tt->getEndHiddenFieldValue('impact',$this);
       echo "</td>";
-	  
-	  try {
-		$bdd = new PDO('mysql:host=localhost;dbname=glpi;charset=utf8', 'root', 'root');
-	  }
-	  catch(Exception $e){
-		die('Erreur : '.$e->getMessage());
-	  }
-	  $result = $bdd->prepare("select * from glpi_tickets where id = ?");
-	  $result->bindValue(1, $ID, PDO::PARAM_INT);
-	  $result->execute();
-		
-		while($donnees = $result->fetch()) {
-			$result2 = $bdd->prepare("select * from glpi_itilcategories where id = ?");
-			$result2->bindValue(1, $this->fields['itilcategories_id'], PDO::PARAM_INT);
-			$result2->execute();
-			while($donnees2 = $result2->fetch()) {
-			  if( strcmp($donnees2['name'],"Centre de contact") == 0) {
-				echo "<th>Version</th>";
-				echo "<td>";
-				self::dropdownVersionKiamo(array ('value' => $donnees['version']));
-				echo "</td></tr>";
-			  }
-			  else if( strcmp($donnees2['name'],"Telecom") == 0) {
-				echo "<th>Source du problème</th>";
-				echo "<td>";
-				self::dropdownVersionAvaya(array ('value' => $donnees['version']));
-				echo "</td></tr>";
-			  }
-			  else if( strcmp($donnees2['name'],"Operateur") == 0) {
-				echo "<th>Source du problème</th>";
-				echo "<td>";
-				self::dropdownVersionInfra(array ('value' => $donnees['version']));
-				echo "</td></tr>";
-			  }
-			  else if( strcmp($donnees2['name'],"Visio-Conference") == 0)
-				echo "<input type='hidden' name='version' value='Aucune'>";
-			  else
-				echo "<input type='hidden' name='version' value=0>";
-			}
-		}
 		  
 	  
       /*echo "<th>".$tt->getBeginHiddenFieldText('locations_id');
