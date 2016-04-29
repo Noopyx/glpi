@@ -2081,6 +2081,7 @@ class User extends CommonDBTM {
 		$result2 = $bdd->query("select * from glpi_itilcategories");
 		
 		if($result2) {
+			$cpt = 1;
 			while ($donnees = $result2->fetch()){
 				$result->bindValue(2, $donnees['id'], PDO::PARAM_INT);
 				$result->execute();
@@ -2088,7 +2089,13 @@ class User extends CommonDBTM {
 				if(count($row) > 0)
 				 echo "<input type=\"checkbox\" name=\"category[]\" value=".$donnees['id']." checked=\"checked\">   ".$donnees['name']."    ";
 				else
-				 echo "<input type=\"checkbox\" name=\"category[]\" value=".$donnees['id'].">   ".$donnees['name']."    ";	
+				 echo "<input type=\"checkbox\" name=\"category[]\" value=".$donnees['id'].">   ".$donnees['name']."    ";
+				
+				if($cpt == 3) {
+					echo "<br/>";
+					$cpt = 0;
+				}
+				$cpt++;
 			}
 		}
 		// if($telecom == 1)
