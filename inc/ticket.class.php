@@ -1,5 +1,5 @@
 <?php
-/*
+/*test
  * @version $Id$
  -------------------------------------------------------------------------
  GLPI - Gestionnaire Libre de Parc Informatique
