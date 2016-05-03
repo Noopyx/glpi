@@ -2575,7 +2575,7 @@ class Ticket extends CommonITILObject {
 
    /**
     * Get ticket type Name
-    *
+    *lol
     * @param $value type ID
    **/
    static function getTicketTypeName($value) {
